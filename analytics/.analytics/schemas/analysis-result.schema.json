@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Analytics Result Contract v0.1",
+  "type": "object",
+  "required": [
+    "analysis_id",
+    "question",
+    "source_ids",
+    "period",
+    "evidence_level",
+    "findings",
+    "recommendations",
+    "limitations"
+  ],
+  "properties": {
+    "analysis_id": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "period": {
+      "type": "object"
+    },
+    "evidence_level": {
+      "enum": [
+        "insufficient",
+        "descriptive",
+        "associative",
+        "experimental",
+        "causal"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:nocrm:consent:v0.1",
+  "type": "object",
+  "required": [
+    "contact_id",
+    "channel",
+    "purpose",
+    "status",
+    "recorded_at",
+    "evidence_ref",
+    "basis"
+  ],
+  "properties": {
+    "contact_id": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "granted",
+        "revoked",
+        "denied",
+        "objected",
+        "unknown"
+      ]
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "evidence_ref": {
+      "type": "string"
+    },
+    "basis": {
+      "type": "string"
+    },
+    "valid_until": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

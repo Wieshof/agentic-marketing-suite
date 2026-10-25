@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "title": "SuiteArtifact",
+  "type": "object",
+  "required": [
+    "id",
+    "owner_module",
+    "path",
+    "version",
+    "status",
+    "contains_personal_data",
+    "rights_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "owner_module": {
+      "type": "string",
+      "enum": [
+        "marketing",
+        "pr",
+        "social-media",
+        "website",
+        "advertising",
+        "creative",
+        "noCRM",
+        "analytics"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "minLength": 3
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "review",
+        "approved",
+        "published",
+        "archived"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contains_personal_data": {
+      "type": "boolean"
+    },
+    "rights_status": {
+      "type": "string",
+      "enum": [
+        "cleared",
+        "pending",
+        "not_applicable"
+      ]
+    },
+    "brief_ref": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

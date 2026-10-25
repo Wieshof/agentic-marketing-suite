@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "job_id": "demo-print-001",
+  "title": "Beispielplakat – Konzeptproof",
+  "medium": "print",
+  "status": "draft",
+  "brand_reference": null,
+  "claim_source": null,
+  "assets": [],
+  "deliverables": [
+    {
+      "id": "proof-01",
+      "format": "svg",
+      "purpose": "proof",
+      "path": "proof/demo-plakat.svg"
+    }
+  ],
+  "print_spec": {
+    "provider": null,
+    "trim_width_mm": 210,
+    "trim_height_mm": 297,
+    "bleed_mm": 3,
+    "output_profile": null,
+    "requested_pdf_standard": "PDF/X-4",
+    "acceptance_profile": null,
+    "dpi_target": null,
+    "print_method": null
+  },
+  "qa": {
+    "technical": "not_run",
+    "visual": "not_run",
+    "qa_artifact_sha256": null,
+    "pdfx_validator": null,
+    "pdfx_report": null,
+    "rights": "not_checked"
+  },
+  "approval": {
+    "approved_by": null,
+    "approved_at": null,
+    "scope": null
+  },
+  "notes": "Demodaten; 3 mm ist nur eine veranschaulichende Layoutannahme; keine Druckfreigabe."
+}

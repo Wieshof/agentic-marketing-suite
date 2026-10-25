@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:nocrm:draft:v0.1",
+  "type": "object",
+  "required": [
+    "draft_id",
+    "contact_id",
+    "channel",
+    "purpose",
+    "body",
+    "status"
+  ],
+  "properties": {
+    "draft_id": {
+      "type": "string"
+    },
+    "contact_id": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "drafted",
+        "reviewed",
+        "approved",
+        "queued",
+        "sent",
+        "delivered",
+        "blocked",
+        "cancelled",
+        "failed",
+        "unknown_outcome",
+        "expired"
+      ]
+    },
+    "review": {
+      "type": "object"
+    },
+    "authorization": {
+      "type": "object"
+    },
+    "idempotency_key": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

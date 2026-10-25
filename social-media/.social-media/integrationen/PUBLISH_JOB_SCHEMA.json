@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Social media publication job (portable) v0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "job_id",
+    "content_id",
+    "variant_id",
+    "channel",
+    "account_id",
+    "format",
+    "status",
+    "copy",
+    "assets",
+    "scheduled_at",
+    "approval"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "job_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "content_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "linkedin",
+        "instagram",
+        "facebook",
+        "threads",
+        "tiktok",
+        "youtube",
+        "pinterest",
+        "x",
+        "bluesky",
+        "mastodon",
+        "reddit",
+        "telegram",
+        "whatsapp-channels",
+        "discord"
+      ]
+    },
+    "account_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "text-post",
+        "image-post",
+        "carousel",
+        "story",
+        "reel",
+        "short",
+        "tiktok-video",
+        "long-video",
+        "live",
+        "infografik",
+        "umfrage",
+        "dokument-post",
+        "thread",
+        "podcast-clip",
+        "behind-the-scenes",
+        "community-antwort"
+      ]
+    },
+    "status": {
+      "enum": [
+        "idea",
+        "draft",
+        "in_review",
+        "approved",
+        "scheduled",
+        "publishing",
+        "published",
+        "blocked",
+        "failed",
+        "unknown",
+        "cancelled",
+        "archived"
+      ]
+    },
+    "copy": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "string"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "rights_status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "rights_status": {
+            "enum": [
+              "unknown",
+              "pending",
+              "cleared",
+              "blocked"
+            ]
+          },
+          "alt_text": {
+            "type": "string"
+          },
+          "caption_file": {
+            "type": "string"
+          },
+          "mime_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "scheduled_at": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "content_approved",
+        "execution_authorized",
+        "revision_sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "content_approved": {
+          "type": "boolean"
+        },
+        "execution_authorized": {
+          "type": "boolean"
+        },
+        "revision_sha256": {
+          "type": "string"
+        },
+        "approved_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approved_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "external_post_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "external_post_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publisher": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "idempotency_key": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

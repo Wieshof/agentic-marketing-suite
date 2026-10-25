@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:nocrm:contact:v0.1",
+  "type": "object",
+  "required": [
+    "contact_id",
+    "display_name"
+  ],
+  "properties": {
+    "contact_id": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "preferred_channel": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "relationship_role": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "title": "SuiteReview",
+  "type": "object",
+  "required": [
+    "id",
+    "artifact_id",
+    "artifact_version",
+    "dimension",
+    "status",
+    "reviewed_at",
+    "findings"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "artifact_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dimension": {
+      "type": "string",
+      "enum": [
+        "brief",
+        "expert",
+        "evidence",
+        "creative",
+        "technical",
+        "legal",
+        "privacy",
+        "security",
+        "accessibility",
+        "consistency"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "warning",
+        "blocked",
+        "not_applicable",
+        "not_checked"
+      ]
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "severity",
+          "message"
+        ],
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "info",
+              "minor",
+              "major",
+              "critical"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 4
+          },
+          "evidence_ref": {
+            "type": "string"
+          },
+          "fix": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

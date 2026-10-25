@@ -1,0 +1,16 @@
+{
+  "draft_id": "DEMO-DRAFT-001",
+  "contact_id": "DEMO-001",
+  "channel": "email",
+  "purpose": "marketing",
+  "body": "Guten Tag, diese synthetische Testnachricht darf nicht versendet werden.",
+  "subject": "Demo, nicht versenden",
+  "status": "drafted",
+  "review": {
+    "approved": false
+  },
+  "authorization": {
+    "allowed": false
+  },
+  "idempotency_key": "DEMO-001-001"
+}

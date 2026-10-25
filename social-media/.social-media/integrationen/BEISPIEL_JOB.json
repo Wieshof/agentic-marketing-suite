@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "job_id": "example-001",
+  "content_id": "example-idea-001",
+  "variant_id": "example-linkedin-001",
+  "channel": "linkedin",
+  "account_id": "UNCONNECTED_EXAMPLE",
+  "format": "text-post",
+  "status": "draft",
+  "copy": "Beispielentwurf – nicht zur Veröffentlichung freigegeben.",
+  "language": "de",
+  "cta": "",
+  "assets": [],
+  "scheduled_at": null,
+  "approval": {
+    "content_approved": false,
+    "execution_authorized": false,
+    "revision_sha256": "",
+    "approved_by": null,
+    "approved_at": null
+  },
+  "external_post_id": null,
+  "external_post_url": null,
+  "publisher": null,
+  "source_references": [],
+  "idempotency_key": "example-001",
+  "notes": "Fiktiver Datensatz nur für Validierungsübung. Kein Account verbunden."
+}

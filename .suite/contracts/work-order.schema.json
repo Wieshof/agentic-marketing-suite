@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "title": "SuiteWorkOrder",
+  "type": "object",
+  "required": [
+    "id",
+    "objective",
+    "lead_module",
+    "status",
+    "created_at",
+    "input_refs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 8
+    },
+    "lead_module": {
+      "type": "string",
+      "enum": [
+        "marketing",
+        "pr",
+        "social-media",
+        "website",
+        "advertising",
+        "creative",
+        "noCRM",
+        "analytics"
+      ]
+    },
+    "supporting_modules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "marketing",
+          "pr",
+          "social-media",
+          "website",
+          "advertising",
+          "creative",
+          "noCRM",
+          "analytics"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "in_progress",
+        "in_review",
+        "blocked",
+        "complete",
+        "cancelled"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

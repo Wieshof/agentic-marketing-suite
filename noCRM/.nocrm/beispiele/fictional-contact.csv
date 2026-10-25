@@ -1,0 +1,2 @@
+contact_id,display_name,organization,email,phone,preferred_channel,language,relationship_role,updated_at
+DEMO-001,Alex Beispiel,Beispiel GmbH,alex@example.invalid,,email,de,partner,2026-10-23T09:00:00+02:00

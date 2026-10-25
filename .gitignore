@@ -1,0 +1,44 @@
+# Betriebssysteme und Editoren
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Python und lokale Umgebungen
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Zugangsdaten und lokale Konfiguration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.codex/
+.agents/
+
+# Lokale Arbeitsdaten; Methoden, Vorlagen und fiktive Beispiele bleiben enthalten.
+**/input/*
+!**/input/.gitkeep
+**/archiv/*
+!**/archiv/.gitkeep
+/kontakte/
+/kommunikation/
+/noCRM/kontakte/
+/noCRM/kommunikation/
+/noCRM/beziehungen/
+/noCRM/service/
+/noCRM/angebote/
+/noCRM/analysen/
+
+# Für weitere produktive Ergebnisordner lokale Regeln in .git/info/exclude ergänzen.

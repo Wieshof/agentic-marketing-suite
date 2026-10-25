@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="216mm" height="303mm" viewBox="0 0 216 303">
+  <title>Creative Layout Proof – NOT PRINT READY</title>
+  <desc>Editable RGB concept with trim guide. Color management, font embedding and PDF/X validation are NOT performed.</desc>
+  <rect x="0" y="0" width="216" height="303" fill="#f0ebe4"/>
+  <rect x="3" y="3" width="210" height="297" fill="#f0ebe4" stroke="#e96b4e" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <rect x="13" y="13" width="190" height="277" fill="none" stroke="#9a9a9a" stroke-width="0.35" stroke-dasharray="1.5 3"/>
+  <rect x="18" y="21" width="180" height="124.74" rx="2" fill="#203440"/>
+  <text x="21" y="166.35" fill="#172b37" font-size="15" font-family="sans-serif" font-weight="bold">KONZEPTPROOF</text>
+  <text x="21" y="187.14" fill="#172b37" font-size="4.4" font-family="sans-serif">Beispielplakat – Konzeptproof</text>
+  <text x="21" y="216.84" fill="#5c6265" font-size="3.3" font-family="sans-serif">Beispiel: Hier entsteht ein verifizierter Werbetext.</text>
+  <text x="21" y="282" fill="#a6442f" font-size="3.2" font-family="sans-serif">NUR ENTWURF · KEIN DRUCK-PDF/X · demo-print-001</text>
+</svg>

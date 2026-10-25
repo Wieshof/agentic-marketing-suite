@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Analytics Dataset Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dataset_id",
+    "source_system",
+    "extracted_at",
+    "time_zone",
+    "grain",
+    "period_start",
+    "period_end",
+    "privacy_class",
+    "metric_definitions"
+  ],
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_system": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extracted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "time_zone": {
+      "type": "string",
+      "minLength": 1
+    },
+    "grain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "privacy_class": {
+      "enum": [
+        "public",
+        "internal",
+        "confidential",
+        "personal",
+        "special_category"
+      ]
+    },
+    "metric_definitions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "unit",
+          "aggregation"
+        ],
+        "properties": {
+          "unit": {
+            "type": "string"
+          },
+          "aggregation": {
+            "enum": [
+              "sum",
+              "ratio",
+              "distinct",
+              "non_additive"
+            ]
+          },
+          "numerator": {
+            "type": "string"
+          },
+          "denominator": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "filters": {
+      "type": "object"
+    },
+    "permissions": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "file_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

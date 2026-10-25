@@ -1,0 +1,25 @@
+{
+  "id": "wrk-topaca-awareness-001",
+  "objective": "Entwicklung einer begrenzten Bekanntheitskampagne mit überprüfbarem Markenkern",
+  "lead_module": "marketing",
+  "supporting_modules": [
+    "pr",
+    "creative",
+    "website",
+    "social-media",
+    "analytics"
+  ],
+  "status": "proposed",
+  "created_at": "2026-10-23T13:00:00+02:00",
+  "input_refs": [
+    "marketing/strategie/briefing.md"
+  ],
+  "expected_outputs": [
+    "Kampagnenstrategie",
+    "Kreativansätze",
+    "Website-Konzept",
+    "Prüfakte"
+  ],
+  "risk": "medium",
+  "purpose": "B2B Markenbekanntheit ohne Kontaktlistenexport"
+}

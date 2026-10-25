@@ -1,0 +1,30 @@
+{
+  "dataset_id": "TOPACA_SYNTHETIC_DEMO_NOT_REAL",
+  "source_system": "synthetic_training_example",
+  "extracted_at": "2026-10-23T12:00:00+00:00",
+  "time_zone": "Europe/Vienna",
+  "grain": "one weekly synthetic aggregate row",
+  "period_start": "2026-08-31",
+  "period_end": "2026-10-19",
+  "privacy_class": "public",
+  "metric_definitions": {
+    "branded_search_clicks": {
+      "unit": "count",
+      "aggregation": "sum"
+    },
+    "site_visits": {
+      "unit": "count",
+      "aggregation": "sum"
+    },
+    "impressions": {
+      "unit": "count",
+      "aggregation": "sum"
+    },
+    "qualified_mentions": {
+      "unit": "count",
+      "aggregation": "sum"
+    }
+  },
+  "permissions": "Training and smoke testing only",
+  "notes": "SYNTHETISCH! Keine tatsächlichen Daten von TOPACA; Datenpunkte wöchentlich, nicht täglich. Nicht für Geschäftsentscheidungen."
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "title": "SuiteActionApproval",
+  "type": "object",
+  "required": [
+    "id",
+    "artifact_id",
+    "artifact_version",
+    "artifact_sha256",
+    "action",
+    "target",
+    "decision",
+    "authorizer",
+    "decided_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "artifact_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "publish",
+        "send",
+        "spend",
+        "print",
+        "delete",
+        "modify_external"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "denied",
+        "pending",
+        "revoked"
+      ]
+    },
+    "authorizer": {
+      "type": "string",
+      "minLength": 2
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "budget_limit_eur": {
+      "type": "number",
+      "minimum": 0
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": [
+        "not_attempted",
+        "queued",
+        "submitted",
+        "confirmed",
+        "failed",
+        "uncertain"
+      ]
+    },
+    "execution_external_id": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

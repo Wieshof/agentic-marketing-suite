@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:nocrm:event:v0.1",
+  "type": "object",
+  "required": [
+    "event_id",
+    "contact_id",
+    "timestamp",
+    "channel",
+    "direction",
+    "kind",
+    "status",
+    "purpose"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "contact_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "provider_ref": {
+      "type": "string"
+    },
+    "source_ref": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

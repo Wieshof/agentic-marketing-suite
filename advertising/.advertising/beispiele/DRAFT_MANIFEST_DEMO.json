@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "campaign_id": "DEMO-001",
+  "platform": "demo",
+  "action": "draft",
+  "status": "draft",
+  "account_ref": "NOT_CONNECTED",
+  "objective": "Fiktiver Entwurf zur lokalen Validierung",
+  "currency": "EUR",
+  "budget": {
+    "lifetime_max": "0",
+    "daily_max": "0",
+    "period_start": "2026-10-25",
+    "period_end": "2026-10-31"
+  },
+  "creatives": ["Fiktives Creative-Briefing; kein produktives Werbemittel"],
+  "landing_url": "https://example.org/not-a-real-site",
+  "tracking_status": "unverified",
+  "claims_reviewed": false,
+  "legal_reviewed": false,
+  "capability_preflight": false,
+  "platform_account_verified": false,
+  "approval": {
+    "ref": null,
+    "approved_action": "none",
+    "approved_budget": null,
+    "approved_by": null
+  },
+  "external_ids": [],
+  "notes": "Ausschließlich fiktive Testdaten. Keine Freigabe, kein verbundenes Konto, keine externe Aktion."
+}
