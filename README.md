@@ -1210,7 +1210,11 @@ Die derzeitige Suite ist ein **umfangreicher fachlicher und organisatorischer Pr
 
 ### 25.4 Lizenzierung und Weitergabe
 
-Im untersuchten Suite-Paket liegt **keine allgemeine, für die gesamte Suite verbindliche Lizenzdatei** auf Root-Ebene vor. Aus der Nutzung offener Dateiformate folgt **keine** automatische Erlaubnis zur Weitergabe, kommerziellen Verwertung oder Unterlizenzierung von sämtlichen enthaltenen Inhalten und Drittkomponenten. Vor öffentlicher Veröffentlichung sollten eine ausdrückliche Projektlizenz, Hinweise zu fremden Materialien und gegebenenfalls separate Bedingungen für Werkzeuge und Modelle festgelegt werden.
+Die Suite wird unter der [MIT-Lizenz](LICENSE.md) veröffentlicht. Copyright © 2026 Markus Ertel. Der Lizenztext und der Copyright-Hinweis müssen bei Weitergabe gemäß den Lizenzbedingungen erhalten bleiben.
+
+Verlinkte externe Quellen, Marken, Plattformen und separat bezogene Werkzeuge oder Modelle behalten ihre jeweiligen Rechte und Bedingungen. Die Projektlizenz erteilt keine Nutzungsrechte an fremden Inhalten, die lediglich referenziert werden.
+
+**Kontakt des Lizenzgebers** (Information, kein Bestandteil des MIT-Lizenztexts): Markus Ertel, Eixendorf 50, 9064 Magdalensberg, Austria · [markus@ertel.at](mailto:markus@ertel.at).
 
 ---
 
