@@ -29,7 +29,17 @@ class Files:
         return path
 
     def modules(self):
-        return [{'name': name, 'path': name} for name in (*MODULES, '.suite') if (self.root / name).is_dir()]
+        names = list(MODULES)
+        for entry in sorted(self.root.iterdir(), key=lambda p: p.name.casefold()):
+            if entry.name.startswith('.') or entry.name in names or not entry.is_dir():
+                continue
+            try:
+                self.resolve(entry.name)
+            except PermissionError:
+                continue
+            if (entry / 'AGENT.md').is_file():
+                names.append(entry.name)
+        return [{'name': name, 'path': name} for name in (*names, '.suite') if (self.root / name).is_dir()]
 
     def tree(self, relative='', hidden=False, query=''):
         parent = self.resolve(relative)

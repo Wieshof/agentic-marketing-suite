@@ -53,6 +53,18 @@ class HTTPTests(unittest.TestCase):
             self.get('/api/file?path=marketing/temporary.md')
         self.assertEqual(error.exception.code,404)
 
+    def test_ecommerce_document_and_context_discovery(self):
+        module = self.root / 'e-commerce'
+        module.mkdir(exist_ok=True)
+        document = module / 'AGENT.md'
+        document.write_text('# Online-Shop')
+        try:
+            self.assertIn('e-commerce', {m['path'] for m in json.load(self.get('/api/modules'))})
+            self.assertIn('Online-Shop', json.load(self.get('/api/file?path=e-commerce/AGENT.md'))['html'])
+        finally:
+            document.unlink()
+            module.rmdir()
+
     def test_media_range_and_html_isolation(self):
         (self.root/'movie.mp4').write_bytes(b'0123456789')
         response = self.get('/api/raw?path=movie.mp4', {'Range':'bytes=2-5'})

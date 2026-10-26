@@ -33,7 +33,7 @@ Eine andere Konfiguration lässt sich mit `--config /absoluter/pfad/config.json`
 
 ## Dateiansicht
 
-Die Navigation lädt echte Unterverzeichnisse bei Bedarf. Die Suche erfasst Dateinamen und relative Pfade innerhalb der sichtbaren Verzeichnisse. Mit **Interne Ordner** werden auch Methoden unter `.marketing/`, `.nocms/` usw. erreichbar. `/` fokussiert die Suche. Auf schmalen Bildschirmen öffnen Menü- und Chatknopf die jeweiligen Panels, `Escape` schließt sie.
+Die Navigation lädt echte Unterverzeichnisse bei Bedarf. Zusätzliche Fachmodule wie `e-commerce/` werden über ihre `AGENT.md` erkannt und erscheinen auch in Startansicht und Arbeitsverzeichnisauswahl. Die Suche erfasst Dateinamen und relative Pfade innerhalb der sichtbaren Verzeichnisse. Mit **Interne Ordner** werden auch Methoden unter `.marketing/`, `.nocms/` usw. erreichbar. `/` fokussiert die Suche. Auf schmalen Bildschirmen öffnen Menü- und Chatknopf die jeweiligen Panels, `Escape` schließt sie.
 
 Unterstützt werden Markdown mit Tabellen und Codeblöcken, UTF-8-Text und Quellcode, JSON, JSONL, CSV/TSV, Bilder einschließlich SVG, HTML, PDF sowie Audio/Video entsprechend den Browserfähigkeiten. CSV ist auf 500 Zeilen und 100 Spalten begrenzt. Unbekannte oder zu große Formate behalten einen Downloadlink. HTML läuft in einem getrennten, eingeschränkten Frame ohne Skriptausführung; relative lokale CSS- und Bilddateien werden über `/view/` geladen. Interaktive HTML-Anwendungen benötigen einen eigenen Entwicklungsserver.
 

@@ -81,7 +81,8 @@ class FileTests(unittest.TestCase):
     def test_real_suite(self):
         root = Path(__file__).resolve().parents[3]
         files = Files(root)
-        self.assertEqual(len(files.modules()), 9)
+        expected = json.loads((root / '.suite/contracts/work-order.schema.json').read_text())['properties']['lead_module']['enum']
+        self.assertEqual({m['path'] for m in files.modules()}, {*expected, '.suite'})
         self.assertIn('<table>', files.preview('README.md')['html'])
 
     def test_invalid_config_sections_and_markdown_paths(self):
@@ -97,3 +98,12 @@ class FileTests(unittest.TestCase):
         self.assertIn('id="titel"', rendered)
         self.assertIn('/?file=README.md', rendered)
         self.assertIn('href="#"', rendered)
+
+    def test_additional_module_is_discovered_without_backend_list_change(self):
+        self.write('e-commerce/AGENT.md', '# Shop')
+        self.write('custom-module/AGENT.md', '# Custom')
+        (self.root / 'unrelated').mkdir()
+        paths = {m['path'] for m in self.files.modules()}
+        self.assertIn('e-commerce', paths)
+        self.assertIn('custom-module', paths)
+        self.assertNotIn('unrelated', paths)

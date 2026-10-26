@@ -68,3 +68,7 @@ Alle Testdateien lagen in automatisch angelegten temporären Verzeichnissen. Im 
 - **Gate 3 im Veröffentlichungsumfang Codex/Pi: bestanden.** Gemeinsame Datei-/Chatansicht, Live-Aktualisierung und Browser-Wiederverbindung geprüft; mehrere echte Sitzungen, getrennte Arbeitsverzeichnisse, externe Dateierstellung und Wiederaufnahme mit Codex geprüft. Eine vollständige Prüfung sämtlicher optionaler Dialog- und Wiederaufnahmeszenarien mit Pi ist damit nicht behauptet.
 
 Für weitere Pi-Turns muss der konfigurierte Modellserver erreichbar bleiben. Bei Änderungen an CLI-Versionen oder Providerkonfiguration die opt-in Live-Tests aus der [Startanleitung](README.md) wiederholen. Es sind dafür keine Änderungen an den Fachmodulen erforderlich.
+
+## Integration E-Commerce (PR #3)
+
+Das neunte Modul `e-commerce/` wird zusätzlich im Dashboard erkannt. Fachmodule mit einer eigenen `AGENT.md` können ohne Ergänzung der Backend-Modulliste erscheinen. Startansicht und Arbeitsverzeichnisauswahl verwenden dieselbe Modulliste; im Chat genannte E-Commerce-Pfade sind anklickbar. Die ursprünglichen Ergebnisse oben beziehen sich auf den anfänglichen achtteiligen Suite-Baum. Für diese Erweiterung bestehen 18 Dashboardtests einschließlich Erkennung zusätzlicher Module und HTTP-Vorschau von `e-commerce/AGENT.md`.
