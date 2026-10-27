@@ -2,7 +2,7 @@
 
 ## Unterstützter Stand
 
-Das Projekt befindet sich im Prototypstadium v0.1. Sicherheitskorrekturen werden für den aktuellen Stand auf `main` bereitgestellt; für ältere Kopien gibt es keine zugesagte Rückportierung oder feste Reaktionszeit.
+Das Projekt befindet sich im Prototypstadium; die aktuelle Veröffentlichung ist v0.2.1. Sicherheitskorrekturen werden für den aktuellen Stand auf `main` bereitgestellt; für ältere Kopien gibt es keine zugesagte Rückportierung oder feste Reaktionszeit.
 
 ## Eine Schwachstelle melden
 

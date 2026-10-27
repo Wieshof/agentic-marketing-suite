@@ -2,12 +2,12 @@
 
 **Eine offene, KI-native Arbeitsumgebung für Beratung, Strategie, Kreation, Kommunikation, Umsetzung und Wirkungskontrolle in Werbung und Marketing.**
 
-[GitHub-Repository](https://github.com/markus-ertel/agentic-marketing-suite) · [MIT-Lizenz](LICENSE.md) · [Beiträge](CONTRIBUTING.md) · [Sicherheitsmeldungen](SECURITY.md) · [Installation und Migration](MIGRATION.md)
+[GitHub-Repository](https://github.com/markus-ertel/agentic-marketing-suite) · [MIT-Lizenz](LICENSE.md) · [Beiträge](CONTRIBUTING.md) · [Sicherheitsmeldungen](SECURITY.md) · [Installation und Migration](MIGRATION.md) · [Änderungen](CHANGELOG.md)
 
 | Dokument | Stand |
 |---|---|
-| Dokumentation | README v0.3 · 26. Oktober 2026 |
-| Beschriebene Softwarebasis | Integrierte Suite v0.2 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
+| Dokumentation | README v0.3.1 · 27. Oktober 2026 |
+| Beschriebene Softwarebasis | Integrierte Suite v0.2.1 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
 | Fachbereiche | 9 eigenständig nutzbare Module |
 | Fachmethoden im Repository | 477 Markdown-Methodendateien |
 | Zielgruppe | Unternehmen, Selbstständige, Fachleute und Agenturen; **keine** Agentur- oder Kundenverwaltung als Voraussetzung |
@@ -1016,7 +1016,7 @@ Weitere Hinweise unter [`MIGRATION.md`](MIGRATION.md).
 
 ### 20.4 Historie und Änderungen
 
-Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Für spätere Releases sollten je Modul und für die Suite selbst Versionskennungen, Migrationshinweise und Änderungen dokumentiert werden.
+Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.1 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
 
 ---
 
@@ -1254,7 +1254,7 @@ Die derzeitige Suite ist ein **umfangreicher fachlicher und organisatorischer Pr
 
 - Die neun Fachmodule liegen im Repository vor; `e-commerce/` ist seit Suite v0.2 ergänzt.
 - Die gemeinsame Governance-Schicht ist als **additive Erweiterung** integriert (v0.2).
-- Die Fach-`AGENT.md`-Dateien sind **nicht** umgeschrieben worden. Seit v0.2 verweist jedoch jede Modul-`RULES.md` (noCRM: `REGELN.md`) auf die Suite-Mindeststandards, sodass sie bei Außenwirkung auch bei direktem Modulstart gelten; ohne `.suite/` arbeiten die Module unverändert eigenständig.
+- Seit v0.2 verweist jede Modul-`RULES.md` (noCRM: `REGELN.md`) auf die Suite-Mindeststandards, sodass sie bei Außenwirkung auch bei direktem Modulstart gelten. v0.2.1 stimmt zusätzlich Startverhalten, Zustandswiederaufnahme und optionale Modulquellen in den Fach-`AGENT.md`-Dateien ab; ohne `.suite/` bleiben die Module eigenständig nutzbar.
 - Die Suite enthält **offene Verträge und einzelne lokale Prüfwerkzeuge**, aber keine automatisch betriebsbereiten Live-Integrationen.
 - Die Rechtsquellen-Datei enthält einen dokumentierten Recherche-Stand; Rechts- und Plattformänderungen danach müssen erneut geprüft werden.
 - Die Wirksamkeit der vollständigen Suite im konkreten Harness ist **noch nicht durch End-to-End-Abnahmetests nachgewiesen**.
