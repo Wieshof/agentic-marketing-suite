@@ -125,6 +125,55 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(columns, export_platform.SOCIAL_COLUMNS)
         self.assertEqual(len(rows), 2)
 
+class ExportRegressionTests(unittest.TestCase):
+    setUp = ExportTests.setUp
+    approve = ExportTests.approve
+
+    def test_multi_image_and_video_are_blocked_without_output(self):
+        for extra in ({'assets': ['https://example.org/1.png', 'https://example.org/2.png']},
+                      {'format': 'reel', 'assets': ['https://example.org/video.mp4']}):
+            with self.subTest(extra=extra):
+                job = dict(copy='Fictional post', channel='linkedin', **extra)
+                self.assertTrue(export_platform.check_social(job))
+                with self.assertRaises(CapabilityError):
+                    export_platform.rows_social(job)
+
+    def test_scheduler_converts_time_and_rejects_ambiguous_or_rounded_times(self):
+        job = dict(copy='Fictional post', channel='linkedin', scheduled_at='2026-11-01T10:15:00Z')
+        self.assertTrue(export_platform.check_social(job))
+        columns, rows = export_platform.rows_social(job, 'Europe/Vienna')
+        self.assertEqual(rows[0]['Posting Time'], '2026-11-01 11:15')
+        self.assertEqual(rows[0]['Tags'], '')
+        for stamp in ('2026-11-01T10:15:01Z', '2026-11-01T10:15:00', '2026-10-25T01:30:00Z'):
+            with self.subTest(stamp=stamp), self.assertRaises(CapabilityError):
+                export_platform.rows_social(dict(job, scheduled_at=stamp), 'Europe/Vienna')
+
+    def test_mixed_accounts_and_empty_batch_are_rejected(self):
+        a = dict(copy='Post A', channel='linkedin', account_id='one')
+        b = dict(copy='Post B', channel='linkedin', account_id='two')
+        self.assertTrue(export_platform.check_social([a,b]))
+        self.assertTrue(export_platform.check_social([]))
+
+    def test_ads_preserves_dates_and_rejects_invalid_budgets(self):
+        columns, rows = export_platform.rows_google_ads(ADS)
+        self.assertEqual(rows[0]['Start date'], ADS['budget']['period_start'])
+        self.assertEqual(rows[0]['End date'], ADS['budget']['period_end'])
+        for value in ('NaN', '-1', 'Infinity'):
+            manifest = json.loads(json.dumps(ADS))
+            manifest['budget']['daily_max'] = value
+            self.assertTrue(export_platform.check_google_ads(manifest))
+
+    def test_revocation_blocks_export_of_the_original_bytes(self):
+        request_id = self.approve(self.source, 'spend', 'google-ads:000-000-0000', budget=300)
+        events = [json.loads(line) for line in self.log.read_text().splitlines()]
+        record_decision(self.log, request_id, 'revoked', 'Erika Beispiel',
+                        (T + timedelta(minutes=3)).isoformat(), 'trusted-harness:fictional',
+                        'Fiktiver Widerruf', events[-1]['id'], self.root, now=T+timedelta(minutes=4))
+        out = self.root / 'revoked.csv'
+        with self.assertRaises(CapabilityError):
+            export('google-ads', self.source, out, self.root, self.log, request_id, 'google-ads:000-000-0000')
+        self.assertFalse(out.exists())
+
 
 if __name__ == '__main__':
     unittest.main()

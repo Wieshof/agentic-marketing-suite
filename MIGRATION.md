@@ -93,3 +93,7 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 - Dashboard für die neue Bezeichnung neu starten. Den bestehenden Harness-Chat und die bewusste Dateireferenz nutzen; es gibt keine automatische Sitzung oder neue Help-API. Interne Dateien behalten ihre bestehenden Zugriffssperren.
 - Help vor Funktionsauskünften auf die tatsächliche Installation, passende Quellen und überprüften Testumfang verweisen. Historische Angaben aus dem Paket sind keine aktuelle Versionsgarantie. [Konkrete Integration](help/.help/SUITE.md).
 - Individuelle Anleitungen/Lernnotizen geschützt außerhalb der Bibliothek ablegen. Paket-/Integrationstests ausführen; die dialogischen Akzeptanzfälle und echte Verständlichkeit zusätzlich im Harness prüfen.
+
+## Unveröffentlicht: Plattform-Importdateien
+
+Advertising-Manifeste erlauben additiv `search_ads`; bestehende Manifeste bleiben gültig. Eigene Validatoren bei Nutzung dieses Blocks aktualisieren. [Exportwerkzeug](.suite/tools/EXPORT_PLATFORM.md) erzeugt nur lokale freigabegebundene Importdateien. Scheduler-CSV unterstützt nur Text/Einzelbild, benötigt bei Planzeiten die tatsächliche Zielzeitzone und verwirft keine zusätzlichen Assets. Google-Ads-Kampagnen bleiben pausiert; Laufzeit-/Kontoeinstellungen und tatsächliche Ausgabengrenzen vor Aktivierung prüfen. Eine echte Importabnahme steht aus.
