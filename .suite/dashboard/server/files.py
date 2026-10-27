@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import quote, unquote, urlsplit
 
-MODULES = ('marketing', 'pr', 'social-media', 'website', 'advertising', 'creative', 'noCRM', 'analytics')
+MODULES = ('marketing', 'pr', 'social-media', 'website', 'advertising', 'creative', 'noCRM', 'analytics', 'e-commerce', 'branding', 'business-dna', 'help')
 SKIP = {'.git', '__pycache__', 'node_modules', '.venv', 'venv', '.DS_Store'}
 # These names remain private even when internal method directories are enabled.
 PRIVATE_NAMES = {'.git', '.hg', '.svn', '.aws', '.ssh', '.gnupg', '.codex', '.config',

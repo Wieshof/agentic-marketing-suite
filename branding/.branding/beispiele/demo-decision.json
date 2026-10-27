@@ -1,0 +1,17 @@
+{
+  "decision_id": "demo-decision-001",
+  "brand_id": "demo-brand-001",
+  "topic": "positioning",
+  "statement": "Synthetische Testpositionierung",
+  "status": "approved",
+  "version": 1,
+  "updated_at": "2026-10-27T11:30:00+01:00",
+  "source_refs": [
+    "demo-source"
+  ],
+  "impact_areas": [
+    "website"
+  ],
+  "approved_by": "Demo-Freigabe (synthetisch)",
+  "approved_at": "2026-10-27T11:30:00+01:00"
+}

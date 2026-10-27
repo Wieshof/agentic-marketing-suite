@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/help-answer-v0.1",
+  "title": "Help Answer Metadata v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "answer",
+    "basis_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "answer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "basis_status": {
+      "enum": [
+        "documented",
+        "implemented",
+        "configured",
+        "tested",
+        "unavailable",
+        "unknown",
+        "mixed"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "suggested_module": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "suggested_prompt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "execution_claimed": {
+      "type": "boolean",
+      "const": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

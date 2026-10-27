@@ -1,0 +1,32 @@
+{
+  "brand_id": "demo-brand-001",
+  "name": "Beispielmarke (fiktiv)",
+  "version": 1,
+  "status": "approved",
+  "updated_at": "2026-10-27T11:30:00+01:00",
+  "owner_scope": "demo",
+  "visibility": "public",
+  "brand_platform": {
+    "positioning": "Illustratives Testprofil – kein echtes Unternehmen.",
+    "promise": "Demonstration einer maschinenlesbaren Markeninformation.",
+    "core": "Demo",
+    "values": [
+      "Klarheit"
+    ],
+    "voice": [
+      "präzise"
+    ],
+    "visual_principles": [
+      "lesbar"
+    ]
+  },
+  "source_refs": [
+    "demo-source"
+  ],
+  "limitations": [
+    "Fiktives Beispiel; keine reale Marke oder geprüfte Außenwirkung."
+  ],
+  "approved_by": "Demo-Freigabe (synthetisch)",
+  "approved_at": "2026-10-27T11:30:00+01:00",
+  "decision_ref": "demo-decision-001"
+}

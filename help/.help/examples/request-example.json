@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "question": "Was ist der Unterschied zwischen einem Entwurf und einer Freigabe?",
+  "document_ref": {
+    "relative_path": "marketing/strategie/konzept.md",
+    "section": "Maßnahmen"
+  },
+  "preferred_depth": "short",
+  "ui_origin": "dashboard"
+}

@@ -14,6 +14,7 @@ MODULES = {
     'marketing': '.marketing', 'pr': '.pr', 'social-media': '.social-media',
     'website': '.nocms', 'advertising': '.advertising', 'creative': '.creative',
     'noCRM': '.nocrm', 'analytics': '.analytics', 'e-commerce': '.e-commerce',
+    'branding': '.branding', 'business-dna': '.business-dna', 'help': '.help',
 }
 
 
@@ -65,11 +66,14 @@ def main():
             '.suite/tests', 'analytics/.analytics/tests',
             'creative/.creative/tests', 'noCRM/.nocrm/tests',
             'social-media/.social-media/tests', 'website/.nocms/tests',
-            'e-commerce/.e-commerce/tests',
+            'e-commerce/.e-commerce/tests', 'help/.help/tests',
         )
     ]
     commands.extend([
         ['.suite/capabilities/check.py'],
+        ['branding/.branding/tools/test_contracts.py'],
+        ['business-dna/.business-dna/tools/test_contracts.py'],
+        ['help/.help/tools/validate_help.py', '--root', '.'],
         ['advertising/.advertising/tools/test_workspace.py'],
         ['.suite/tools/validate_records.py', 'work-order', '.suite/beispiele/topaca-work-order.json'],
         ['.suite/tools/validate_records.py', 'bundle', '.suite/beispiele/demo-freigabe-bundle.json'],

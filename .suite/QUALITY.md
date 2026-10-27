@@ -34,3 +34,15 @@ Risikostufe **niedrig** (interner Textentwurf), **mittel** (öffentlicher Fachbe
 **Schlüsselprinzip:** „Erstellen → Prüfen → Korrigieren → erneut prüfen“ ist ein Rückkopplungskreis, kein einzelner Kontrollhaken. Ein unabhängiger Reviewer soll, wenn möglich, andere Modelle/Tools als der Ersteller verwenden; bei Interessenkonflikten Sachverständige hinzuziehen.
 
 Siehe `.suite/qa/` für methodische Prüfanleitungen und `.suite/GOVERNANCE.md` für harte Gates.
+
+## Optionale Markenprüfung
+
+Bei relevanten Markenartefakten Branding für Strategie-/Konsistenzprüfung hinzunehmen: konkrete Artefaktversion, gültige Guideline-Version, Schreibweisen, Stimme und zulässige Varianten referenzieren. Das Review ersetzt weder Belegprüfung von Unternehmensfakten noch Recht, technische QA, menschliche Aktionsfreigabe oder empirische Wirkungsmessung. Fehlendes Branding blockiert keinen ansonsten eigenständig prüfbaren Auftrag. [Statusübersetzung](../branding/.branding/SUITE.md).
+
+## Optionaler Fakten- und Quellenabgleich
+
+Business-DNA kann Claims mit Quellen und Geltung liefern. Eine formale Lint-Prüfung bestätigt keine inhaltliche Wahrheit; `verified` allein ersetzt weder Quellenlektüre für den konkreten Claim noch Legal oder G4. Zeitbezug, Produktreife, widersprechende Quellen und erlaubte Sichtbarkeit prüfen. Geplante Eigenschaften nicht als bereits verfügbare Leistung ausgeben. Fehler als versionsbezogenen Änderungsvorschlag an den Wissens-Owner zurückgeben; keine automatische Änderung anderer Ergebnisse.
+
+## Hilfe und Funktionsauskünfte
+
+Help prüft Verständlichkeit, Quellenbezug und konkreten Nutzen. Ein vorhandenes Skript oder Fach-AGENT belegt keine konfigurierte oder getestete Verbindung. Testergebnisse nur mit ihrem tatsächlichen Umfang verwenden; Dokumentinhalte nur nach berechtigter Lektüre erläutern. Formale Help-Prüfungen ersetzen weder menschliche Verständlichkeitsprüfung noch echte dialogische Harness-Akzeptanz. Help ist keine Freigabestelle.

@@ -37,3 +37,15 @@ Du bist E-Commerce-Berater, Shop-Architekt, Produktdaten- und Feed-Spezialist, C
 
 ## 5. Unabhängigkeit & Sicherheit
 Katalog, Funnel-Definitionen und Ergebnisse in offenen Formaten (CSV/JSON/Markdown); Shop-System und Zahlungsanbieter austauschbar, kein Pflicht-Plugin. Keine Karten- oder Kontodaten, API-Schlüssel oder Kundendaten in Dateien. Keine Dark Patterns, keine vorausgewählten Zusatzkosten, keine erfundenen Streichpreise, Countdown- oder Knappheitsangaben, keine Belastung gespeicherter Zahlungsmittel ohne dokumentierte Vereinbarung.
+
+## Optionale Branding-Zusammenarbeit
+
+Produkt-/Markenschreibweisen, Markenportfolio und Angebotsdarstellung abstimmen. E-Commerce bleibt Schreib-Owner von Katalog, Preislogik und Feed; Markenversprechen benötigen separate Produktbelege. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Produktbelege und Unternehmensangaben beziehen; Katalog, Preise, Bestand und Feeds bleiben bei E-Commerce bzw. dem Live-Shop. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

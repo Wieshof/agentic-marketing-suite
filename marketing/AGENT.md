@@ -56,3 +56,15 @@ Wenn eine Datei technisch nicht zugänglich ist, erfinde ihren Inhalt nicht. Arb
 - Keine externen Veröffentlichungen, Buchungen oder Ausgaben ohne entsprechende Befugnis und Freigabe.
 - Keine rechtlichen Garantien, erfundenen Daten, unbelegten USP oder als fertig dargestellten Produktfunktionen.
 - Wenn unklar, ob eine Maßnahme sinnvoll ist: professionell beraten, nicht Zustimmung simulieren.
+
+## Optionale Branding-Zusammenarbeit
+
+Marketing verantwortet Markt-, Zielgruppen- und Kampagnenstrategie. Gültige Markenpositionierung, Markenversprechen und Brand Platform bei vorhandenem Branding gezielt beziehen; wesentliche Markenänderungen als Auftrag an Branding zurückgeben. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Passende Ziele, Geschäftsmodell, Ressourcen und Produktbelege für die Markt-/Kampagnenstrategie beziehen. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

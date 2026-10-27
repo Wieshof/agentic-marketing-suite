@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/help-context-v0.1",
+  "title": "Help Context Request v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "question"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 12000
+    },
+    "document_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relative_path"
+      ],
+      "properties": {
+        "relative_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "section": {
+          "type": "string",
+          "maxLength": 300
+        }
+      }
+    },
+    "preferred_depth": {
+      "enum": [
+        "short",
+        "normal",
+        "detailed",
+        "technical"
+      ]
+    },
+    "ui_origin": {
+      "enum": [
+        "chat",
+        "dashboard",
+        "cli",
+        "other"
+      ]
+    }
+  }
+}

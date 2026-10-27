@@ -28,7 +28,7 @@ class FileTests(unittest.TestCase):
         for module in (*MODULES, '.suite'):
             (self.root / module).mkdir()
         self.write('marketing/.marketing/method.md', '# Intern')
-        self.assertEqual(len(self.files.modules()), 9)
+        self.assertEqual(len(self.files.modules()), len(MODULES) + 1)
         self.assertEqual(self.files.tree('marketing'), [])
         self.assertEqual(self.files.tree(hidden=True, query='method'), [])
         enabled = Files(self.root, 0.001, show_internal_files=True)
@@ -103,9 +103,26 @@ class FileTests(unittest.TestCase):
 
     def test_additional_module_is_discovered_without_backend_list_change(self):
         self.write('e-commerce/AGENT.md', '# Shop')
+        self.write('branding/AGENT.md', '# Branding')
+        self.write('business-dna/AGENT.md', '# Business-DNA')
+        self.write('help/AGENT.md', '# Help & Learning')
+        self.write('help/.help/RULES.md', '# Interne Hilfe-Regeln')
+        self.write('business-dna/.business-dna/RULES.md', '# Interne Methoden')
+        self.write('branding/.branding/RULES.md', '# Private Methoden')
         self.write('custom-module/AGENT.md', '# Custom')
         (self.root / 'unrelated').mkdir()
         paths = {m['path'] for m in self.files.modules()}
         self.assertIn('e-commerce', paths)
+        self.assertIn('branding', paths)
+        self.assertIn('business-dna', paths)
+        self.assertIn('help', paths)
+        with self.assertRaises(PermissionError):
+            self.files.resolve('help/.help/RULES.md')
+        with self.assertRaises(PermissionError):
+            self.files.resolve('business-dna/.business-dna/RULES.md')
+        with self.assertRaises(PermissionError):
+            self.files.resolve('branding/.branding/RULES.md')
+        enabled = Files(self.root, show_internal_files=True)
+        self.assertTrue(enabled.resolve('branding/.branding/RULES.md').is_file())
         self.assertIn('custom-module', paths)
         self.assertNotIn('unrelated', paths)

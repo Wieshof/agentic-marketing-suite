@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Business-DNA Source v0.1",
+  "type": "object",
+  "required": [
+    "source_id",
+    "kind",
+    "locator",
+    "captured_at",
+    "visibility"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "official_register",
+        "primary_document",
+        "technical_test",
+        "audited_record",
+        "internal_record",
+        "human_statement",
+        "external_publication",
+        "derived_analysis"
+      ]
+    },
+    "locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "public",
+        "shared",
+        "restricted"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "description": {
+      "type": "string"
+    },
+    "document_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,5 +1,14 @@
 # Änderungen
 
+## v0.2.4 – 27. Oktober 2026
+
+- Help & Learning als zwölften optionalen Fachbereich integriert: 39 Methoden, 18 Guides, lokale Help-Kontextverträge und ursprüngliche Paket-/Architekturunterlagen. Bestehenden Dashboard-Chat und Dateireferenzen verwenden; keine neue Runtime, Weiterleitungs- oder Freigabeengine. Suite-Verträge, Orientierung, Nachbarmodule und Offline-Prüfungen ergänzt.
+
+- Business-DNA als elften optionalen Fachbereich integriert: 36 Methoden, lokale Claims-/Quellenverträge, selektive Faktenkontexte und ursprüngliche Paket-/Architekturunterlagen. JSON-Context-Requests werden per CLI mit erhaltener Request-ID verarbeitet; operative Wissensbestände bleiben aus Git ausgeschlossen. Alle Fachbereiche, Branding-Handoff, Dashboard und Offline-Prüfungen ergänzt.
+
+- Branding als zehnten optionalen Fachbereich integriert: 51 Methoden, lokale Markenverträge, selektive Context Packs und ursprüngliche Paket-/Architekturunterlagen.
+- Suite-Modulregister, Arbeitsauftrag-/Artefakt-Enums, fachübergreifende Übergaben, Markenprüfung, Dashboard und Repository-/Integrationstests erweitert. Bestehende Fachbereiche bleiben eigenständig; keine neue Runtime oder automatische Marken-/Aktionsfreigabe.
+
 ## v0.2.3 – 27. Oktober 2026
 
 - Acht optionale technische Fähigkeiten: SFTP-Publishing, gemeinsamer IMAP-/SMTP-Mail-Adapter und sechs standalone Webmodule (Kontaktformular, Analytics Lite, Suche, Sitemap, Weiterleitungen, Newsletter mit Double-Opt-in).

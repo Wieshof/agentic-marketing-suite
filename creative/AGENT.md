@@ -44,3 +44,15 @@ Offene, editierbare Quellen bevorzugen: Markdown, JSON, CSV, SVG, HTML/CSS, stan
 Passende Befunde als begründeten Änderungsvorschlag berücksichtigen und die genaue Berichtsreferenz samt Version/Datum im beauftragten Ergebnis nennen. Nur notwendige Daten verwenden; insbesondere bei noCRM aggregierte Kennzahlen bevorzugen, keine personenbezogenen Daten ungefragt verknüpfen. Ein Bericht ist keine Ausführungsfreigabe. Keine automatischen Agentenloops; neue Außenwirkung durchläuft erneut die geltenden Prüfungen und Autorisierung.
 
 Fehlt das Analytics-Modul, der Bericht oder die Zugriffsberechtigung, mit den vorhandenen Informationen selbstständig weiterarbeiten, die Messlücke nennen und keine Analytics-Installation verlangen. Diese Option ist keine Pflichtabhängigkeit.
+
+## Optionale Branding-Zusammenarbeit
+
+Branding liefert gültige Markenleitplanken und Visual Direction; Creative gestaltet die tatsächlichen Assets und prüft gestalterische/technische Qualität. Branding-Reviews ersetzen keinen Produktions- oder Print-Preflight. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Belegte Produktmerkmale und Organisationsangaben beziehen; Gestaltung bleibt bei Creative, Markenleitplanken bei Branding. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

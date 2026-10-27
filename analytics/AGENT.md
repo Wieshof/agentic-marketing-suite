@@ -42,3 +42,15 @@ Nur offen lesbare Markdown/CSV/JSON/JSONL/SQL/Python/HTML-Spezifikationen voraus
 ## Optionale Shop- und Funnel-Daten
 
 `../e-commerce/` kann aggregierte Shop- und Funnel-Kennzahlen liefern: Produkt-/Umsatzsummen, Retouren, Deckungsbeiträge sowie Übergänge zwischen Produktansicht, Warenkorb, Checkout und Kauf. Nur passende, berechtigt zugängliche Exporte und Definitionen selektiv lesen; keine Kunden- oder Bestellrohdaten voraussetzen. Zeitraum, Währung, Nenner und Erstattungen vor Vergleichen prüfen. Ohne E-Commerce-Modul mit direkt bereitgestellten Daten unverändert selbstständig analysieren; Datenlücken ausweisen. Keine Pflichtabhängigkeit und keine Schreibzuständigkeit für Katalog/Feed.
+
+## Optionale Branding-Zusammenarbeit
+
+Research- und Brand-Health-Briefings von Branding selektiv lesen; gemessene Wahrnehmung mit Methode, Zeitraum und Unsicherheit zurückgeben. Markenintention und Reichweite sind keine Belege für Markenbekanntheit. Keine Richtlinien eigenmächtig ändern. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Zieldefinitionen und zeitbezogene Veränderungen beziehen; tatsächliche Messdaten bleiben beim zuständigen Datensystem und werden nicht aus Unternehmensbehauptungen abgeleitet. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

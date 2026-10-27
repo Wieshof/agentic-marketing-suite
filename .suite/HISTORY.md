@@ -16,3 +16,9 @@
 - v0.2.2 (2026-10-27) – Dashboard-Anzeige für Freigaben ergänzt: explizit konfigurierte Audit-Quellen, ausschließlich lesende Statusprojektion, automatische Aktualisierung und Fehlerzustände ohne veraltete positive Anzeigen. Keine neuen Entscheidungs- oder Ausführungsrechte.
 
 - v0.2.3 (2026-10-27) – Technische Fähigkeiten explizit registriert: wiederverwendbare IMAP-/SMTP- und SFTP-Adapter, sechs optionale standalone Webmodule, gemeinsame Plan-/Freigabe-/Ausführungsgrenzen. Die Suite beschreibt/implementiert Verfahren, der Harness/Host stellt generische Ausführung und tatsächliche Befugnis bereit. Veröffentlichte Websites benötigen keinen dauerhaften Suite-Dienst; bestehende Module, Verträge und Kundendaten bleiben eigenständig.
+
+- 2026-10-27 – Branding als zehnter optionaler Fachbereich integriert: Markenentscheidungen und selektive Context Packs, klare Grenzen zu Unternehmensfakten, Creative-Ausführung und Analytics-Wahrnehmung; additive Suite-Verträge, Dashboard und Offline-Prüfungen. Keine neue Runtime oder implizite Freigabe. Veröffentlicht mit v0.2.4.
+
+- 2026-10-27 – Business-DNA als elfter optionaler Fachbereich integriert: quellen-/statusgetreue Faktenkontexte, konkrete JSON-Requests, Übergabe an Branding und alle übrigen Module, additive Suite-Enums, Dashboard und Git-Ausschlüsse für operative Wissensbestände. Keine automatische Verifikation, Synchronisierung oder Außenwirkung. Veröffentlicht mit v0.2.4.
+
+- 2026-10-27 – Help & Learning als zwölfter optionaler Fachbereich integriert: Orientierung und dokumentbezogene Hilfe, klare Grenzen zu Fachproduktion und Ausführung, bestehender Dashboard-Transport, additive Suite-Enums und Offline-Inventar-/Paketprüfungen. Veröffentlicht mit v0.2.4.

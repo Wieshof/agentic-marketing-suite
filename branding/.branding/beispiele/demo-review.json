@@ -1,0 +1,21 @@
+{
+  "review_id": "demo-review-01",
+  "brand_id": "demo-brand-001",
+  "artifact_id": "demo-visual-01",
+  "artifact_version": 1,
+  "reviewed_at": "2026-10-27T11:30:00+01:00",
+  "status": "warning",
+  "findings": [
+    {
+      "severity": "major",
+      "issue": "Veraltete Bezeichnung im Testentwurf",
+      "recommendation": "Freigegebene Schreibweise übernehmen",
+      "evidence_refs": [
+        "demo-decision-001"
+      ]
+    }
+  ],
+  "limitations": [
+    "Illustratives Review, keine reale Prüfung."
+  ]
+}
