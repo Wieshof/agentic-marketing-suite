@@ -10,6 +10,7 @@ import sys
 import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
+from validate_records import check
 from approval_audit import CheckError, parse_json, read_events, replay, summarize, verify_file
 
 
@@ -122,13 +123,13 @@ def read_execution_log(path):
         raise CapabilityError('Incomplete execution log; investigate instead of retrying')
     events = [parse_json(line) for line in data.decode().split('\n')[:-1]]
     for event in events:
-        if not isinstance(event, dict) or not {'id', 'key', 'capability', 'status', 'recorded_at'} <= event.keys():
-            raise CapabilityError('Invalid execution log')
+        check('capability-execution', event)
     return events
 
 
 def append_execution(path, event):
     event = dict(event, id='exec-' + str(uuid.uuid4()), recorded_at=datetime.now(timezone.utc).isoformat())
+    check('capability-execution', event)
     data = (json.dumps(event, ensure_ascii=False, allow_nan=False) + '\n').encode()
     descriptor = os.open(str(path), os.O_WRONLY | os.O_APPEND | os.O_CREAT, 0o600)
     with os.fdopen(descriptor, 'ab') as stream:
@@ -155,7 +156,7 @@ def run_once(log, key, capability, approval, operation):
             outcome = operation()
             if outcome.get('status') not in ('accepted', 'confirmed', 'failed', 'uncertain'):
                 raise CapabilityError('Invalid transport outcome')
-        except Exception:
+        except Exception as error:
             # Provider errors may contain credentials, message bodies or account data.
-            outcome = {'status': 'uncertain', 'notice': 'Transport interrupted; investigate before any new attempt'}
+            outcome = {'status': 'uncertain', 'error_type': type(error).__name__, 'notice': 'Transport interrupted; investigate before any new attempt'}
         return append_execution(path, {'key': key, **identity, **outcome})

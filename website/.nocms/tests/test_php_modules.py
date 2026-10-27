@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import shlex
 import socket
 import subprocess
 import sys
@@ -37,9 +38,11 @@ class PHPModuleTests(unittest.TestCase):
                      'newsletter':{'enabled':True,'authorization':auth,'transport':'outbox','from':'website@example.invalid','consent_text':'Fiktiver Newsletter, jederzeit abmeldbar.','consent_version':'test-v1','endpoint_path':'/api/newsletter.php'},
                      'analytics':{'enabled':True,'authorization':auth,'pages':['/','/about.html'],'retention_days':2}}
         self.config_path=self.root/'config.json';self.save_config()
-        self.env=dict(os.environ,WEBMODULE_CONFIG=str(self.config_path),WEBMODULE_SECRET='fictional-test-secret-'*3,WEBMODULE_DOCUMENT_ROOT=str(self.site))
+        self.capture=self.root/'mail-capture.eml';self.mail_exit=self.root/'mail-exit';self.mail_exit.write_text('0')
+        fixture=self.root/'fake-mta.py';fixture.write_text("import os,sys\nfrom pathlib import Path\nPath(os.environ['MTA_CAPTURE']).write_bytes(sys.stdin.buffer.read())\nsys.exit(int(Path(os.environ['MTA_EXIT_FILE']).read_text()))\n")
+        self.env=dict(os.environ,MTA_CAPTURE=str(self.capture),MTA_EXIT_FILE=str(self.mail_exit),WEBMODULE_CONFIG=str(self.config_path),WEBMODULE_SECRET='fictional-test-secret-'*3,WEBMODULE_DOCUMENT_ROOT=str(self.site))
         self.stderr=(self.root/'php.log').open('wb');self.addCleanup(self.stderr.close)
-        self.process=subprocess.Popen([PHP,'-S','127.0.0.1:'+str(port),'-t',str(self.site)],env=self.env,stdout=self.stderr,stderr=self.stderr)
+        self.process=subprocess.Popen([PHP,'-d','sendmail_path='+shlex.quote(sys.executable)+' '+shlex.quote(str(fixture)),'-S','127.0.0.1:'+str(port),'-t',str(self.site)],env=self.env,stdout=self.stderr,stderr=self.stderr)
         self.addCleanup(self.stop)
         for attempt in range(100):
             try:self.request('/api/contact.php');break
@@ -68,7 +71,7 @@ class PHPModuleTests(unittest.TestCase):
         data={'csrf':self.token('/api/contact.php'),'website':'','name':'Erika Beispiel','email':'visitor@example.invalid','message':'Bitte um eine individuelle Antwort.'};data.update(changes)
         return self.request('/api/contact.php',data=data)
     def test_contact_queues_fixed_recipient_and_never_claims_delivery(self):
-        status,body,_=self.contact();self.assertEqual(status,202,body);self.assertIn('keine Bestätigung',body)
+        status,body,_=self.contact();self.assertEqual(status,202,body);self.assertIn('entgegengenommen',body);self.assertNotIn('zugestellt',body.lower())
         files=list(self.data.glob('inbound-*.json'));self.assertEqual(len(files),1)
         value=json.loads(files[0].read_text());self.assertEqual(value['to'],'owner@example.invalid');self.assertEqual(value['reply_to'],'visitor@example.invalid');self.assertTrue(value['untrusted_input']);self.assertEqual(value['status'],'queued')
         self.assertNotIn('secret',files[0].read_text());self.assertFalse((self.site/'private').exists())
@@ -128,3 +131,30 @@ class PHPModuleTests(unittest.TestCase):
         token=self.token('/api/newsletter.php?confirm=invalid')
         status,_,_=self.request('/api/newsletter.php',data={'csrf':token,'website':'','action':'confirm','token':'invalid'});self.assertEqual(status,422)
         state=json.loads((self.data/'newsletter.json').read_text());self.assertEqual(state,[])
+
+    def test_mail_variant_uses_fixed_headers_and_reports_only_mta_acceptance(self):
+        from email import policy
+        from email.parser import BytesParser
+        self.config['contact']['transport']='mail';self.save_config()
+        status,body,_=self.contact();self.assertEqual(status,202,body)
+        message=BytesParser(policy=policy.default).parsebytes(self.capture.read_bytes())
+        self.assertEqual(str(message['To']),'owner@example.invalid')
+        self.assertEqual(str(message['Reply-To']),'visitor@example.invalid')
+        self.assertIsNone(message['Bcc'])
+        events=[json.loads(line) for line in (self.data/'delivery-events.jsonl').read_text().splitlines()]
+        self.assertEqual(events[-1]['status'],'accepted')
+        self.mail_exit.write_text('1')
+        self.assertEqual(self.contact()[0],503)
+        events=[json.loads(line) for line in (self.data/'delivery-events.jsonl').read_text().splitlines()]
+        self.assertEqual(events[-1]['status'],'failed')
+
+    def test_cli_retention_and_http_maintenance_boundary(self):
+        self.assertEqual(self.request('/api/maintenance.php')[0],405)
+        old=self.data/('inbound-'+'a'*32+'.json');old.write_text('{}');os.utime(old,(time.time()-40*86400,)*2)
+        fresh=self.data/('inbound-'+'b'*32+'.json');fresh.write_text('{}')
+        (self.data/'analytics.json').write_text(json.dumps({'2000-01-01':{'/':9}}))
+        (self.data/'newsletter.json').write_text(json.dumps({'pending':{'state':'pending','expires':1,'email':'x@example.invalid'},'confirmed':{'state':'confirmed','email':'y@example.invalid'}}))
+        result=subprocess.run([PHP,str(self.site/'api/maintenance.php'),'--purge-expired'],env=self.env,capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stderr);self.assertFalse(old.exists());self.assertTrue(fresh.exists())
+        self.assertEqual(json.loads((self.data/'analytics.json').read_text()),[])
+        self.assertEqual(set(json.loads((self.data/'newsletter.json').read_text())),{'confirmed'})

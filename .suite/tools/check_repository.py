@@ -69,6 +69,7 @@ def main():
         )
     ]
     commands.extend([
+        ['.suite/capabilities/check.py'],
         ['advertising/.advertising/tools/test_workspace.py'],
         ['.suite/tools/validate_records.py', 'work-order', '.suite/beispiele/topaca-work-order.json'],
         ['.suite/tools/validate_records.py', 'bundle', '.suite/beispiele/demo-freigabe-bundle.json'],

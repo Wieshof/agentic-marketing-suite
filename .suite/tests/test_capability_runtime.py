@@ -33,6 +33,8 @@ class CapabilityRuntimeTests(unittest.TestCase):
         _,sha=snapshot_json(path)
         result=require_approval(log,request['id'],self.root,path,'publish','sftp:test',sha)
         self.assertEqual(result['approval_event_id'],event['id'])
+        receipt=run_once(self.root/'executions.jsonl','approved-operation','website.sftp',result,lambda:{'status':'confirmed','verification':'fixture-readback','file_count':1})
+        self.assertEqual(receipt['status'],'confirmed');self.assertEqual(receipt['action'],'publish')
         for action,target,hash_value in [('send','sftp:test',sha),('publish','wrong',sha),('publish','sftp:test','a'*64)]:
             with self.subTest(action=action,target=target),self.assertRaises(CapabilityError):
                 require_approval(log,request['id'],self.root,path,action,target,hash_value)

@@ -83,4 +83,4 @@ try {
         echo '<!doctype html><html lang="de"><meta charset="utf-8"><title>Anmeldung bestätigt</title><p>Ihre Anmeldung wurde bestätigt.</p><a href="?unsubscribe=' . wm_escape(nl_manage_token($result['id'])) . '">Newsletter abmelden</a></html>'; exit;
     }
     wm_fail(200, 'Die Abmeldung wurde gespeichert.');
-} catch (Throwable $error) { if (PHP_SAPI === 'cli') { fwrite(STDERR, "NEWSLETTER_EXPORT_BLOCKED\n"); exit(2); } wm_fail(503, 'Die Anfrage konnte nicht sicher verarbeitet werden. Bitte später erneut versuchen.'); }
+} catch (Throwable $error) { if (PHP_SAPI === 'cli') { fwrite(STDERR, "NEWSLETTER_EXPORT_BLOCKED\n"); exit(2); } wm_fail(503, 'Die Anfrage konnte nicht bestätigt werden. Bitte nicht mehrfach absenden und bei Bedarf einen anderen Kontaktweg nutzen.'); }

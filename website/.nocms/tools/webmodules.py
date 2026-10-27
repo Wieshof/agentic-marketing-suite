@@ -103,14 +103,16 @@ def build_search(site):
 
 def build_sitemap(site, origin):
     site=Path(site).resolve(strict=True);origin=site_url(origin)
+    pages=public_pages(site)
+    if not pages:raise ModuleError('No public HTML pages for sitemap')
     root=ET.Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
-    for page in public_pages(site):ET.SubElement(ET.SubElement(root,'url'),'loc').text=origin+page['url']
+    for page in pages:ET.SubElement(ET.SubElement(root,'url'),'loc').text=origin+page['url']
     ET.ElementTree(root).write(output_path(site,'sitemap.xml'),encoding='utf-8',xml_declaration=True)
     return 'sitemap.xml'
 
 
 def redirect_path(value):
-    if not isinstance(value,str) or not re.fullmatch(r'/(?!/)[A-Za-z0-9/._~%-]*',value) or '..' in unquote(value).split('/') or '\\' in unquote(value) or any(ord(c)<32 for c in unquote(value)):
+    if not isinstance(value,str) or not re.fullmatch(r'/(?!/)[A-Za-z0-9/._~-]*',value) or '..' in unquote(value).split('/') or '\\' in unquote(value) or any(ord(c)<32 for c in unquote(value)):
         raise ModuleError('Redirects require safe local URL paths')
     return value
 
@@ -149,7 +151,7 @@ def main():
         elif args.command=='search-index':result=build_search(args.site)
         elif args.command=='sitemap':result=build_sitemap(args.site,args.origin)
         else:result=build_redirects(args.site,json.loads(args.input.read_text()))
-        print(json.dumps({'status':'local_files_created','files':result}));return 0
+        print(json.dumps({'status':'local_files_created','files':result if isinstance(result,list) else [result]}));return 0
     except (ModuleError,OSError,ValueError,TypeError):
         print('WEBMODULE_BLOCKED: invalid configuration, unsafe path or existing local file',file=sys.stderr);return 2
 

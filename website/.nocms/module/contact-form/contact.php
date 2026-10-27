@@ -13,5 +13,5 @@ try {
     if (preg_match('/[\r\n]/', $name)) wm_fail(422, 'Bitte einen gültigen Namen eingeben.');
     wm_rate($cfg, $nonce);
     wm_deliver($cfg, 'contact', (string)($cfg['contact']['to'] ?? ''), $email, 'Website-Anfrage', "Name: $name\nE-Mail: $email\n\n$message");
-    wm_fail(202, 'Ihre Anfrage wurde entgegengenommen. Dies ist keine Bestätigung einer E-Mail-Zustellung.');
-} catch (Throwable $error) { wm_fail(503, 'Die Anfrage konnte nicht sicher verarbeitet werden. Bitte später erneut versuchen.'); }
+    wm_fail(202, 'Ihre Anfrage wurde entgegengenommen.');
+} catch (Throwable $error) { wm_fail(503, 'Die Anfrage konnte nicht bestätigt werden. Bitte nicht mehrfach absenden und bei Bedarf einen anderen Kontaktweg nutzen.'); }

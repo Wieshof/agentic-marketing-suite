@@ -3,6 +3,7 @@ import json
 import os
 from pathlib import Path
 import smtplib
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -58,7 +59,7 @@ class MailAdapterTests(unittest.TestCase):
     def test_smtp_requires_tls_before_login_and_reports_acceptance_not_delivery(self):
         value=self.prepare();data=mail.validate_plan(self.root,value);client=SMTP()
         with patch.dict(os.environ,{'MAIL_ONE_PASSWORD':'fictional-secret'}):
-            result=mail.execute_transport(value,data,smtp_starttls=lambda *a,**k:client)
+            result=mail.execute_transport(value,data,smtp_starttls=lambda *a,**k:client,revalidate=lambda:None)
         self.assertEqual(result['status'],'accepted');self.assertNotIn('delivered',result)
         self.assertLess(client.steps.index('tls'),client.steps.index('login'));self.assertEqual(client.sent[0][2],data)
     def test_current_gate_is_rechecked_immediately_before_send(self):
@@ -77,7 +78,7 @@ class MailAdapterTests(unittest.TestCase):
     def test_draft_append_is_separate_from_send(self):
         value=self.prepare(mode='draft');client=IMAP(ssl_context=__import__('ssl').create_default_context())
         with patch.dict(os.environ,{'MAIL_ONE_PASSWORD':'fictional-secret'}):
-            result=mail.execute_transport(value,mail.validate_plan(self.root,value),imap_factory=lambda *a,**k:client)
+            result=mail.execute_transport(value,mail.validate_plan(self.root,value),imap_factory=lambda *a,**k:client,revalidate=lambda:None)
         self.assertEqual(result['status'],'accepted');self.assertEqual(len(client.appended),1);self.assertEqual(value['action'],'modify_external')
     def test_attachments_are_frozen_and_extracted_only_to_explicit_local_paths(self):
         (self.root/'proof.txt').write_text('Fiktiver Anhang');self.message['attachments']=[{'path':'proof.txt'}]
@@ -97,3 +98,42 @@ class MailAdapterTests(unittest.TestCase):
         result=mail.import_contact(self.root,source,'inbound-normalized.json')
         self.assertEqual(result['message_count'],1)
         self.assertIn('not instructions, consent',json.loads((self.root/'inbound-normalized.json').read_text())['messages'][0]['trust'])
+
+    def test_raw_import_is_explicit_and_partial_refusals_are_not_delivery(self):
+        imap=IMAP(ssl_context=__import__('ssl').create_default_context())
+        with patch.dict(os.environ,{'MAIL_ONE_PASSWORD':'fictional-secret'}):
+            messages=mail.read_mail(self.account,'INBOX',imap_factory=lambda *a,**k:imap,include_raw=True)
+        self.assertEqual(messages[0]['_raw_message'],IMAP.message)
+        self.message['cc']=['refused@example.invalid'];value=self.prepare();client=SMTP()
+        client.sendmail=lambda *args:{'refused@example.invalid':(550,b'rejected')}
+        with patch.dict(os.environ,{'MAIL_ONE_PASSWORD':'fictional-secret'}):
+            result=mail.execute_transport(value,mail.validate_plan(self.root,value),smtp_starttls=lambda *a,**k:client,revalidate=lambda:None)
+        self.assertEqual(result['status'],'accepted');self.assertEqual(result['accepted_count'],1);self.assertEqual(result['refused_count'],1)
+
+    def test_cli_send_uses_full_approval_and_never_repeats_smtp(self):
+        import contextlib,io
+        sys.path.insert(0,str(ROOT/'.suite/tests'))
+        from test_capability_runtime import approve
+        value=self.prepare();log,plan,request,event=approve(self.root,value,'send',value['target']);client=SMTP()
+        original=mail.execute_transport
+        def transport(value,data,revalidate):return original(value,data,smtp_starttls=lambda *a,**k:client,revalidate=revalidate)
+        arguments=['adapter.py','--root',str(self.root),'execute','--plan',str(plan),'--approvals',str(log),'--request-id',request['id'],'--execution-log',str(self.root/'executions.jsonl'),'--key','send-once','--harness-authorized']
+        with patch.dict(os.environ,{'MAIL_ONE_PASSWORD':'fictional-secret'}),patch.object(mail,'execute_transport',side_effect=transport),patch.object(sys,'argv',arguments):
+            for attempt in range(2):
+                output=io.StringIO()
+                with contextlib.redirect_stdout(output):self.assertEqual(mail.main(),0)
+                result=json.loads(output.getvalue());self.assertEqual(result['status'],'accepted')
+                if attempt:self.assertTrue(result['replayed'])
+        self.assertEqual(len(client.sent),1)
+        self.assertNotIn('fictional-secret',(self.root/'executions.jsonl').read_text())
+
+    def test_cli_read_saves_originals_only_in_explicit_private_directory(self):
+        import contextlib,io
+        account=self.root/'account.json';account.write_text(json.dumps(self.account));client=IMAP(ssl_context=__import__('ssl').create_default_context())
+        original=mail.read_mail
+        def fetch(*args,**kwargs):return original(*args,imap_factory=lambda *a,**k:client,**kwargs)
+        arguments=['adapter.py','--root',str(self.root),'read','--account',str(account),'--mailbox','INBOX','--authorization-ref','fixture:read','--execution-log',str(self.root/'executions.jsonl'),'--key','read-once','--output','inbound.json','--raw-dir','originals','--harness-authorized']
+        with patch.dict(os.environ,{'MAIL_ONE_PASSWORD':'fictional-secret'}),patch.object(mail,'read_mail',side_effect=fetch),patch.object(sys,'argv',arguments),contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(mail.main(),0)
+        result=json.loads((self.root/'inbound.json').read_text());path=self.root/result['messages'][0]['raw_message_path']
+        self.assertEqual(path.read_bytes(),IMAP.message);self.assertNotIn('_raw_message',result['messages'][0])

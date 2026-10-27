@@ -14,6 +14,7 @@
   ],
   "inputs": [
     "Deployment-Konfiguration",
+    "Passendes unveränderliches Website-Release-ZIP",
     "Unveränderlicher Datei-/Hash-Plan"
   ],
   "outputs": [
@@ -27,6 +28,7 @@
     "Rücklesen vor und nach Aktivierung"
   ],
   "statuses": [
+    "archived",
     "planned",
     "started",
     "confirmed",

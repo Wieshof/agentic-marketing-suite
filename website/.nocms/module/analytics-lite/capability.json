@@ -30,7 +30,5 @@
     "counted",
     "skipped"
   ],
-  "external_actions": [
-    "none"
-  ]
+  "external_actions": []
 }

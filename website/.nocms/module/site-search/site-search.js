@@ -16,7 +16,10 @@
     if (!response.ok) throw Error('load');
     const data = await response.json();
     if (!Array.isArray(data) || data.length > 1000) throw Error('index');
-    pages = data.filter(page => typeof page.title==='string' && typeof page.text==='string' && typeof page.url==='string' && page.url.startsWith('/') && !page.url.startsWith('//') && !page.url.includes('\\'));
+    pages = data.filter(page => {
+      if (typeof page.title!=='string' || typeof page.text!=='string' || typeof page.url!=='string' || !page.url.startsWith('/') || page.url.startsWith('//') || page.url.includes('\\')) return false;
+      try { return new URL(page.url,location.origin).origin===location.origin; } catch { return false; }
+    });
   } catch { status.textContent = 'Die Suche ist derzeit nicht verfügbar.'; return; }
   form.addEventListener('submit', event => {
     event.preventDefault();results.replaceChildren();

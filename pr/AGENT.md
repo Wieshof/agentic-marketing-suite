@@ -61,3 +61,7 @@ Fehlenden technischen Zugriff nicht kaschieren. Vor der ersten eigentlichen Aufg
 Passende Befunde als begründeten Änderungsvorschlag berücksichtigen und die genaue Berichtsreferenz samt Version/Datum im beauftragten Ergebnis nennen. Nur notwendige Daten verwenden; insbesondere bei noCRM aggregierte Kennzahlen bevorzugen, keine personenbezogenen Daten ungefragt verknüpfen. Ein Bericht ist keine Ausführungsfreigabe. Keine automatischen Agentenloops; neue Außenwirkung durchläuft erneut die geltenden Prüfungen und Autorisierung.
 
 Fehlt das Analytics-Modul, der Bericht oder die Zugriffsberechtigung, mit den vorhandenen Informationen selbstständig weiterarbeiten, die Messlücke nennen und keine Analytics-Installation verlangen. Diese Option ist keine Pflichtabhängigkeit.
+
+## Optionale technische Mail-Fähigkeit
+
+Wenn `../noCRM/` vorhanden ist und der Zugriff erlaubt ist, kann dessen IMAP-/SMTP-Adapter für individuell geprüfte Medienkorrespondenz wiederverwendet werden. Fachliche PR-Führung bleibt hier, Kontakte/Einwilligungen und Kontorechte werden nicht automatisch geteilt. Ein Medienkontakt ist keine pauschale Werbeeinwilligung; konkrete Entwürfe, Ziele, Freigaben und beobachtete Versandstatus verwenden. Ohne Adapter/Konto unverändert selbstständig beraten und Entwürfe erstellen.

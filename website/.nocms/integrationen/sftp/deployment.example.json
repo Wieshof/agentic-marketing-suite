@@ -8,6 +8,7 @@
     "username": "webmaster",
     "credential_ref": "WEBSITE_PRODUCTION",
     "delete_remote": false,
-    "verify_upload": true
+    "verify_upload": true,
+    "release_archive": "archiv/releases/site-v1.zip"
   }
 }

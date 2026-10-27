@@ -31,6 +31,6 @@
     "uncertain"
   ],
   "external_actions": [
-    "transactional_mail_within_service_mandate"
+    "send"
   ]
 }

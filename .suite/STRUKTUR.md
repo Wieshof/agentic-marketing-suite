@@ -31,3 +31,5 @@ agentic-marketing-suite/
 - Bei Archiveinträgen auf zulässige Aufbewahrungsfristen, Löschrechte und Sperrkonzepte achten. Kein unveränderliches PII-Archiv gegen Betroffenenrechte.
 
 - Freigabeanforderungen und private `approvals.jsonl` gehören in den jeweiligen Arbeits-/Vorgangsordner außerhalb der Anweisungsbibliothek. Nur fiktive Demonstrationsdaten liegen unter `.suite/beispiele/approval-demo/`. Zustandsansichten werden aus den unverändert erhaltenen Ereignissen abgeleitet; keine parallele, editierbare Freigabeliste als zusätzliche Wahrheit. Details: [APPROVALS.md](APPROVALS.md).
+
+- `.suite/capabilities/` führt das optionale Register und gemeinsame lokale Adapterhilfen. Fachliche Originale liegen unter `noCRM/.nocrm/integrationen/email/`, `website/.nocms/integrationen/sftp/` und `website/.nocms/module/`. Nur ausgewählte Laufzeitdateien/Build-Ausgaben gelangen nach `site/`; private Konfiguration, Credentials, Outboxes und Mess-/Consent-Daten bleiben außerhalb des Webroots und der Anweisungsbibliothek.

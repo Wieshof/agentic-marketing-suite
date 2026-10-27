@@ -10,3 +10,5 @@
 - **Research/Experimente:** randomisierte Zuweisungen, Teilnahmequoten, Verblindung/Exposition soweit relevant, Nachbeobachtung und Ausschlussregeln.
 
 Der Adaptervertrag liegt unter `integrationen/ADAPTER_CONTRACT.md`. Die technischen Schnittstellenprofile sind Hinweise, keine implementierten API-Verbindungen. Vor jeder echten Verbindung aktuelle Herstellerdokumentation und Kontoberechtigung prüfen. Tokens nie im Projekt ablegen.
+
+- **Analytics Lite (optional):** Aggregierter CSV-Export `date,page,pageviews` aus `../website/` (relativ zum Analytics-Modul) kann als Dateiquelle genutzt werden. Er zählt Seitenaufrufe in UTC, keine eindeutigen Besucher, Sessions, Einwilligungen oder kausalen Wirkungen. Bots/Reloads und Host-Log-Effekte berücksichtigen; keine personenbezogenen Joins aus dem Modul ableiten. Ohne Webmodul unverändert mit anderen geeigneten Quellen arbeiten.

@@ -1,5 +1,11 @@
 # Änderungen
 
+## Unveröffentlicht – vorgesehen für v0.2.3
+
+- Acht optionale technische Fähigkeiten: SFTP-Publishing, gemeinsamer IMAP-/SMTP-Mail-Adapter und sechs standalone Webmodule (Kontaktformular, Analytics Lite, Suche, Sitemap, Weiterleitungen, Newsletter mit Double-Opt-in).
+- Capability-Register, maschinenlesbare Verträge, explizite Freigabebindung, private Ausführungsprotokolle und kontrollierte Recovery ohne blinde Wiederholung.
+- Selektive Installation, private Host-Konfiguration, begrenzte Serviceaufträge, tägliche Aufbewahrungswartung und echte PHP-HTTP-/Browsermodultests. Keine automatische Konto-/Hosteraktivierung.
+
 ## v0.2.2 – 27. Oktober 2026
 
 Additive Freigabe-/Audit-Fähigkeit mit einer rein lesenden Dashboard-Übersicht. Bestehende Kernverträge und Fachmodule bleiben kompatibel.

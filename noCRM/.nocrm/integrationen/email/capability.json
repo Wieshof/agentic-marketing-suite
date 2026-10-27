@@ -29,6 +29,7 @@
     "Freigabe/Idempotenz"
   ],
   "statuses": [
+    "local_file_created",
     "planned",
     "started",
     "accepted",

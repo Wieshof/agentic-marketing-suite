@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
-/* Standalone PHP 8.1+ helpers. No Suite or agent service is required on the webhost. */
+ini_set('display_errors', '0');
+/* Standalone PHP 8.3+ helpers. No Suite or agent service is required on the webhost. */
 function wm_fail(int $status, string $message): never {
     http_response_code($status); header('Content-Type: text/plain; charset=utf-8');
     header('Cache-Control: no-store'); header('X-Content-Type-Options: nosniff');
@@ -99,7 +100,8 @@ function wm_email(string $value): string {
 }
 function wm_authorized(array $section): bool {
     $permission = $section['authorization'] ?? [];
-    $expires = is_string($permission['expires_at'] ?? null) ? strtotime($permission['expires_at']) : false;
+    $expiry = $permission['expires_at'] ?? '';
+    $expires = is_string($expiry) && preg_match('/T.*(?:Z|[+-][0-9]{2}:[0-9]{2})$/D', $expiry) ? strtotime($expiry) : false;
     return ($section['enabled'] ?? false) === true && is_string($permission['approval_ref'] ?? null) && trim($permission['approval_ref']) !== '' && $expires !== false && $expires > time();
 }
 function wm_event(array $cfg, array $event): void {
@@ -118,6 +120,8 @@ function wm_deliver(array $cfg, string $kind, string $to, string $reply, string 
     $id = bin2hex(random_bytes(16));
     $event = ['id' => $id, 'kind' => $kind, 'recorded_at' => gmdate('c'), 'status' => 'started'];
     if (!wm_authorized($section)) throw new RuntimeException('Service mandate missing or expired');
+    $event['authorization_ref'] = $section['authorization']['approval_ref'];
+    $event['policy_sha256'] = hash('sha256', json_encode($section, JSON_THROW_ON_ERROR));
     wm_event($cfg, $event);
     try {
         if ($transport === 'outbox') {
