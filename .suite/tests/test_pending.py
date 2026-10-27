@@ -78,7 +78,7 @@ class FailClosedPendingTests(unittest.TestCase):
         cfg = self.root / 'dashboard.json'
         good = {'approvals': {'logs': [{'id': 'demo', 'label': 'Demo', 'path': 'approvals.jsonl'}]}}
         cfg.write_text(json.dumps(good))
-        self.assertEqual(pending.configured_logs(cfg), [('Demo', self.log)])
+        self.assertEqual(pending.configured_logs(cfg), [('Demo', self.log.resolve())])
         output = io.StringIO()
         with contextlib.redirect_stdout(output):
             self.assertEqual(pending.main(['--config', str(cfg), '--strict', '--json']), 1)
