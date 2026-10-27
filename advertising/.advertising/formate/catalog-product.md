@@ -4,6 +4,8 @@
 Produktbild, Preis, Verfügbarkeit, klarer Nutzen. Überlege, welche Menschen in welchem Moment das Motiv sehen; nutze einen einzigen primären Gedanken.
 
 ## Technische Umsetzung
+
+Optionalen Katalog/Feed aus `../e-commerce/` nur bei vorhandenem Zugriff verwenden (Pfad relativ zum Advertising-Modul). Schreib-Owner ist E-Commerce; Feed-Befunde als Finding mit Produkt-ID, Feld, Quelle/Version und Korrekturvorschlag zurückmelden, nicht selbst im Feed korrigieren. Ohne Nachbarmodul mit bereitgestellten Produktdaten arbeiten.
 Feed-Schema pro Plattform, SKU-IDs und Aktualität validieren. Maße, Dauer, Dateitypen, Sonderrechte und Textlimits **aktuell** beim gewählten Werbekanal nachschlagen; keine festen Zahlen aus der Bibliothek übernehmen, wenn die Plattform sie ändert.
 
 ## Accessibility / rechtliche Qualität
