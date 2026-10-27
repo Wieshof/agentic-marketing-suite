@@ -29,3 +29,5 @@ agentic-marketing-suite/
 - Pfade in Suite-Verträgen beginnen am Suite-Root (`website/site/index.html`); innerhalb eines Moduls bleiben Pfade modulrelativ. `website/` führt die Historie als Verzeichnis `.nocms/HISTORY/` (Register `README.md`) statt `HISTORY.md`.
 - Arbeitszustand, Log und Entscheidungshistorie lokal je Fachmodul pflegen; die Suite schreibt ausschließlich auftragsübergreifende Änderungen. Keine dauernden Synchronkopien.
 - Bei Archiveinträgen auf zulässige Aufbewahrungsfristen, Löschrechte und Sperrkonzepte achten. Kein unveränderliches PII-Archiv gegen Betroffenenrechte.
+
+- Freigabeanforderungen und private `approvals.jsonl` gehören in den jeweiligen Arbeits-/Vorgangsordner außerhalb der Anweisungsbibliothek. Nur fiktive Demonstrationsdaten liegen unter `.suite/beispiele/approval-demo/`. Zustandsansichten werden aus den unverändert erhaltenen Ereignissen abgeleitet; keine parallele, editierbare Freigabeliste als zusätzliche Wahrheit. Details: [APPROVALS.md](APPROVALS.md).

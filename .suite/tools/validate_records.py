@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preflight for the four *bounded* suite JSON contracts (v0.2); no network/side effects.
+"""Preflight for bounded suite JSON contracts and additive approval capability; no network/side effects.
 Single records:  validate_records.py <contract> record.json
 Cross-record:    validate_records.py bundle bundle.json   (Gates G2/G3 -> G4 evidence chain)
 This is NOT a full JSON Schema, security, compliance or legal validator.
@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 HERE=Path(__file__).resolve().parents[1]
-SCHEMA_NAMES=('work-order','artifact','review','action-approval')
+SCHEMA_NAMES=('work-order','artifact','review','action-approval','approval-request','approval-event')
 BUNDLE_KEYS={'work_orders':'work-order','artifacts':'artifact','reviews':'review','approvals':'action-approval'}
 # G2 = fachliche/technische Qualität, G3 = Legal/Privacy/Assetrechte (GOVERNANCE.md)
 G2_DIMENSIONS={'brief','expert','evidence','creative','technical','accessibility','consistency','security'}
@@ -65,6 +65,31 @@ def check(name, record):
     errors=[e.replace('record: ','').replace('record.','') for e in errors]
     if errors:raise CheckError('; '.join(errors))
     r=record
+    if name=='approval-request':
+        check('artifact',r['artifact'])
+        if not r['artifact'].get('sha256'):errors.append('request artifact needs sha256')
+        for review in r['reviews']:
+            check('review',review)
+            if _dt(review['reviewed_at'])>_dt(r['requested_at']):errors.append('request cannot contain future reviews')
+        check_bundle({'artifacts':[r['artifact']], 'reviews':r['reviews']})
+        if 'budget_limit' in r or 'currency' in r:
+            if not {'budget_limit','currency'}<=r.keys():errors.append('budget_limit and currency required together')
+        if r['action']=='spend' and 'budget_limit' not in r:errors.append('spend request needs budget_limit + currency')
+        if 'expires_at' in r and _dt(r['expires_at'])<=_dt(r['requested_at']):errors.append('expires_at must be after requested_at')
+        for key in ('title','summary','requested_by','target'):
+            if not r[key].strip():errors.append(key+': must not be blank')
+    if name=='approval-event':
+        if not r['actor'].strip() or not r['reason'].strip():errors.append('actor and reason must not be blank')
+        if _dt(r['occurred_at'])>_dt(r['recorded_at']):errors.append('occurred_at is after recorded_at')
+        if r['type']=='requested':
+            if 'request' not in r:errors.append('requested event needs request snapshot')
+            else:check('approval-request',r['request'])
+            if 'previous_event_id' in r or 'evidence_ref' in r:errors.append('initial event cannot reference a previous decision')
+        else:
+            if 'request' in r:errors.append('decision cannot replace request snapshot')
+            if not r.get('previous_event_id') or not r.get('evidence_ref','').strip():errors.append('decision needs previous_event_id and evidence_ref')
+            if AI_AUTHORIZER.search(r['actor']):errors.append('decision actor must be human, not an AI system')
+        if ('budget_limit' in r)!=('currency' in r):errors.append('budget_limit and currency required together')
     if name=='work-order':
         if r['lead_module'] in r.get('supporting_modules',[]):errors.append('supporting_modules must not repeat lead_module')
     if name=='artifact':

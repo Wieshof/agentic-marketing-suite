@@ -710,9 +710,11 @@ Diese Unterscheidung ist eine verbindliche Leitlinie für alle Module.
 
 ---
 
+Die optionale [Human Approval & Audit Trail Capability](.suite/APPROVALS.md) ergänzt konkrete Freigabeanforderungen, menschliche Entscheidungen und eine fortlaufende private `approvals.jsonl`. Datei-/Versionsbindung, Person, Zeitpunkt, Budget und spätere Widerrufe bleiben nachvollziehbar. Die tatsächliche Ausführungsprüfung liegt beim Harness; eine Dashboard-Anzeige kann später hinzukommen.
+
 ## 14. Daten, Artefakte und offene Verträge
 
-Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die gemeinsame Ebene kennt vier maschinenlesbare Verträge:
+Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die gemeinsame Ebene kennt vier Kernverträge sowie zwei ergänzende Verträge für die optionale Freigabe-/Audit-Fähigkeit:
 
 | Vertrag | Datei | Rolle |
 |---|---|---|
@@ -720,6 +722,8 @@ Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die geme
 | Artefakt | [`artifact.schema.json`](.suite/contracts/artifact.schema.json) | Ergebnis, Eigentümermodul, Version, Pfad, Rechte-Status |
 | Review | [`review.schema.json`](.suite/contracts/review.schema.json) | Prüfdimension, Version, Befund, Evidenz und Status |
 | Action Approval | [`action-approval.schema.json`](.suite/contracts/action-approval.schema.json) | Autorisierung einer definierten externen Handlung |
+| Freigabeanforderung | [`approval-request.schema.json`](.suite/contracts/approval-request.schema.json) | Konkreter Entscheidungsvorschlag mit Datei-/Review-Snapshots, Aktion, Ziel und Budget |
+| Audit-Ereignis | [`approval-event.schema.json`](.suite/contracts/approval-event.schema.json) | Anforderung, menschliche Entscheidung oder Widerruf mit Person, Zeit, Version und Vorgänger |
 
 **Die Verträge sind für strukturierte Übergaben gedacht – nicht für jeden kleinen Chatbeitrag verpflichtend.**
 

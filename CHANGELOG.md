@@ -1,5 +1,9 @@
 # Änderungen
 
+## Unveröffentlicht
+
+- Optionale Human Approval & Audit Trail Capability: konkrete Anforderungen, menschliche Entscheidungen einschließlich Änderungswunsch und Widerruf, fortlaufende private JSONL-Ereignisse, read-only Statusprojektion und Regressionstests. Bestehende Aktionsfreigabeverträge bleiben kompatibel; keine Ausführungsprüfung im Dashboard.
+
 ## v0.2.1 – 27. Oktober 2026
 
 Wartungs- und Sicherheitsupdate auf Basis von v0.2. Die neun Fachmodule bleiben eigenständig nutzbar; JSON-Verträge und Methoden-IDs bleiben kompatibel.

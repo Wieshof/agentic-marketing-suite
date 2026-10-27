@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SuiteApprovalRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "summary",
+    "requested_by",
+    "requested_at",
+    "artifact",
+    "action",
+    "target",
+    "reviews"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requested_by": {
+      "type": "string",
+      "minLength": 2
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "artifact": {
+      "type": "object",
+      "$ref": "artifact.schema.json",
+      "required": [
+        "sha256"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "publish",
+        "send",
+        "spend",
+        "print",
+        "delete",
+        "modify_external"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "review.schema.json"
+      }
+    },
+    "budget_limit": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$comment": "Additive capability v0.1. Artifact SHA-256 is required; reviews are immutable snapshots. Approval still requires existing bundle gates.",
+  "dependentRequired": {
+    "budget_limit": [
+      "currency"
+    ],
+    "currency": [
+      "budget_limit"
+    ]
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "spend"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "budget_limit",
+          "currency"
+        ]
+      }
+    }
+  ]
+}

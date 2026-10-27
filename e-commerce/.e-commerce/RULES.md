@@ -23,3 +23,5 @@ Liegt dieses Modul innerhalb der Agentic Marketing Suite und ist `../.suite/` (v
 - **Strengere Regel gewinnt.** Widersprechen sich Modul- und Suite-Regel, gilt die strengere Sicherheits-, Rechte- oder Freigaberegel; Konflikt dokumentieren, im Zweifel HOLD.
 - Interne Arbeit ohne Außenwirkung (Beratung, Analyse, Entwurf) erfordert keinen vollständigen Suite-Durchlauf.
 - Fehlt `../.suite/` oder ist es nicht zugänglich, arbeitet dieses Modul unverändert eigenständig nach den eigenen Regeln. Die Suite ist keine Startvoraussetzung.
+
+- **Optionale Freigabe-/Audit-Fähigkeit:** Wenn `../.suite/` verfügbar ist, nach `../.suite/APPROVALS.md` eine konkrete Freigabeanforderung vorbereiten und nur nachgewiesene menschliche Entscheidungen/Widerrufe als neue Ereignisse protokollieren. Keine Zustimmung erfinden; Ausführungsprüfung bleibt beim Harness. Ohne Suite gelten weiterhin die lokalen Freigaberegeln.

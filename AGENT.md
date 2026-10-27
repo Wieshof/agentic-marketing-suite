@@ -29,6 +29,7 @@ Alle neun sind **optional**; nutze nur tatsächlich vorhandene Verzeichnisse mit
 - `.suite/LEGAL.md` / `.suite/legal/` – Rechtsprüfung und Rechtsquellen
 - `.suite/GOVERNANCE.md`, `.suite/SECURITY.md` – Entscheidungs- und Aktionsrechte
 - `.suite/INTERFACES.md`, `.suite/contracts/` – offene Übergaben
+- `.suite/APPROVALS.md` – konkrete Freigabeanforderungen, menschliche Entscheidungen und fortlaufender Audit Trail
 - `.suite/STRUKTUR.md` – Ablageprinzip
 - `.suite/STATE.md`, `LOG.md`, `HISTORY.md` – nur übergreifende Arbeit
 

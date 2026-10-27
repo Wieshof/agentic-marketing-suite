@@ -22,6 +22,8 @@ Der Ablauf ist **intent-gesteuert, ereignisbasiert und dynamisch**. Kein starrer
 
 **8. Konkrete Freigabe.** Für relevante Außenwirkung eine berechtigte Person/Instanz mit exakt definierter Aktion. Freigabe auf Artefaktversion/Hash, Kanal, Budget und Zeitrahmen begrenzen; bei Budget nie aus einer allgemeinen Aufgabenbeschreibung ableiten.
 
+Bei Nutzung der [Human Approval & Audit Trail Capability](APPROVALS.md) erstellt der Fachspezialist vor Schritt 8 eine konkrete Anforderung mit Artefaktversion/Hash und Review-Snapshots. Der vertrauenswürdige Harness erfasst die menschliche Entscheidung; jede Entscheidung und jeder Widerruf wird als eigener JSONL-Eintrag erhalten. Eine Änderung verlangt eine neue Anforderung.
+
 **9. Ausführung.** Adapter prüft Freigabe unmittelbar vor der Aktion, erstellt Idempotency-Key, sendet einmal und dokumentiert tatsächlichen technischen Status. Bei Timeout/unklarer Antwort Status abrufen, **nicht blind wiederholen**.
 
 **10. Messung und Lernen.** Analytics nutzt zulässige Daten, prüft Qualität und Kausalitätsgrenzen, stellt Verbesserungsaufträge. Strategie/Creative/Media können überarbeitet werden; neue Releases durchlaufen wieder Gates.

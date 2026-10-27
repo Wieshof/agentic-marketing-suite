@@ -20,3 +20,9 @@ Module dürfen fachliche Arbeit untereinander beauftragen, aber **keine Berechti
 
 ## Ausnahmen
 Dokumentierte Ausnahmen nur, wenn rechtlich zulässig und von befugter Person verantwortet. Nicht ausnehmbar: fehlende rechtmäßige Grundlage, fehlende essentielle Schutzmaßnahmen, nicht autorisierte Ausgaben oder schwerwiegende Sicherheitsverstöße.
+
+## Human Approval & Audit Trail Capability
+
+[APPROVALS.md](APPROVALS.md) beschreibt die einheitliche, optionale Erfassung. Der Fachspezialist erstellt eine konkrete `approval-request` für Datei, Version/Hash, Aktion, Ziel und gegebenenfalls Budget. Der vertrauenswürdige Harness erfasst die tatsächliche menschliche Entscheidung samt Person, Zeitpunkt und Bestätigungsreferenz. Anforderung, Freigabe, Ablehnung, Änderungswunsch und späterer Widerruf werden als eigene Ereignisse an eine private `approvals.jsonl` angehängt; frühere Entscheidungen werden nicht überschrieben.
+
+Die KI darf eine Anfrage vorbereiten und belegte Entscheidungen protokollieren, aber weder menschliche Zustimmung erfinden noch ihre eigene Prüfung zur Autorisierung erklären. G2/G3/G4 und strengere Modulregeln bleiben wirksam. Ein Widerruf blockiert weitere Ausführung auf Grundlage dieser Freigabe, behauptet aber keine Rückabwicklung. **Identität, Befugnis, aktuelle Datei, Budget, Ablauf, neuester Widerrufsstand und tatsächliche Ausführungsprüfung bleiben beim Harness bzw. Adapter; das Dashboard zeigt später höchstens an.**
