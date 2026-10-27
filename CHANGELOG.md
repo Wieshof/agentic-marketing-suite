@@ -1,6 +1,8 @@
 # Änderungen
 
-## Unveröffentlicht
+## v0.2.2 – 27. Oktober 2026
+
+Additive Freigabe-/Audit-Fähigkeit mit einer rein lesenden Dashboard-Übersicht. Bestehende Kernverträge und Fachmodule bleiben kompatibel.
 
 - Dashboard-Übersicht „Freigaben“: ausdrücklich konfigurierte, nur lesend ausgewertete Audit-Protokolle mit aktuellem Status, Version, Person, Zeit und Budget; automatische Aktualisierung und klare Leer-/Fehlerzustände.
 

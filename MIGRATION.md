@@ -48,7 +48,9 @@ Die Suite bleibt bei v0.1, die README bei Dokumentationsstand v0.2. Ergänzt wur
 - **Optionale Quellen:** PR, Social Media, Creative und noCRM können ausdrücklich referenzierte Analytics-Berichte berücksichtigen. Advertising nutzt E-Commerce optional als Feed-Quelle und meldet Findings an dessen Schreib-Owner; Analytics nutzt optionale aggregierte Shop-/Funnel-Daten. Kein Nachbarmodul wird zur Pflicht.
 - **Prüfung:** `python3 .suite/tools/check_repository.py`, die Dashboard-Tests laut dessen README und bei eigenem Harness die dokumentierten Start-/Rückkopplungsfälle prüfen. Die neuen Quellen- und `.gitkeep`-Dateien ergänzen, ohne eigene Inhalte zu überschreiben.
 
-## Additive Erweiterung: Human Approval & Audit Trail Capability v0.1
+## Update Suite v0.2.1 → v0.2.2
+
+Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. Bestehende produktive Arbeitsdaten und die vier bisherigen Kernverträge benötigen keine automatische Migration. Den neuen Release übernehmen und einen laufenden Dashboard-Server neu starten.
 
 - Neue Anleitung `.suite/APPROVALS.md`, Verträge `approval-request` / `approval-event` und lokales Werkzeug `.suite/tools/approval_audit.py`. Die bisherigen vier JSON-Verträge und bestehende Daten bleiben unverändert; alte Freigaben werden nicht automatisch importiert oder als neu bestätigte Menschenentscheidungen ausgegeben.
 - Optional in den eigenen Harness integrieren: konkrete Anfrage vorlegen, tatsächliche Person und Berechtigung über einen vertrauenswürdigen Kanal erfassen, Entscheidungen samt Evidenzreferenz protokollieren und vor Ausführung immer den neuesten vollständigen Zustand prüfen. Eine frühere `approved`-Zeile oder zwischengespeicherte Statusansicht genügt nicht.
