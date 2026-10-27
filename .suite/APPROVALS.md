@@ -74,9 +74,9 @@ Der Entscheidungsdatensatz hat folgende Form; die Werte stammen aus der tatsäch
 
 `decision` kann `approved`, `denied`, `changes_requested` oder später `revoked` sein. Budget, Ziel und Version sind nicht im Entscheidungsinput änderbar. Die Statusprojektion liefert nur für aktuell freigegebene, nicht abgelaufene Requests einen `action_approval_candidate` gemäß bestehendem `action-approval`-Vertrag, immer mit `execution_status: not_attempted`. Das ist ein **Prüfkandidat für den Harness**, keine Ausführungserlaubnis. Widerruf oder Ablauf entfernt ihn aus der Projektion, ohne einen früheren Eintrag zu verändern.
 
-## Spätere Dashboard-Anzeige
+## Dashboard-Anzeige
 
-Eine spätere Anzeige kann die read-only Projektion verwenden. Diese Erweiterung fügt dem Dashboard weder Schaltflächen noch HTTP-Endpunkte oder Schreib-/Ausführungsrechte hinzu.
+Das Dashboard zeigt die read-only Projektion unter **Freigaben** an. Die gewünschten Quellen werden ausdrücklich in `approvals.logs` der Dashboard-Konfiguration hinterlegt; standardmäßig sind keine Protokolle verbunden. [Einrichtung und Grenzen](dashboard/README.md) beschreiben lokale Pfade, automatische Aktualisierung und Fehlerzustände. `GET /api/approvals` liefert ausschließlich Anzeigedaten, keine vollständigen Aktionsfreigabekandidaten. Es gibt keine Freigabe-/Widerrufsschaltflächen und keine Schreib- oder Ausführungsrechte.
 
 | Freigaben – fiktive Beispielansicht | Kontext | Status |
 |---|---|---|
@@ -84,4 +84,4 @@ Eine spätere Anzeige kann die read-only Projektion verwenden. Diese Erweiterung
 | Website-Startseite | Website · Version 2 · 27.10.2026, 09:15 Uhr (Europe/Vienna) · Erika Beispiel, Geschäftsführung | Freigegeben |
 | Google-Ads-Kampagne | Advertising · Budget 500 EUR | Abgelehnt |
 
-[approvals-demo.jsonl](beispiele/approval-demo/approvals-demo.jsonl) enthält diese fiktiven Zustände. [approvals-revoked-demo.jsonl](beispiele/approval-demo/approvals-revoked-demo.jsonl) hat exakt denselben Anfang und einen zusätzlichen Widerruf der Website-Freigabe; die spätere Ansicht zeigt dann „Widerrufen“. Entscheider und Uhrzeit einer ausstehenden Anforderung nicht als bereits getroffene menschliche Entscheidung darstellen. Zeitstempel mit Zeitzone speichern, in der Anzeige lokal umrechnen. Ein späterer Leser muss die gesamte Kette prüfen und darf nicht nur nach einer `approved`-Zeile suchen.
+[approvals-demo.jsonl](beispiele/approval-demo/approvals-demo.jsonl) enthält diese fiktiven Zustände. [approvals-revoked-demo.jsonl](beispiele/approval-demo/approvals-revoked-demo.jsonl) hat exakt denselben Anfang und einen zusätzlichen Widerruf der Website-Freigabe; die Ansicht zeigt dann „Widerrufen“. Entscheider und Uhrzeit einer ausstehenden Anforderung nicht als bereits getroffene menschliche Entscheidung darstellen. Zeitstempel mit Zeitzone speichern, in der Anzeige lokal umrechnen. Jeder Leser muss die gesamte Kette prüfen und darf nicht nur nach einer `approved`-Zeile suchen.

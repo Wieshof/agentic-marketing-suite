@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- Dashboard-Übersicht „Freigaben“: ausdrücklich konfigurierte, nur lesend ausgewertete Audit-Protokolle mit aktuellem Status, Version, Person, Zeit und Budget; automatische Aktualisierung und klare Leer-/Fehlerzustände.
+
 - Optionale Human Approval & Audit Trail Capability: konkrete Anforderungen, menschliche Entscheidungen einschließlich Änderungswunsch und Widerruf, fortlaufende private JSONL-Ereignisse, read-only Statusprojektion und Regressionstests. Bestehende Aktionsfreigabeverträge bleiben kompatibel; keine Ausführungsprüfung im Dashboard.
 
 ## v0.2.1 – 27. Oktober 2026

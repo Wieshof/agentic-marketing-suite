@@ -76,3 +76,7 @@ Das neunte Modul `e-commerce/` wird zusätzlich im Dashboard erkannt. Fachmodule
 ## Wartungsstand v0.2.1 – 27. Oktober 2026
 
 27 automatisierte Dashboard-Tests einschließlich zusätzlicher Anfrage- und Dateizugriffsprüfungen bestehen lokal. Die Tests verwenden temporäre Daten und kontrollierte Agententransporte, starten keine realen Provider und ersetzen keine erneute Providerabnahme. JavaScript-Syntaxprüfung und die gemeinsame Repository-Prüfung bestehen ebenfalls. Die zuvor dokumentierten realen Providerabnahmen behalten ihren historischen Prüfstand.
+
+## Freigabeanzeige – unveröffentlichte Erweiterung
+
+Die read-only Freigabeübersicht wurde mit fiktiven Protokollen im Browser geprüft: Navigation und Rückkehr zur Dokumentansicht, die drei Beispielzustände, automatisch angezeigter Widerruf sowie das Entfernen alter Status nach einem beschädigten Protokoll. Die schmale Ansicht bleibt bedienbar. 36 automatisierte Dashboard-Tests prüfen zusätzlich konfigurierte Quellen, Pfadauflösung, reine Anzeigeausgabe, fehlende/gesperrte/ungültige Quellen, Ablauf und Änderungswunsch sowie Host-Schutz und abgelehnte Schreibversuche. Keine realen Agenten oder menschlichen Produktionsfreigaben wurden verwendet.

@@ -139,13 +139,16 @@ def replay(events):
     return states
 
 
-def read_events(log):
+def read_events(log, max_bytes=None):
     path = Path(log)
     if path.is_symlink():
         raise CheckError('Audit log must not be a symlink')
     if not path.exists():
         return []
-    data = path.read_bytes()
+    with path.open('rb') as stream:
+        data = stream.read() if max_bytes is None else stream.read(max_bytes + 1)
+    if max_bytes is not None and len(data) > max_bytes:
+        raise CheckError('Audit log exceeds read limit')
     if data and not data.endswith(b'\n'):
         raise CheckError('Incomplete audit log; do not overwrite or silently repair it')
     events = []
@@ -229,18 +232,18 @@ def record_decision(log, request_id, decision, actor, occurred_at, evidence_ref,
         return _append(path, events, event)
 
 
-def summarize(log, now=None):
-    """Read-only projection for a future viewer; ignores no later revocation."""
+def summarize(log, now=None, max_bytes=None):
+    """Read-only projection for viewers; ignores no later revocation."""
     at = _dt(_timestamp(now))
     result = []
-    for request_id, state in replay(read_events(log)).items():
+    for request_id, state in replay(read_events(log, max_bytes=max_bytes)).items():
         request, event = state['request'], state['event']
         status = 'pending' if event['type'] == 'requested' else event['type']
         if status in ('pending', 'approved') and 'expires_at' in request and _dt(request['expires_at']) <= at:
             status = 'expired'
         row = {'request_id': request_id, 'title': request['title'],
                'module': request['artifact']['owner_module'], 'path': request['artifact']['path'],
-               **subject(request), 'status': status, 'event_id': event['id'],
+               **subject(request), 'status': status, 'event_type': event['type'], 'event_id': event['id'],
                'actor': event['actor'], 'occurred_at': event['occurred_at'],
                'recorded_at': event['recorded_at'], 'reason': event['reason']}
         if 'actor_role' in event:

@@ -11,6 +11,7 @@ from urllib.parse import parse_qs, urlsplit, unquote
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from server.files import Files
+from server.approvals import ApprovalView, configure_approvals
 
 DASHBOARD = Path(__file__).resolve().parents[1]
 
@@ -58,6 +59,7 @@ def load_config(path):
         command = profile.get('command')
         if not isinstance(command, list) or not command or not all(isinstance(s, str) and s for s in command):
             raise ValueError('Agentencommand muss eine nicht leere Liste von Argumenten sein.')
+    configure_approvals(config, path.parent)
     return config
 
 
@@ -69,6 +71,7 @@ class DashboardServer(ThreadingHTTPServer):
         self.config = config
         self.files = Files(config['suite']['root'], config['viewer']['max_inline_file_mb'],
                            show_internal_files=config['suite'].get('show_internal_files', False))
+        self.approvals = ApprovalView(config.get('approvals', {}).get('logs', []))
         self.sessions = None
         super().__init__((config['server']['host'], config['server']['port']), Handler)
 
@@ -140,6 +143,8 @@ class Handler(BaseHTTPRequestHandler):
             config = self.server.config
             return self.reply({'suite': {k: v for k, v in config['suite'].items() if k != 'root'},
                                'viewer': config['viewer'], 'default_profile': config.get('agents', {}).get('default_profile')})
+        if url.path == '/api/approvals':
+            return self.reply(self.server.approvals.snapshot())
         if url.path == '/api/modules':
             return self.reply(files.modules())
         if url.path == '/api/tree':
@@ -213,10 +218,12 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < length <= 1024 * 1024:
                 raise ValueError('Leere oder zu große Nachricht.')
             payload = json.loads(self.rfile.read(length))
+            route = urlsplit(self.path).path
+            if route == '/api/approvals' or route.startswith('/api/approvals/'):
+                return self.reply({'error': 'Freigaben werden hier nur angezeigt.'}, 405)
             manager = self.server.sessions
             if not manager:
                 raise ValueError('Agententransport nicht gestartet.')
-            route = urlsplit(self.path).path
             if route == '/api/sessions':
                 result = manager.connect(payload['profile'], payload.get('cwd', ''), payload.get('external_id'))
             elif route == '/api/chat':

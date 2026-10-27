@@ -710,7 +710,7 @@ Diese Unterscheidung ist eine verbindliche Leitlinie für alle Module.
 
 ---
 
-Die optionale [Human Approval & Audit Trail Capability](.suite/APPROVALS.md) ergänzt konkrete Freigabeanforderungen, menschliche Entscheidungen und eine fortlaufende private `approvals.jsonl`. Datei-/Versionsbindung, Person, Zeitpunkt, Budget und spätere Widerrufe bleiben nachvollziehbar. Die tatsächliche Ausführungsprüfung liegt beim Harness; eine Dashboard-Anzeige kann später hinzukommen.
+Die optionale [Human Approval & Audit Trail Capability](.suite/APPROVALS.md) ergänzt konkrete Freigabeanforderungen, menschliche Entscheidungen und eine fortlaufende private `approvals.jsonl`. Datei-/Versionsbindung, Person, Zeitpunkt, Budget und spätere Widerrufe bleiben nachvollziehbar. Die tatsächliche Ausführungsprüfung liegt beim Harness; das Dashboard zeigt konfigurierte Protokolle unter „Freigaben“ ausschließlich lesend an.
 
 ## 14. Daten, Artefakte und offene Verträge
 
