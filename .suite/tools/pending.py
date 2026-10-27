@@ -11,6 +11,8 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from approval_audit import CheckError, summarize
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'dashboard'))
+from server.approvals import configure_approvals, MAX_LOG_BYTES
 
 CONFIG = Path(__file__).resolve().parents[1] / 'dashboard' / 'config.json'
 OPEN = {'pending': 'Entscheidung offen', 'changes_requested': 'Überarbeitung nötig',
@@ -19,15 +21,25 @@ OPEN = {'pending': 'Entscheidung offen', 'changes_requested': 'Überarbeitung n�
 
 def configured_logs(config):
     data = json.loads(Path(config).read_text(encoding='utf-8'))
-    return [(entry.get('label') or entry['id'], (Path(config).parent / entry['path']))
-            for entry in data.get('approvals', {}).get('logs', [])]
+    if not isinstance(data, dict):
+        raise ValueError('Die Konfiguration muss ein JSON-Objekt sein.')
+    configure_approvals(data, Path(config).resolve().parent)
+    return [(entry['label'], Path(entry['path'])) for entry in data['approvals']['logs']]
 
 
 def collect(logs, now=None):
     items, errors = [], []
     for label, path in logs:
         try:
-            rows = summarize(path, now=now)
+            path = Path(path)
+            lock = path.with_name(path.name + '.lock')
+            if path.is_symlink() or not path.is_file():
+                raise CheckError('Protokoll fehlt oder ist ein Symlink.')
+            if lock.exists():
+                raise CheckError('Protokoll wird gerade aktualisiert.')
+            rows = summarize(path, now=now, max_bytes=MAX_LOG_BYTES)
+            if lock.exists():
+                raise CheckError('Protokoll wird gerade aktualisiert.')
         except (CheckError, OSError, ValueError) as exc:
             # A broken log never yields an "all clear".
             errors.append({'log': label, 'error': str(exc)})
@@ -43,11 +55,13 @@ def main(argv=None):
     parser.add_argument('--json', action='store_true')
     parser.add_argument('--strict', action='store_true', help='Exit 1, wenn etwas offen ist')
     args = parser.parse_args(argv)
-    logs = [(str(p), p) for p in args.log] or configured_logs(args.config)
-    if not logs:
-        print('Keine Freigabeprotokolle angegeben oder in approvals.logs konfiguriert.', file=sys.stderr)
-        return 2
-    items, errors = collect(logs)
+    try:
+        logs = [(str(p), p) for p in args.log] or configured_logs(args.config)
+        if not logs:
+            raise ValueError('Keine Freigabeprotokolle angegeben oder konfiguriert.')
+        items, errors = collect(logs)
+    except (OSError, ValueError, CheckError) as exc:
+        items, errors = [], [{'log': 'Konfiguration', 'error': str(exc)}]
     if args.json:
         print(json.dumps({'open': items, 'errors': errors}, ensure_ascii=False, indent=2))
     else:

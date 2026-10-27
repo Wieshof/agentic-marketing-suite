@@ -85,3 +85,9 @@ Das Dashboard zeigt die read-only Projektion unter **Freigaben** an. Die gewüns
 | Google-Ads-Kampagne | Advertising · Budget 500 EUR | Abgelehnt |
 
 [approvals-demo.jsonl](beispiele/approval-demo/approvals-demo.jsonl) enthält diese fiktiven Zustände. [approvals-revoked-demo.jsonl](beispiele/approval-demo/approvals-revoked-demo.jsonl) hat exakt denselben Anfang und einen zusätzlichen Widerruf der Website-Freigabe; die Ansicht zeigt dann „Widerrufen“. Entscheider und Uhrzeit einer ausstehenden Anforderung nicht als bereits getroffene menschliche Entscheidung darstellen. Zeitstempel mit Zeitzone speichern, in der Anzeige lokal umrechnen. Jeder Leser muss die gesamte Kette prüfen und darf nicht nur nach einer `approved`-Zeile suchen.
+
+## Offene Freigaben im Terminal
+
+`python3 .suite/tools/pending.py` liest die explizit konfigurierten `approvals.logs` aus der Dashboard-Konfiguration. Alternativ `--config /privat/dashboard.json` oder mehrfach `--log /privat/approvals.jsonl` verwenden. Konfigurationspfade werden wie im Dashboard relativ zur Konfigurationsdatei aufgelöst.
+
+Die Übersicht enthält `pending`, `changes_requested` und `expired`. `--json` liefert `open` und `errors`; `--strict` liefert Exit 1 bei offenen Vorgängen, sonst Exit 0. Fehlende/defekte/zu große Protokolle, aktive Schreibsperren, Symlinks oder ungültige Konfiguration ergeben Exit 2 und niemals Entwarnung; gültige andere Protokolle bleiben sichtbar. Die Ausgabe ist nur ein Status-Snapshot, keine Freigabe oder Aktionsprüfung. Das Werkzeug schreibt und entscheidet nichts.
