@@ -135,3 +135,7 @@ Implementiert anhand der lokal installierten CLIs und ihrer offiziellen Protokol
 - [Codex App Server](https://learn.chatgpt.com/docs/app-server)
 
 Versionen und Testergebnisse sind im Abnahmeprotokoll dokumentiert. Bei Protokolländerungen wird nur der betreffende Adapter angepasst. Neue Adapter implementieren `connect`, `send`, `handle`, optional `respond`, und werden im Adapterregister ergänzt; Fachverzeichnisse benötigen keine Änderungen.
+
+## Dieselbe Freigabeübersicht ohne Server
+
+[Terminal-Werkzeug pending.py](../tools/pending.py) liest die konfigurierten Freigabeprotokolle ohne Dashboard-Start. `--config` wählt dieselbe Dashboard-Konfiguration; `--json` liefert strukturierte Ausgabe, `--strict` signalisiert offene Vorgänge mit Exit 1. Bei unklaren/gesperrten Protokollen oder Konfigurationsfehlern gilt Exit 2. Es werden weder Entscheidungen noch Dateien verändert. [Details](../APPROVALS.md).

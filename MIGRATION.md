@@ -94,6 +94,14 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 - Help vor Funktionsauskünften auf die tatsächliche Installation, passende Quellen und überprüften Testumfang verweisen. Historische Angaben aus dem Paket sind keine aktuelle Versionsgarantie. [Konkrete Integration](help/.help/SUITE.md).
 - Individuelle Anleitungen/Lernnotizen geschützt außerhalb der Bibliothek ablegen. Paket-/Integrationstests ausführen; die dialogischen Akzeptanzfälle und echte Verständlichkeit zusätzlich im Harness prüfen.
 
+## Unveröffentlicht: Harness-Einstieg
+
+`CLAUDE.md`, `AGENTS.md` und `.cursor/rules/suite.mdc` verweisen auf die bestehenden Regeln. Entwicklung und Marketingaufträge bleiben getrennt. Die Claude-Code-Befehle unter `.claude/commands/` bereiten Arbeit vor, erteilen keine menschliche Freigabe und führen keine Außenaktionen aus. Nach Installation im tatsächlichen Harness prüfen: Einstieg ohne Auftrag, direkter Fachauftrag, Entwicklungsauftrag und Zugriff auf die ausgewählte Kontextquelle. Ein bestandener Repository-Test belegt die automatische Übernahme dieser Dateien nicht.
+
+## Unveröffentlicht: Plattform-Importdateien
+
+Advertising-Manifeste erlauben additiv `search_ads`; bestehende Manifeste bleiben gültig. Eigene Validatoren bei Nutzung dieses Blocks aktualisieren. [Exportwerkzeug](.suite/tools/EXPORT_PLATFORM.md) erzeugt nur lokale freigabegebundene Importdateien. Scheduler-CSV unterstützt nur Text/Einzelbild, benötigt bei Planzeiten die tatsächliche Zielzeitzone und verwirft keine zusätzlichen Assets. Google-Ads-Kampagnen bleiben pausiert; Laufzeit-/Kontoeinstellungen und tatsächliche Ausgabengrenzen vor Aktivierung prüfen. Eine echte Importabnahme steht aus.
+
 ## Unveröffentlicht: Google-Leseadapter
 
 Der optionale GA4-/Search-Console-Adapter benötigt ein berechtigtes Konto und extern bereitgestellte read-only OAuth-Credentials. Für GA4 die tatsächliche `--time-zone` angeben; GSC verwendet fest `America/Los_Angeles`. Der additive Tagesexport enthält keine eindeutigen `totalUsers`. CSV/Manifest bleiben privat und werden nicht überschrieben. Details und Grenzen: [FETCH_GOOGLE.md](analytics/.analytics/tools/FETCH_GOOGLE.md). Eine echte Kontoabnahme steht separat aus.

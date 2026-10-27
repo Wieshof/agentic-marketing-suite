@@ -8,6 +8,7 @@
 |---|---|
 | Dokumentation | README v0.3.5 · 27. Oktober 2026 |
 | Beschriebene Softwarebasis | Suite v0.2.4 mit Branding, Business-DNA und Help & Learning mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
+| Stand auf `main` | Zusätzlich integrierte, noch unveröffentlichte Harness-Einstiege, Plattformexporte, Google-Leseadapter und Terminal-Freigabeübersicht |
 | Fachbereiche | 12 eigenständig nutzbare Module |
 | Fachmethoden im Repository | 603 Markdown-Methodendateien |
 | Zielgruppe | Unternehmen, Selbstständige, Fachleute und Agenturen; **keine** Agentur- oder Kundenverwaltung als Voraussetzung |
@@ -145,7 +146,7 @@ Der Website-Spezialist wählt geeignete Verfahren selbst. Mit derselben Grundide
 
 1. Das [GitHub-Repository](https://github.com/markus-ertel/agentic-marketing-suite) klonen oder das Suite-Archiv entpacken und die Ordnerstruktur erhalten, **einschließlich versteckter Ordner** wie `.suite/`, `.nocms/` und `.analytics/`.
 2. Den entpackten Ordner `agentic-marketing-suite/` als erlaubtes Arbeitsverzeichnis für den Harness bereitstellen.
-3. Für eine allgemeine oder bereichsübergreifende Arbeit die Root-Datei `AGENT.md` lesen lassen.
+3. Für eine allgemeine oder bereichsübergreifende Arbeit die Root-Datei `AGENT.md` lesen lassen. Dünne Einstiegsdateien für Claude Code (`CLAUDE.md`), Codex (`AGENTS.md`) und Cursor (`.cursor/rules/suite.mdc`) verweisen auf diesen Einstieg; ihre automatische Übernahme ist im verwendeten Harness zu prüfen; Claude Code bietet zusätzlich `/brief`, `/evaluate` und `/freigabe` aus `.claude/commands/`.
 4. Für einen einzelnen Fachauftrag direkt die jeweilige Modul-`AGENT.md` verwenden.
 5. Ein Ziel in natürlicher Sprache formulieren; die KI soll darauf **direkt fachlich reagieren**.
 6. Erst bei konkreter Dateiarbeit oder externer Aktion die dafür notwendigen Rechte und Werkzeuge bereitstellen.
@@ -1115,6 +1116,9 @@ STRUCTURAL_PREFLIGHT_OK (no compliance certification)
 | [`noCRM/.nocrm/tools/preflight.py`](noCRM/.nocrm/tools/preflight.py) | Kommunikationsaktion vorprüfen, **nicht** versenden |
 | [`noCRM/.nocrm/tools/contact_store.py`](noCRM/.nocrm/tools/contact_store.py) | Lokalen offenen Kontaktbestand bearbeiten |
 | [`analytics/.analytics/tools/evaluate_csv.py`](analytics/.analytics/tools/evaluate_csv.py) | CSV-Daten deskriptiv auswerten |
+| [`.suite/tools/pending.py`](.suite/tools/pending.py) | Offene Freigaben nur lesend anzeigen; gesperrte/defekte Protokolle melden Fehler |
+| [`.suite/tools/export_platform.py`](.suite/tools/export_platform.py) | Freigabegebundene lokale Importdateien; keine Plattformausführung ([Grenzen](.suite/tools/EXPORT_PLATFORM.md)) |
+| [`analytics/.analytics/tools/fetch_google.py`](analytics/.analytics/tools/fetch_google.py) | GA4-/Search-Console-Leseadapter mit privater CSV/Manifest-Ausgabe ([Einrichtung](analytics/.analytics/tools/FETCH_GOOGLE.md)) |
 | [`help/.help/tools/scan_workspace.py`](help/.help/tools/scan_workspace.py) | Modul-/Methoden-Dateiinventar; Laufzeitstatus bleibt unbekannt |
 | [`help/.help/tools/validate_help.py`](help/.help/tools/validate_help.py) | Help-Bibliotheksstruktur und Beispiele formal prüfen; kein Harness-Test |
 | [`business-dna/.business-dna/tools/lint_records.py`](business-dna/.business-dna/tools/lint_records.py) | Claims/Quellen formal prüfen; keine Wahrheit oder Rechte bestätigen |
