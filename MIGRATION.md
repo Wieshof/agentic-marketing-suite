@@ -97,3 +97,7 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 ## Unveröffentlicht: Harness-Einstieg
 
 `CLAUDE.md`, `AGENTS.md` und `.cursor/rules/suite.mdc` verweisen auf die bestehenden Regeln. Entwicklung und Marketingaufträge bleiben getrennt. Die Claude-Code-Befehle unter `.claude/commands/` bereiten Arbeit vor, erteilen keine menschliche Freigabe und führen keine Außenaktionen aus. Nach Installation im tatsächlichen Harness prüfen: Einstieg ohne Auftrag, direkter Fachauftrag, Entwicklungsauftrag und Zugriff auf die ausgewählte Kontextquelle. Ein bestandener Repository-Test belegt die automatische Übernahme dieser Dateien nicht.
+
+## Unveröffentlicht: Plattform-Importdateien
+
+Advertising-Manifeste erlauben additiv `search_ads`; bestehende Manifeste bleiben gültig. Eigene Validatoren bei Nutzung dieses Blocks aktualisieren. [Exportwerkzeug](.suite/tools/EXPORT_PLATFORM.md) erzeugt nur lokale freigabegebundene Importdateien. Scheduler-CSV unterstützt nur Text/Einzelbild, benötigt bei Planzeiten die tatsächliche Zielzeitzone und verwirft keine zusätzlichen Assets. Google-Ads-Kampagnen bleiben pausiert; Laufzeit-/Kontoeinstellungen und tatsächliche Ausgabengrenzen vor Aktivierung prüfen. Eine echte Importabnahme steht aus.

@@ -1,0 +1,36 @@
+{
+  "id": "suite.platform-export",
+  "version": "0.1",
+  "owner_module": "advertising",
+  "kind": "build-tool",
+  "purpose": "Freigegebene Quellfassungen in lokale Importdateien umwandeln, ohne Plattformaktion.",
+  "entrypoint": ".suite/tools/export_platform.py",
+  "configuration": ".suite/tools/EXPORT_PLATFORM.md",
+  "prerequisites": [
+    "Python 3.9+",
+    "Aktuelle konkrete menschliche Freigabe für Ausgabe",
+    "Manuelle Import-/Kontoprüfung"
+  ],
+  "inputs": [
+    "Advertising-Manifest, Social-Job oder noCRM-Entwurf",
+    "Freigabeprotokoll, Anfrage-ID und Ziel",
+    "Scheduler-Zeitzone bei geplanten Posts"
+  ],
+  "outputs": [
+    "Pausierte Ads-CSV",
+    "Text-/Einzelbild-Scheduler-CSV",
+    "E-Mail-HTML und Textdateien"
+  ],
+  "checks": [
+    "Freigabebindung und Budget",
+    "Kein stiller Asset-Verlust",
+    "Zeitformat und Zone",
+    "Kein Überschreiben"
+  ],
+  "statuses": [
+    "check_pass",
+    "local_files_created",
+    "blocked"
+  ],
+  "external_actions": []
+}
