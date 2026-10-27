@@ -42,3 +42,27 @@ jobs:
         run: python -m unittest discover -s .suite/dashboard/tests -v
       - name: Check browser JavaScript
         run: node --check .suite/dashboard/web/app.js
+
+  webmodules:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      REQUIRE_PHP_TESTS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify PHP runtime and syntax
+        run: |
+          php --version
+          find website/.nocms/module -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Test standalone webmodules with real local PHP HTTP endpoints
+        run: python -m unittest discover -s website/.nocms/tests -v
+      - name: Check browser module JavaScript
+        run: |
+          node --check website/.nocms/module/site-search/site-search.js
+          node --check website/.nocms/module/analytics-lite/analytics-lite.js

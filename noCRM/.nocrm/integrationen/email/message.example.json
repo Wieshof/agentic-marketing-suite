@@ -1,0 +1,10 @@
+{
+  "to": [
+    "recipient@example.invalid"
+  ],
+  "subject": "Fiktiver Antwortentwurf",
+  "body": "FIKTIVES BEISPIEL. Kein Versand autorisiert.",
+  "purpose": "service",
+  "contact_id": "fictional-contact",
+  "legal_basis_evidence_ref": "fixture:actual-service-request-required"
+}

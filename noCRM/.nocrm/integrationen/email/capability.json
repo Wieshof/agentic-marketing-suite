@@ -1,0 +1,43 @@
+{
+  "id": "mail.imap-smtp",
+  "version": "0.1",
+  "owner_module": "noCRM",
+  "kind": "adapter",
+  "purpose": "Konten getrennt lesen, lokale Entwürfe erstellen, Postfachentwürfe speichern und E-Mails versenden.",
+  "entrypoint": "noCRM/.nocrm/integrationen/email/adapter.py",
+  "configuration": "noCRM/.nocrm/integrationen/email/account.example.json",
+  "prerequisites": [
+    "Python 3.9+",
+    "TLS-fähiges IMAP/SMTP-Konto",
+    "Externe Credential-Referenz",
+    "Explizite Leseberechtigung oder aktuelle Aktionsfreigabe"
+  ],
+  "inputs": [
+    "Konto",
+    "Nachrichtenentwurf/Anhänge",
+    "Freigabeplan"
+  ],
+  "outputs": [
+    "Private EML-/JSON-Dateien",
+    "IMAP-Import",
+    "Ausführungsereignisse"
+  ],
+  "checks": [
+    "Header-/Empfängerprüfung",
+    "TLS-Pflicht",
+    "Read-only IMAP und BODY.PEEK",
+    "Freigabe/Idempotenz"
+  ],
+  "statuses": [
+    "planned",
+    "started",
+    "accepted",
+    "failed",
+    "uncertain",
+    "confirmed"
+  ],
+  "external_actions": [
+    "send",
+    "modify_external"
+  ]
+}

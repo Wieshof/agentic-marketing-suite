@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 HERE=Path(__file__).resolve().parents[1]
-SCHEMA_NAMES=('work-order','artifact','review','action-approval','approval-request','approval-event')
+SCHEMA_NAMES=('work-order','artifact','review','action-approval','approval-request','approval-event','capability')
 BUNDLE_KEYS={'work_orders':'work-order','artifacts':'artifact','reviews':'review','approvals':'action-approval'}
 # G2 = fachliche/technische Qualität, G3 = Legal/Privacy/Assetrechte (GOVERNANCE.md)
 G2_DIMENSIONS={'brief','expert','evidence','creative','technical','accessibility','consistency','security'}

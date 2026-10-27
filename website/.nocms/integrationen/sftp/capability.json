@@ -1,0 +1,38 @@
+{
+  "id": "website.sftp",
+  "version": "0.1",
+  "owner_module": "website",
+  "kind": "adapter",
+  "purpose": "Geprüfte Website-Dateien über OpenSSH SFTP übertragen.",
+  "entrypoint": "website/.nocms/integrationen/sftp/publisher.py",
+  "configuration": "website/.nocms/integrationen/sftp/deployment.example.json",
+  "prerequisites": [
+    "Python 3.9+",
+    "OpenSSH sftp",
+    "Vorab geprüfter Host-Key und SSH-Schlüssel",
+    "Aktuelle Planfreigabe und Harness-Autorisierung"
+  ],
+  "inputs": [
+    "Deployment-Konfiguration",
+    "Unveränderlicher Datei-/Hash-Plan"
+  ],
+  "outputs": [
+    "Transferplan",
+    "Ausführungsereignisse",
+    "SHA-256-Readback-Ergebnis"
+  ],
+  "checks": [
+    "Pfad-/Geheimnisprüfung",
+    "Freigabe/Hash/Ziel-Prüfung",
+    "Rücklesen vor und nach Aktivierung"
+  ],
+  "statuses": [
+    "planned",
+    "started",
+    "confirmed",
+    "uncertain"
+  ],
+  "external_actions": [
+    "publish"
+  ]
+}

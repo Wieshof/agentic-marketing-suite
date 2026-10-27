@@ -1,0 +1,20 @@
+{
+  "id": "example-account",
+  "credential_ref": "MAIL_EXAMPLE",
+  "username": "owner@example.invalid",
+  "from": "owner@example.invalid",
+  "imap": {
+    "host": "imap.example.invalid",
+    "port": 993
+  },
+  "smtp": {
+    "host": "smtp.example.invalid",
+    "port": 587,
+    "tls": "starttls"
+  },
+  "allowed_mailboxes": [
+    "INBOX"
+  ],
+  "draft_mailbox": "Drafts",
+  "read_enabled": false
+}

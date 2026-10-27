@@ -1,0 +1,30 @@
+{
+  "id": "web.redirects",
+  "version": "0.1",
+  "owner_module": "website",
+  "kind": "build-tool",
+  "purpose": "Exakte lokale 301-/302-Weiterleitungen für Apache generieren.",
+  "entrypoint": "website/.nocms/tools/webmodules.py",
+  "configuration": "website/.nocms/module/redirects/mappings.example.json",
+  "prerequisites": [
+    "Python 3.9+",
+    "Apache mod_alias und passende AllowOverride-Regeln"
+  ],
+  "inputs": [
+    "Explizite lokale Pfadzuordnungen"
+  ],
+  "outputs": [
+    "Reviewbare .htaccess"
+  ],
+  "checks": [
+    "Keine externen Ziele oder Schleifen",
+    "Keine Header-/Konfigurationsinjektion",
+    "Bestehende .htaccess nicht überschreiben"
+  ],
+  "statuses": [
+    "local_files_created"
+  ],
+  "external_actions": [
+    "none"
+  ]
+}
