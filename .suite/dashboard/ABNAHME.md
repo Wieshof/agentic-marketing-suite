@@ -72,3 +72,7 @@ Für weitere Pi-Turns muss der konfigurierte Modellserver erreichbar bleiben. Be
 ## Integration E-Commerce (PR #3)
 
 Das neunte Modul `e-commerce/` wird zusätzlich im Dashboard erkannt. Fachmodule mit einer eigenen `AGENT.md` können ohne Ergänzung der Backend-Modulliste erscheinen. Startansicht und Arbeitsverzeichnisauswahl verwenden dieselbe Modulliste; im Chat genannte E-Commerce-Pfade sind anklickbar. Die ursprünglichen Ergebnisse oben beziehen sich auf den anfänglichen achtteiligen Suite-Baum. Für diese Erweiterung bestehen 18 Dashboardtests einschließlich Erkennung zusätzlicher Module und HTTP-Vorschau von `e-commerce/AGENT.md`.
+
+## Wartungsstand v0.2.1 – 27. Oktober 2026
+
+27 automatisierte Dashboard-Tests einschließlich zusätzlicher Anfrage- und Dateizugriffsprüfungen bestehen lokal. Die Tests verwenden temporäre Daten und kontrollierte Agententransporte, starten keine realen Provider und ersetzen keine erneute Providerabnahme. JavaScript-Syntaxprüfung und die gemeinsame Repository-Prüfung bestehen ebenfalls. Die zuvor dokumentierten realen Providerabnahmen behalten ihren historischen Prüfstand.

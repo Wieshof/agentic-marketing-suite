@@ -23,6 +23,8 @@ Diese Datei ist der verbindliche Einstiegspunkt für Coding-Agents, KI-Harnesses
 
 **Interne Beratungshilfen:** `.nocms/BERATUNG.md` definiert Beratungsstandards, `.nocms/METHODEN.md` verweist auf Fachmethoden unter `.nocms/methoden/`. Lade deren Detaildateien **nur bei sachlicher Relevanz**; sie bilden keine sequenzielle Checkliste. `.nocms/LOG.md` dokumentiert tatsächlich ausgeführte Vorgänge, `.nocms/HISTORY/` die belegbaren Entscheidungen und Releases. Externe Veröffentlichungen, kostenpflichtige Aktionen und irreversible Änderungen unterliegen den bestehenden Freigaberegeln.
 
+**Start und Zustand:** Eine Begrüßung bleibt auch bei vorhandenem aktivem STATE nur die obige Einstiegsfrage: kein STATE-Lesen, kein Wiederaufnahmeangebot, keine Dateiänderung und kein neuer Auftrag. Bei konkretem Auftrag sofort arbeiten; `.nocms/STATE.md` nur lesen, wenn der Auftrag vorhandene Arbeit betrifft. Bei ausdrücklicher oder aus dem Gespräch eindeutiger Fortsetzung vorhandenen STATE und nur passende, existierende Ergebnisreferenzen nutzen; die aktuelle Nutzeranweisung hat Vorrang vor altem Zustand. Fehlt STATE oder eine Referenz, dies offen benennen und mit belegtem Gesprächskontext weiterarbeiten; nur bei entscheidender Mehrdeutigkeit gezielt nachfragen. Keine Arbeitsstände erfinden oder Dateien allein wegen eines Starts anlegen. Diese Regeln gelten auch ohne Suite und Nachbarmodule.
+
 ## 1. Was noCMS ist — und was nicht
 
 - Erstelle und pflege eine **direkt veröffentlichbare Website aus HTML, CSS, JavaScript und Medien**.

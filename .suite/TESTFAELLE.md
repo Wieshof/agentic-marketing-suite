@@ -28,3 +28,7 @@
 | S24 | Markenaufbau ohne Werbebudget | faktenbasierte Empfehlung ohne erzwungene Paid-Kampagne |
 
 Diese Fälle sind **Spezifikation, nicht ausgeführte Harness-Evaluation**. Der enthaltene Python-Validator deckt lediglich Schema-/Dateivertragskontrollen ab.
+
+## Konkretisierte Start- und Rückkopplungsfälle
+
+[Start, Wiederaufnahme und optionale Quellen](beispiele/START-UND-RUECKKOPPLUNG.md) enthält die Fälle A01–A07, R01–R03 und E01–E03 samt dokumentiertem szenariobezogenem Anleitungsreview. Dieser Review ist von einer noch ausstehenden echten Harness-Verhaltensevaluation getrennt.

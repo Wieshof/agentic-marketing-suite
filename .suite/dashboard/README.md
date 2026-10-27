@@ -23,7 +23,7 @@ Der Server verwendet Python-Standardbibliothek und natives HTML/CSS/JavaScript. 
 - `server.host`: Standard `127.0.0.1`, für lokale Nutzung.
 - `server.port`: `0` bis `65535`; bei `0` wählt das Betriebssystem einen freien Port. Die tatsächliche Adresse wird ausgegeben.
 - `suite.root`: relativ zum **Ordner der verwendeten config.json**, nicht zum Terminal-Arbeitsverzeichnis. `../..` bezeichnet bei der mitgelieferten Datei den Suite-Root.
-- `suite.show_internal_files`: Punktordner zunächst anzeigen oder ausblenden. `.suite/` ist als gemeinsamer Einstieg immer sichtbar. `.git`, virtuelle Umgebungen, Python-Caches und `node_modules` werden aus der Navigation ausgespart.
+- `suite.show_internal_files`: serverseitige Zugriffserlaubnis für interne Punktdateien und -ordner, Standard `false`. Bei `false` sind z. B. `.marketing/` und `.nocrm/` auch über direkte Datei-URLs und Suche gesperrt; der Browser kann dies nicht freischalten. `.suite/` bleibt als gemeinsamer Einstieg zugänglich. Versionsverwaltung, bekannte Zugangsdatenpfade und Schlüsseldateien bleiben auch bei `true` gesperrt. Virtuelle Umgebungen, Python-Caches und `node_modules` werden aus der Navigation ausgespart.
 - `suite.refresh_interval_ms`: Pollingintervall, mindestens `500`, Standard `2000`.
 - `viewer.default_mode`: `preview` oder `source`.
 - `viewer.max_inline_file_mb`: Standard `25`. Größere Textdateien werden zum Download angeboten. Medien und PDFs können unabhängig davon direkt gestreamt werden.
@@ -33,7 +33,7 @@ Eine andere Konfiguration lässt sich mit `--config /absoluter/pfad/config.json`
 
 ## Dateiansicht
 
-Die Navigation lädt echte Unterverzeichnisse bei Bedarf. Zusätzliche Fachmodule wie `e-commerce/` werden über ihre `AGENT.md` erkannt und erscheinen auch in Startansicht und Arbeitsverzeichnisauswahl. Die Suche erfasst Dateinamen und relative Pfade innerhalb der sichtbaren Verzeichnisse. Mit **Interne Ordner** werden auch Methoden unter `.marketing/`, `.nocms/` usw. erreichbar. `/` fokussiert die Suche. Auf schmalen Bildschirmen öffnen Menü- und Chatknopf die jeweiligen Panels, `Escape` schließt sie.
+Die Navigation lädt echte Unterverzeichnisse bei Bedarf. Zusätzliche Fachmodule wie `e-commerce/` werden über ihre `AGENT.md` erkannt und erscheinen auch in Startansicht und Arbeitsverzeichnisauswahl. Die Suche erfasst Dateinamen und relative Pfade innerhalb der sichtbaren Verzeichnisse. Mit **Interne Ordner** lassen sich Methoden unter `.marketing/`, `.nocms/` usw. einblenden, wenn `suite.show_internal_files` auf dem Server aktiviert wurde. Andernfalls ist der Schalter deaktiviert. `/` fokussiert die Suche. Auf schmalen Bildschirmen öffnen Menü- und Chatknopf die jeweiligen Panels, `Escape` schließt sie.
 
 Unterstützt werden Markdown mit Tabellen und Codeblöcken, UTF-8-Text und Quellcode, JSON, JSONL, CSV/TSV, Bilder einschließlich SVG, HTML, PDF sowie Audio/Video entsprechend den Browserfähigkeiten. CSV ist auf 500 Zeilen und 100 Spalten begrenzt. Unbekannte oder zu große Formate behalten einen Downloadlink. HTML läuft in einem getrennten, eingeschränkten Frame ohne Skriptausführung; relative lokale CSS- und Bilddateien werden über `/view/` geladen. Interaktive HTML-Anwendungen benötigen einen eigenen Entwicklungsserver.
 
@@ -78,7 +78,11 @@ Der Server hält maximal 2.000 Ereignisse je Verbindung als flüchtigen Transpor
 | POST | `/api/interaction` | `{session, request_id, response}` an eine offene externe Rückfrage |
 | POST | `/api/disconnect` | `{session}` Transport schließen |
 
-Es gibt keine API zum Bearbeiten von Suite-Dateien. Die Dateiauslieferung bleibt innerhalb von `suite.root`; auch Symlinks werden darauf geprüft. Dies ist ein lokales Werkzeug ohne eigenes Konto- oder Rechtesystem.
+Alle HTTP-Anfragen benötigen einen einzelnen erlaubten `Host`: `127.0.0.1:<port>`, `localhost:<port>` oder `[::1]:<port>` mit dem tatsächlich gebundenen Port. POST benötigt zusätzlich einen einzelnen `Origin`, der exakt der HTTP-Adresse dieses Hosts entspricht. Fremde Hostnamen sowie fehlende, doppelte oder abweichende Origin-Header werden vor dem Zugriff auf Daten oder Agententransporte abgelehnt. Eigene HTTP-Clients müssen für POST den passenden Origin mitsenden.
+
+Es gibt keine API zum Bearbeiten von Suite-Dateien. Die Dateiauslieferung bleibt innerhalb von `suite.root`; sowohl angefragte Pfade als auch aufgelöste Symlink-Ziele unterliegen den Zugriffsregeln. `.git`, `.env*`, bekannte Zugangsdatenverzeichnisse (u. a. `.aws`, `.ssh`, `.codex`), Zugangsdaten-Dateinamen und Schlüssel-/Zertifikatscontainer werden auch bei aktivierter interner Ansicht nicht ausgeliefert. Die Regeln gelten für Baum, Suche, Vorschau, Metadaten, Downloads und Medien. Eine `.gitignore` ist keine Dashboard-Zugriffsliste: reguläre Arbeitsdokumente können angezeigt werden, auch wenn Git sie ignoriert. Unbekannt benannte Geheimnisse werden nicht anhand ihres Inhalts erkannt und gehören weiterhin außerhalb des Suite-Roots.
+
+Dies ist ein lokales Werkzeug ohne eigenes Konto- oder Rechtesystem; nur an Loopback binden und nicht über Netzwerkfreigaben oder einen Reverse Proxy veröffentlichen. Die Dateiansicht beschränkt nicht die Dateisystemrechte eines ausdrücklich gestarteten externen Agenten.
 
 ## Tests und Abnahme
 

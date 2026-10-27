@@ -34,6 +34,8 @@ def load_config(path):
     if not isinstance(suite.get('root', '../..'), str):
         raise ValueError('suite.root muss ein Verzeichnispfad sein.')
     suite['root'] = str((path.parent / suite.get('root', '../..')).resolve(strict=True))
+    if not isinstance(suite.setdefault('show_internal_files', False), bool):
+        raise ValueError('suite.show_internal_files muss true oder false sein.')
     interval = suite.setdefault('refresh_interval_ms', 2000)
     if isinstance(interval, bool) or not isinstance(interval, (int, float)) or interval < 500:
         raise ValueError('refresh_interval_ms muss mindestens 500 betragen.')
@@ -65,7 +67,8 @@ class DashboardServer(ThreadingHTTPServer):
 
     def __init__(self, config):
         self.config = config
-        self.files = Files(config['suite']['root'], config['viewer']['max_inline_file_mb'])
+        self.files = Files(config['suite']['root'], config['viewer']['max_inline_file_mb'],
+                           show_internal_files=config['suite'].get('show_internal_files', False))
         self.sessions = None
         super().__init__((config['server']['host'], config['server']['port']), Handler)
 
@@ -77,6 +80,27 @@ class DashboardServer(ThreadingHTTPServer):
 
 class Handler(BaseHTTPRequestHandler):
     protocol_version = 'HTTP/1.1'
+
+    def parse_request(self):
+        if not super().parse_request():
+            return False
+        # Validate the authority before dispatch, including reads, SSE and unsupported methods.
+        # Use the bound port (not configured port 0) and never trust an arbitrary DNS name.
+        port = self.server.server_port
+        allowed = {f'127.0.0.1:{port}', f'localhost:{port}', f'[::1]:{port}'}
+        hosts = self.headers.get_all('Host', [])
+        if len(hosts) != 1 or hosts[0].lower() not in allowed:
+            self.close_connection = True
+            self.reply({'error': 'Nicht erlaubter Host.'}, 403)
+            return False
+        if self.command == 'POST':
+            origins = self.headers.get_all('Origin', [])
+            # Exact same-origin HTTP only: reject null, missing, duplicate and malformed origins.
+            if len(origins) != 1 or origins[0].lower() != 'http://' + hosts[0].lower():
+                self.close_connection = True
+                self.reply({'error': 'Nicht erlaubter oder fehlender Origin.'}, 403)
+                return False
+        return True
 
     def log_message(self, fmt, *args):
         # Do not log prompts, query paths, or file contents.
@@ -184,10 +208,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
-            # A local transport, not an authentication platform. Reject cross-origin browser writes.
-            origin = self.headers.get('Origin')
-            if origin and urlsplit(origin).netloc != self.headers.get('Host'):
-                raise PermissionError('Anfrage von einer fremden Browserseite abgelehnt.')
+            # Host and the mandatory same-origin header were checked before dispatch.
             length = int(self.headers.get('Content-Length', 0))
             if not 0 < length <= 1024 * 1024:
                 raise ValueError('Leere oder zu große Nachricht.')
