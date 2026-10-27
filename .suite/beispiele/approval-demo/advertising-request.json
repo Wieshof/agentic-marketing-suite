@@ -1,0 +1,50 @@
+{
+  "id": "req-demo-advertising",
+  "title": "Google-Ads-Kampagne",
+  "summary": "FIKTIVE Anfrage zur Illustration; keine reale Freigabe oder Außenwirkung.",
+  "requested_by": "advertising-Spezialist",
+  "requested_at": "2026-10-27T09:00:00+01:00",
+  "artifact": {
+    "id": "art-demo-advertising",
+    "owner_module": "advertising",
+    "path": ".suite/beispiele/approval-demo/ads-v1.json",
+    "version": 1,
+    "status": "review",
+    "sha256": "3683cc4f22cb3eddffc180f0287f0e24eb24965904c69bfe8c2b5f06164fc949",
+    "contains_personal_data": false,
+    "rights_status": "cleared",
+    "notes": "FIKTIVER Testinhalt, kein Produktionsartefakt."
+  },
+  "action": "spend",
+  "target": "google-ads:fictional-account",
+  "reviews": [
+    {
+      "id": "rv-demo-advertising-expert",
+      "artifact_id": "art-demo-advertising",
+      "artifact_version": 1,
+      "dimension": "expert",
+      "status": "pass",
+      "reviewed_at": "2026-10-27T08:50:00+01:00",
+      "reviewer": "Fiktive Prüfperson",
+      "findings": [],
+      "evidence_refs": [
+        "fixture:ads-v1.json:expert"
+      ]
+    },
+    {
+      "id": "rv-demo-advertising-legal",
+      "artifact_id": "art-demo-advertising",
+      "artifact_version": 1,
+      "dimension": "legal",
+      "status": "pass",
+      "reviewed_at": "2026-10-27T08:50:00+01:00",
+      "reviewer": "Fiktive Prüfperson",
+      "findings": [],
+      "evidence_refs": [
+        "fixture:ads-v1.json:legal"
+      ]
+    }
+  ],
+  "budget_limit": 500,
+  "currency": "EUR"
+}

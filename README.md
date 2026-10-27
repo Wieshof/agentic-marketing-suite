@@ -6,8 +6,8 @@
 
 | Dokument | Stand |
 |---|---|
-| Dokumentation | README v0.3.1 · 27. Oktober 2026 |
-| Beschriebene Softwarebasis | Integrierte Suite v0.2.1 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
+| Dokumentation | README v0.3.2 · 27. Oktober 2026 |
+| Beschriebene Softwarebasis | Integrierte Suite v0.2.2 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
 | Fachbereiche | 9 eigenständig nutzbare Module |
 | Fachmethoden im Repository | 477 Markdown-Methodendateien |
 | Zielgruppe | Unternehmen, Selbstständige, Fachleute und Agenturen; **keine** Agentur- oder Kundenverwaltung als Voraussetzung |
@@ -710,9 +710,11 @@ Diese Unterscheidung ist eine verbindliche Leitlinie für alle Module.
 
 ---
 
+Die optionale [Human Approval & Audit Trail Capability](.suite/APPROVALS.md) ergänzt konkrete Freigabeanforderungen, menschliche Entscheidungen und eine fortlaufende private `approvals.jsonl`. Datei-/Versionsbindung, Person, Zeitpunkt, Budget und spätere Widerrufe bleiben nachvollziehbar. Die tatsächliche Ausführungsprüfung liegt beim Harness; das Dashboard zeigt konfigurierte Protokolle unter „Freigaben“ ausschließlich lesend an.
+
 ## 14. Daten, Artefakte und offene Verträge
 
-Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die gemeinsame Ebene kennt vier maschinenlesbare Verträge:
+Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die gemeinsame Ebene kennt vier Kernverträge sowie zwei ergänzende Verträge für die optionale Freigabe-/Audit-Fähigkeit:
 
 | Vertrag | Datei | Rolle |
 |---|---|---|
@@ -720,6 +722,8 @@ Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die geme
 | Artefakt | [`artifact.schema.json`](.suite/contracts/artifact.schema.json) | Ergebnis, Eigentümermodul, Version, Pfad, Rechte-Status |
 | Review | [`review.schema.json`](.suite/contracts/review.schema.json) | Prüfdimension, Version, Befund, Evidenz und Status |
 | Action Approval | [`action-approval.schema.json`](.suite/contracts/action-approval.schema.json) | Autorisierung einer definierten externen Handlung |
+| Freigabeanforderung | [`approval-request.schema.json`](.suite/contracts/approval-request.schema.json) | Konkreter Entscheidungsvorschlag mit Datei-/Review-Snapshots, Aktion, Ziel und Budget |
+| Audit-Ereignis | [`approval-event.schema.json`](.suite/contracts/approval-event.schema.json) | Anforderung, menschliche Entscheidung oder Widerruf mit Person, Zeit, Version und Vorgänger |
 
 **Die Verträge sind für strukturierte Übergaben gedacht – nicht für jeden kleinen Chatbeitrag verpflichtend.**
 
@@ -1016,7 +1020,7 @@ Weitere Hinweise unter [`MIGRATION.md`](MIGRATION.md).
 
 ### 20.4 Historie und Änderungen
 
-Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.1 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
+Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.2 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
 
 ---
 

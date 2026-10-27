@@ -1,5 +1,13 @@
 # Änderungen
 
+## v0.2.2 – 27. Oktober 2026
+
+Additive Freigabe-/Audit-Fähigkeit mit einer rein lesenden Dashboard-Übersicht. Bestehende Kernverträge und Fachmodule bleiben kompatibel.
+
+- Dashboard-Übersicht „Freigaben“: ausdrücklich konfigurierte, nur lesend ausgewertete Audit-Protokolle mit aktuellem Status, Version, Person, Zeit und Budget; automatische Aktualisierung und klare Leer-/Fehlerzustände.
+
+- Optionale Human Approval & Audit Trail Capability: konkrete Anforderungen, menschliche Entscheidungen einschließlich Änderungswunsch und Widerruf, fortlaufende private JSONL-Ereignisse, read-only Statusprojektion und Regressionstests. Bestehende Aktionsfreigabeverträge bleiben kompatibel; keine Ausführungsprüfung im Dashboard.
+
 ## v0.2.1 – 27. Oktober 2026
 
 Wartungs- und Sicherheitsupdate auf Basis von v0.2. Die neun Fachmodule bleiben eigenständig nutzbar; JSON-Verträge und Methoden-IDs bleiben kompatibel.

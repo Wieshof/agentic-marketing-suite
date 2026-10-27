@@ -90,3 +90,16 @@ Statusbezeichnungen der Shop-Systeme vor Nutzung in der aktuellen Herstellerdoku
 ### Grenzen der strukturellen Prüfung
 
 Der Bundle-Preflight vergleicht die angegebenen Versionen und Hashwerte zwischen Datensätzen. Er berechnet nicht selbst den Hash der referenzierten Datei, authentifiziert keine Person und bestätigt keine tatsächliche externe Ausführung. Die Erkennung von KI-Bezeichnungen im Freigabenamen ist eine Plausibilitätsprüfung, kein Identitätsnachweis. Der ausführende Harness muss Dateiinhalt, Identität, Berechtigungen und Gültigkeit der Freigabe vor einer Aktion unabhängig prüfen. Ein Review mit schwerwiegenden oder kritischen Befunden darf nicht als `not_applicable` eine Freigabe ermöglichen.
+
+## Additive Human Approval & Audit Trail Capability v0.1
+
+Zusätzlich stehen `approval-request.schema.json` und `approval-event.schema.json` zur Verfügung; die vier bisherigen Verträge bleiben unverändert. [APPROVALS.md](APPROVALS.md) definiert Ablauf, Ablage, CLI und Vertrauensgrenzen. Eine Anfrage bündelt eine konkrete Aktion mit einem Artefakt-Snapshot und den vorhandenen Review-Snapshots; jedes Ereignis trägt Version/Hash, Aktion/Ziel und ggf. Budget. Folgeereignisse verweisen auf den letzten Eintrag ihres Requests. Ein menschlicher Entscheidungsnachweis enthält Person, optional Rolle, Zeitstempel mit Zeitzone, Begründung und Bestätigungsreferenz.
+
+| Audit-Zustand | Übergabe an bestehenden Aktionsfreigabevertrag |
+|---|---|
+| `pending` | kein positiver Aktionsfreigabedatensatz; niemand wird als bereits autorisierend erfunden |
+| `approved`, nicht abgelaufen | `action_approval_candidate` mit vorhandenen `review_refs`, Person/Zeitpunkt, exaktem Hash und `execution_status: not_attempted` |
+| `denied` / `changes_requested` | kein positiver Freigabekandidat; `changes_requested` bleibt ein eigener Audit-Zustand und wird nicht als Freigabe interpretiert |
+| `revoked` / `expired` | kein positiver Freigabekandidat; frühere Freigaben dürfen nicht isoliert weiterverwendet werden |
+
+Die Projektion ist read-only und kein Ausführungsgate. Der Harness prüft vor Verwendung erneut die gesamte Kette, tatsächliche Identität/Befugnis, Datei und gültige Reichweite. Früher erzeugte Kandidaten sind bei Widerruf oder Ablauf veraltet. Bestehende Module oder Adapter müssen nicht auf das neue Dateiformat migrieren; bei Verwendung darf der Audit Trail die bisherigen Freigaberegeln nur ergänzen, nicht abschwächen.

@@ -27,6 +27,7 @@ Der Server verwendet Python-Standardbibliothek und natives HTML/CSS/JavaScript. 
 - `suite.refresh_interval_ms`: Pollingintervall, mindestens `500`, Standard `2000`.
 - `viewer.default_mode`: `preview` oder `source`.
 - `viewer.max_inline_file_mb`: Standard `25`. Größere Textdateien werden zum Download angeboten. Medien und PDFs können unabhängig davon direkt gestreamt werden.
+- `approvals.logs`: ausdrücklich verbundene Freigabeprotokolle mit `id`, `label` und lokalem JSONL-`path`; Standard `[]`. Relative Pfade beziehen sich auf den Ordner der verwendeten Konfigurationsdatei. Es findet keine automatische Suche nach privaten Protokollen statt.
 - `agents.profiles`: Programmargumente als JSON-Liste; keine Shellauswertung. Ein absoluter Programmpfad ist möglich, wenn die CLI nicht im `PATH` des Serverterminals liegt.
 
 Eine andere Konfiguration lässt sich mit `--config /absoluter/pfad/config.json` verwenden. Anmeldung und Providerkonfiguration erfolgen im jeweiligen Agentenprogramm. Zugangsdaten gehören nicht in die Dashboardkonfiguration.
@@ -38,6 +39,28 @@ Die Navigation lädt echte Unterverzeichnisse bei Bedarf. Zusätzliche Fachmodul
 Unterstützt werden Markdown mit Tabellen und Codeblöcken, UTF-8-Text und Quellcode, JSON, JSONL, CSV/TSV, Bilder einschließlich SVG, HTML, PDF sowie Audio/Video entsprechend den Browserfähigkeiten. CSV ist auf 500 Zeilen und 100 Spalten begrenzt. Unbekannte oder zu große Formate behalten einen Downloadlink. HTML läuft in einem getrennten, eingeschränkten Frame ohne Skriptausführung; relative lokale CSS- und Bilddateien werden über `/view/` geladen. Interaktive HTML-Anwendungen benötigen einen eigenen Entwicklungsserver.
 
 Offene Dateien und aufgeklappte Verzeichnisse werden regelmäßig geprüft. Externe Änderungen erscheinen automatisch, neue Dateien erhalten einen Hinweis, verschwundene Dateien einen verständlichen Zustand. Eine während des Schreibens vorübergehend unlesbare Datei wird weiter geprüft. Dateipfade lassen sich kopieren. Angeheftete und zuletzt geöffnete Dokumente werden ausschließlich als Browser-Anzeigezustand gespeichert.
+
+## Freigaben anzeigen
+
+Links in der Navigation **Freigaben** wählen oder `/?view=approvals` öffnen. Die Übersicht zeigt Anforderungstitel, Fachbereich, Version, gegebenenfalls Budget sowie den aktuellen Status: Ausstehend, Freigegeben, Abgelehnt, Änderung verlangt, Widerrufen oder Abgelaufen. Bei einer Entscheidung stehen Person, gegebenenfalls Rolle und Zeitpunkt mit lokaler Zeitzone dabei; bei einer ausstehenden Anfrage steht ausdrücklich „Angefragt am“. Über „Begründung und Dokument“ sind Begründung und das referenzierte Dokument erreichbar.
+
+Die Konfiguration kann beispielsweise diesen Abschnitt enthalten:
+
+```json
+{
+  "approvals": {
+    "logs": [
+      {"id": "herbstkampagne", "label": "Herbstkampagne", "path": "/privater/pfad/approvals.jsonl"}
+    ]
+  }
+}
+```
+
+Konfigurationsänderungen benötigen einen Serverneustart. Dateien außerhalb des Suite-Roots werden nur als ausdrücklich konfigurierte Audit-Quelle gelesen; dadurch entsteht kein allgemeiner Dateizugriff außerhalb der Suite. Absolute Quellpfade und vollständige Aktionsfreigabekandidaten werden nicht an den Browser ausgeliefert. Standardmäßig sind keine Protokolle verbunden; fiktive Beispiele werden nie automatisch als echte Entscheidungen angezeigt. Für eine Testansicht kann gezielt `.suite/beispiele/approval-demo/approvals-demo.jsonl` verbunden werden, mit einer klaren Bezeichnung wie „Fiktive Beispielansicht“ und einem zum Konfigurationsordner passenden Pfad.
+
+Die Ansicht aktualisiert sich beim Öffnen, über **Aktualisieren** und während sie sichtbar ist mit dem bestehenden Pollingintervall. Ein angehängter Widerruf ersetzt den angezeigten Status, ohne die Historie zu ändern. Fehlende, gesperrte, beschädigte oder nicht lesbare Protokolle liefern einen Hinweis und keine alten positiven Status. Gültige andere Quellen bleiben getrennt sichtbar. Leere und noch nicht konfigurierte Quellen haben eigene Zustände. Das Lesen ist auf 10 MiB je Protokoll begrenzt; größere Protokolle werden als derzeit nicht verlässlich anzeigbar behandelt und niemals still gekürzt.
+
+Das Dashboard liest und prüft die Ereigniskette für die Anzeige, schreibt aber keine Entscheidungen oder Sperren. Es gibt keine Freigabe-, Ablehnungs- oder Widerrufsbuttons. Die tatsächliche Erfassung und Ausführungsprüfung verbleibt beim Harness bzw. Adapter, wie in [APPROVALS.md](../APPROVALS.md) beschrieben. Eine angezeigte Freigabe ist kein Nachweis einer erfolgten Veröffentlichung oder Buchung.
 
 ## Agenten verwenden
 
@@ -65,6 +88,7 @@ Der Server hält maximal 2.000 Ereignisse je Verbindung als flüchtigen Transpor
 | Methode | Pfad | Funktion |
 |---|---|---|
 | GET | `/api/config` | Öffentliche Anzeigeeinstellungen |
+| GET | `/api/approvals` | Read-only Statusprojektion der ausdrücklich konfigurierten Protokolle; keine frei wählbaren Quellpfade |
 | GET | `/api/modules` | Vorhandene Fachbereiche und `.suite` |
 | GET | `/api/tree?path=…&hidden=true&q=…` | Verzeichnisebene; bei Suchbegriff rekursive Pfadsuche |
 | GET | `/api/file?path=…` | Metadaten und begrenzte Vorschau; `meta=true` nur Metadaten |

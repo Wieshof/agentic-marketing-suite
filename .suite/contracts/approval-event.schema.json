@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SuiteApprovalEvent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "request_id",
+    "type",
+    "actor",
+    "occurred_at",
+    "recorded_at",
+    "artifact_id",
+    "artifact_version",
+    "artifact_sha256",
+    "action",
+    "target",
+    "reason"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "requested",
+        "approved",
+        "denied",
+        "changes_requested",
+        "revoked"
+      ]
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 2
+    },
+    "actor_role": {
+      "type": "string",
+      "minLength": 2
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "artifact_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "publish",
+        "send",
+        "spend",
+        "print",
+        "delete",
+        "modify_external"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "budget_limit": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "previous_event_id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "request": {
+      "type": "object",
+      "$ref": "approval-request.schema.json"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "requested"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "request"
+        ],
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "previous_event_id"
+              ]
+            },
+            {
+              "required": [
+                "evidence_ref"
+              ]
+            }
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "previous_event_id",
+          "evidence_ref"
+        ],
+        "not": {
+          "required": [
+            "request"
+          ]
+        }
+      }
+    }
+  ],
+  "$comment": "Additive capability v0.1. requested embeds the request; other events bind to its immutable subject and preceding event. A human decision requires evidence from a trusted capture channel.",
+  "dependentRequired": {
+    "budget_limit": [
+      "currency"
+    ],
+    "currency": [
+      "budget_limit"
+    ]
+  }
+}

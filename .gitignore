@@ -42,3 +42,7 @@ htmlcov/
 /noCRM/analysen/
 
 # Für weitere produktive Ergebnisordner lokale Regeln in .git/info/exclude ergänzen.
+
+# Private Freigabeprotokolle; fiktive *-demo.jsonl bleiben versioniert.
+**/approvals.jsonl
+**/approvals.jsonl.lock
