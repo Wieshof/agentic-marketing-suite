@@ -4,7 +4,7 @@ argument-hint: <Ziel, Angebot, Zielgruppe, Kanal, Zeitraum>
 ---
 Erstelle ein strategisches Marketingbriefing für: $ARGUMENTS
 
-1. `AGENT.md` und `marketing/AGENT.md` befolgen; Methode `marketing/.marketing/methoden/konzepte/strategisches-marketingbriefing.md`.
-2. Unternehmenswissen nur selektiv: Gibt es Bestände unter `business-dna/`, mit `business-dna/.business-dna/tools/build_context.py` einen Kontext für diesen Zweck bauen. Gibt es freigegebene Markenprofile, ebenso `branding/.branding/tools/build_brand_context.py`. Fehlt beides, Annahmen sichtbar kennzeichnen.
-3. Vor Abgabe `.suite/QUALITY.md` Q1–Q3 und Q6 prüfen.
+1. [Suite-Einstieg](../../AGENT.md) und [Marketing-Einstieg](../../marketing/AGENT.md) befolgen; Methode [Strategisches Marketingbriefing](../../marketing/.marketing/methoden/konzepte/strategisches-marketingbriefing.md).
+2. Unternehmenswissen nur selektiv: Vorhandene, berechtigt lesbare Claim-/Quellendateien anhand der [Business-DNA-Integration](../../business-dna/.business-dna/SUITE.md) auswählen; keine pauschalen Bestandsimporte. Passenden Request mit Zweck, Themen, Sichtbarkeit, Stichtag und Budget erstellen. Für tatsächliche freigegebene Markenprofile nach [Branding-Integration](../../branding/.branding/SUITE.md) vorgehen. Fehlende Fakten- und Markenquellen getrennt benennen und Annahmen kennzeichnen. `hypothesis` wird vom Standard-Faktenexport nicht übernommen; solche Einträge nur in einer ausdrücklich beauftragten, berechtigten Hypothesenanalyse lesen, niemals als Fakten ausgeben.
+3. Vor Abgabe [Qualitätsstandard](../../.suite/QUALITY.md) Q1–Q3 und Q6 prüfen.
 4. Ergebnis als Datei im `marketing/`-Arbeitsbereich ablegen und `.suite/STATE.md` nur bei fachübergreifendem Vorgang aktualisieren. Keine externe Aktion.
