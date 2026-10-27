@@ -59,7 +59,7 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 
 - **Optionale Dashboard-Anzeige:** In der eigenen Dashboard-Konfiguration `approvals.logs` mit eindeutigem `id`, lesbarem `label` und lokalem JSONL-`path` ergänzen und den Server neu starten. Relative Pfade beziehen sich auf die Konfigurationsdatei. Standardmäßig keine Quellen, keine automatische Übernahme der fiktiven Beispiele; Entscheidungs- und Ausführungsrechte bleiben beim Harness.
 
-## Geplantes Update v0.2.2 → v0.2.3: optionale technische Fähigkeiten
+## Update v0.2.2 → v0.2.3: optionale technische Fähigkeiten
 
 - Neue Quelle `.suite/capabilities/REGISTRY.md`, maschinenlesbare Capability-/Ausführungsverträge und fachlich zugeordnete Adapter/Minimodule. Vorhandene vier Kernverträge, Approval-Audit-Daten und Kundenartefakte werden nicht automatisch migriert. Keine Konten, Live-Hostings oder Serverdienste werden bei einem Suite-Update aktiviert.
 - **SFTP:** OpenSSH installieren/bereitstellen, separaten Host-Key unabhängig prüfen, Schlüssel über externe Credential-Referenzen bereitstellen. Erst ein passendes unveränderliches Website-ZIP und den freizugebenden Datei-/Hash-Plan erzeugen; Root, Source, konkretes Ziel und ZIP-Referenz beachten. Keine Remote-Löschung, kein Klartext-FTP-Fallback, kein automatischer Retry nach unklarem Transfer.

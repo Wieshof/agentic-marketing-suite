@@ -1,6 +1,6 @@
 # Änderungen
 
-## Unveröffentlicht – vorgesehen für v0.2.3
+## v0.2.3 – 27. Oktober 2026
 
 - Acht optionale technische Fähigkeiten: SFTP-Publishing, gemeinsamer IMAP-/SMTP-Mail-Adapter und sechs standalone Webmodule (Kontaktformular, Analytics Lite, Suche, Sitemap, Weiterleitungen, Newsletter mit Double-Opt-in).
 - Capability-Register, maschinenlesbare Verträge, explizite Freigabebindung, private Ausführungsprotokolle und kontrollierte Recovery ohne blinde Wiederholung.

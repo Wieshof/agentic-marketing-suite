@@ -7,7 +7,7 @@
 | Dokument | Stand |
 |---|---|
 | Dokumentation | README v0.3.2 · 27. Oktober 2026 |
-| Beschriebene Softwarebasis | Integrierte Suite v0.2.2 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
+| Beschriebene Softwarebasis | Integrierte Suite v0.2.3 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
 | Fachbereiche | 9 eigenständig nutzbare Module |
 | Fachmethoden im Repository | 477 Markdown-Methodendateien |
 | Zielgruppe | Unternehmen, Selbstständige, Fachleute und Agenturen; **keine** Agentur- oder Kundenverwaltung als Voraussetzung |
@@ -888,7 +888,7 @@ Creative verfolgt für Print einen hybriden Ansatz: KI für Idee und gestalteris
 
 ---
 
-### Optionale technische Fähigkeiten (für v0.2.3)
+### Optionale technische Fähigkeiten (v0.2.3)
 
 Das [Capability-Register](.suite/capabilities/REGISTRY.md) ergänzt wiederverwendbare Verfahren mit einheitlichen Voraussetzungen, Konfigurationen, Ein-/Ausgaben und Status: SFTP-Publishing mit Release-ZIP-/Datei-Hashes, einen gemeinsamen IMAP-/SMTP-Adapter sowie Kontaktformular, Analytics Lite, lokale Website-Suche, Sitemap, Apache-Weiterleitungen und Newsletter-Anmeldung mit Double-Opt-in. Konten und Hoster sind dadurch nicht automatisch eingerichtet; die tatsächlichen Werkzeug-/Ausführungsrechte bleiben beim Harness bzw. Host.
 
@@ -1028,7 +1028,7 @@ Weitere Hinweise unter [`MIGRATION.md`](MIGRATION.md).
 
 ### 20.4 Historie und Änderungen
 
-Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.2 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
+Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.3 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
 
 ---
 

@@ -1,4 +1,4 @@
-# Wiederverwendbare Fähigkeiten – v0.2.3 (Entwicklung)
+# Wiederverwendbare Fähigkeiten – v0.2.3
 
 Die Suite definiert fachliche Verfahren, Ein-/Ausgaben, Konfiguration und Status. Ein Harness stellt generische Werkzeuge bereit und ruft diese Verfahren auf. Er erfindet weder Zustellstatus noch Veröffentlichungsablauf. Einträge sind optional; kein Fachmodul oder veröffentlichter Webauftritt benötigt einen dauerhaften Suite-Dienst.
 
