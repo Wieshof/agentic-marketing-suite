@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SuiteCapabilityExecution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "key",
+    "capability",
+    "status",
+    "recorded_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 4
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "started",
+        "accepted",
+        "confirmed",
+        "failed",
+        "uncertain"
+      ]
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authorization_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "file_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "message_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "accepted_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "refused_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "replayed": {
+      "type": "boolean"
+    },
+    "error_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "client_message_id": {
+      "type": "string",
+      "pattern": "^<[^<>\\s]+>$"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "publish",
+        "send",
+        "spend",
+        "print",
+        "delete",
+        "modify_external"
+      ]
+    }
+  },
+  "$comment": "Private append-only transport receipts; accepted is not delivered and confirmed is capability-specific technical evidence."
+}

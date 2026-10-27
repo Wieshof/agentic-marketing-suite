@@ -1,0 +1,14 @@
+{
+  "deployment": {
+    "type": "sftp",
+    "source": "site/",
+    "target": "/public_html/",
+    "host": "example.invalid",
+    "port": 22,
+    "username": "webmaster",
+    "credential_ref": "WEBSITE_PRODUCTION",
+    "delete_remote": false,
+    "verify_upload": true,
+    "release_archive": "archiv/releases/site-v1.zip"
+  }
+}

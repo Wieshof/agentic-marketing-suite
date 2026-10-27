@@ -1,0 +1,33 @@
+{
+  "id": "web.site-search",
+  "version": "0.1",
+  "owner_module": "website",
+  "kind": "webmodule",
+  "purpose": "Öffentliche HTML-Inhalte im Browser durchsuchen.",
+  "entrypoint": "website/.nocms/module/site-search/site-search.js",
+  "configuration": "website/.nocms/module/site-search/README.md",
+  "prerequisites": [
+    "Statischer HTML-Bestand",
+    "Generierter JSON-Index",
+    "Browser mit JavaScript"
+  ],
+  "inputs": [
+    "Öffentliche HTML-Seiten",
+    "Lokaler Suchbegriff"
+  ],
+  "outputs": [
+    "JSON-Suchindex",
+    "Sichere DOM-Ergebnisliste"
+  ],
+  "checks": [
+    "Kein script/style/noindex im Index",
+    "Keine Suchbegriffe im Netzwerk",
+    "Keine HTML-Injektion"
+  ],
+  "statuses": [
+    "local_files_created",
+    "results",
+    "unavailable"
+  ],
+  "external_actions": []
+}

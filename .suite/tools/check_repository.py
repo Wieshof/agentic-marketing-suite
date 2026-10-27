@@ -64,11 +64,12 @@ def main():
         for directory in (
             '.suite/tests', 'analytics/.analytics/tests',
             'creative/.creative/tests', 'noCRM/.nocrm/tests',
-            'social-media/.social-media/tests',
+            'social-media/.social-media/tests', 'website/.nocms/tests',
             'e-commerce/.e-commerce/tests',
         )
     ]
     commands.extend([
+        ['.suite/capabilities/check.py'],
         ['advertising/.advertising/tools/test_workspace.py'],
         ['.suite/tools/validate_records.py', 'work-order', '.suite/beispiele/topaca-work-order.json'],
         ['.suite/tools/validate_records.py', 'bundle', '.suite/beispiele/demo-freigabe-bundle.json'],

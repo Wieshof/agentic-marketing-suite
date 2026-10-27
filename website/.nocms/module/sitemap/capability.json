@@ -1,0 +1,29 @@
+{
+  "id": "web.sitemap",
+  "version": "0.1",
+  "owner_module": "website",
+  "kind": "build-tool",
+  "purpose": "XML-Sitemap öffentlicher HTML-Seiten erzeugen.",
+  "entrypoint": "website/.nocms/tools/webmodules.py",
+  "configuration": "website/.nocms/module/sitemap/README.md",
+  "prerequisites": [
+    "Python 3.9+",
+    "HTTPS-Site-Origin"
+  ],
+  "inputs": [
+    "Öffentlicher HTML-Bestand",
+    "Site-Origin"
+  ],
+  "outputs": [
+    "sitemap.xml"
+  ],
+  "checks": [
+    "XML-Escaping",
+    "noindex/private/Symlink-Ausschluss",
+    "Keine Zugangsdaten im Origin"
+  ],
+  "statuses": [
+    "local_files_created"
+  ],
+  "external_actions": []
+}

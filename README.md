@@ -7,7 +7,7 @@
 | Dokument | Stand |
 |---|---|
 | Dokumentation | README v0.3.2 · 27. Oktober 2026 |
-| Beschriebene Softwarebasis | Integrierte Suite v0.2.2 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
+| Beschriebene Softwarebasis | Integrierte Suite v0.2.3 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
 | Fachbereiche | 9 eigenständig nutzbare Module |
 | Fachmethoden im Repository | 477 Markdown-Methodendateien |
 | Zielgruppe | Unternehmen, Selbstständige, Fachleute und Agenturen; **keine** Agentur- oder Kundenverwaltung als Voraussetzung |
@@ -714,7 +714,7 @@ Die optionale [Human Approval & Audit Trail Capability](.suite/APPROVALS.md) erg
 
 ## 14. Daten, Artefakte und offene Verträge
 
-Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die gemeinsame Ebene kennt vier Kernverträge sowie zwei ergänzende Verträge für die optionale Freigabe-/Audit-Fähigkeit:
+Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die gemeinsame Ebene kennt vier Kernverträge, zwei ergänzende Freigabe-/Audit-Verträge sowie Verträge für optionale Capabilities und ihre Ausführungsnachweise:
 
 | Vertrag | Datei | Rolle |
 |---|---|---|
@@ -724,6 +724,8 @@ Die Suite soll ohne proprietäres Datenmodell betrieben werden können. Die geme
 | Action Approval | [`action-approval.schema.json`](.suite/contracts/action-approval.schema.json) | Autorisierung einer definierten externen Handlung |
 | Freigabeanforderung | [`approval-request.schema.json`](.suite/contracts/approval-request.schema.json) | Konkreter Entscheidungsvorschlag mit Datei-/Review-Snapshots, Aktion, Ziel und Budget |
 | Audit-Ereignis | [`approval-event.schema.json`](.suite/contracts/approval-event.schema.json) | Anforderung, menschliche Entscheidung oder Widerruf mit Person, Zeit, Version und Vorgänger |
+| Capability | [`capability.schema.json`](.suite/contracts/capability.schema.json) | Zweck, Voraussetzungen, Konfiguration, Ein-/Ausgaben und Prüf-/Statuskonventionen |
+| Capability-Ausführung | [`capability-execution.schema.json`](.suite/contracts/capability-execution.schema.json) | Privater beobachteter Versuch/Transportstatus mit Idempotenz- und Freigabereferenz |
 
 **Die Verträge sind für strukturierte Übergaben gedacht – nicht für jeden kleinen Chatbeitrag verpflichtend.**
 
@@ -866,13 +868,13 @@ Nicht jede Installation benötigt jede Schicht. Eine Strategieberatung funktioni
 
 | Modul | Potenzieller Typ von Werkzeugen | Stand dieser Suite |
 |---|---|---|
-| Website | Dateieditor, Build/Test, Deployment, Browser-Tests | Anweisungen/Website-Prozess; konkrete Infrastruktur variabel |
+| Website | Dateieditor, Build/Test, Deployment, Browser-Tests | Website-Prozess, optionaler SFTP-Publisher und sechs Webmodule; tatsächliches Hosting separat einrichten |
 | Social Media | Plattform-APIs, Scheduler, Upload-/Statusadapter | Spezifikation/Prüflogik, keine vorkonfigurierten Konten |
 | Advertising | Google-/Meta-/weitere Anzeigen-APIs, Media-Reporting | Planungs- und Adaptermodelle; keine Live-Buchungen ohne Integration |
 | Creative | Bild-/Video-/Audio-KI, SVG, Print-Renderer, PDF-Preflight | Methoden plus einzelne lokale Prüf-/Proof-Werkzeuge |
-| noCRM | Mail, Messenger, Voice, Kontaktindex, Einwilligungsprüfung | Offenes Datenmodell und lokaler Preflight; kein Versandgateway |
+| noCRM | Mail, Messenger, Voice, Kontaktindex, Einwilligungsprüfung | Offenes Datenmodell, Preflight und optionaler IMAP-/SMTP-Adapter; keine eingerichteten Konten |
 | Analytics | CSV/SQL, Analytics-APIs, Dashboards, Python | Einzelne lokale Auswertungswerkzeuge; keine Live-Datenverbindung |
-| PR | Medienrecherche, Pressetools, Versand, Monitoring | Methoden/Arbeitsaufträge; Versand benötigt externe Integration |
+| PR | Medienrecherche, Pressetools, Versand, Monitoring | Methoden/Arbeitsaufträge; optional denselben IMAP-/SMTP-Adapter zweckgebunden nutzen |
 | Marketing | Recherche, Fachanalysen, Konzept- und Planungswerkzeuge | Methodenbibliothek und offene Ergebnisdateien |
 | E-Commerce | Shop-System-APIs (Shopify, WooCommerce, Shopware), Merchant API, Zahlungsdienst-Konfiguration | Offene Katalog-/Funnel-Formate, lokaler Feed- und Compliance-Preflight; keine Shop-Laufzeit, kein produktiver Adapter |
 
@@ -885,6 +887,12 @@ Ein API- oder Plattformprofil bedeutet nicht, dass jede Funktion programmatisch 
 Creative verfolgt für Print einen hybriden Ansatz: KI für Idee und gestalterische Beurteilung, deterministische Layoutwerkzeuge für präzise Satz-/Positionierungsarbeit und spezialisierte Druck-PDF-Prüfungen. Ein Proof ist ein **Entwurf**, ein bestandener Dateiauftrags-Preflight ist **keine vollständige PDF/X-Zertifizierung**. Die Druckerei-Spezifikation bleibt maßgeblich.
 
 ---
+
+### Optionale technische Fähigkeiten (v0.2.3)
+
+Das [Capability-Register](.suite/capabilities/REGISTRY.md) ergänzt wiederverwendbare Verfahren mit einheitlichen Voraussetzungen, Konfigurationen, Ein-/Ausgaben und Status: SFTP-Publishing mit Release-ZIP-/Datei-Hashes, einen gemeinsamen IMAP-/SMTP-Adapter sowie Kontaktformular, Analytics Lite, lokale Website-Suche, Sitemap, Apache-Weiterleitungen und Newsletter-Anmeldung mit Double-Opt-in. Konten und Hoster sind dadurch nicht automatisch eingerichtet; die tatsächlichen Werkzeug-/Ausführungsrechte bleiben beim Harness bzw. Host.
+
+Die sechs Webmodule sind optional und werden gezielt übernommen. Eine veröffentlichte Website benötigt keinen dauerhaften Suite-/KI-Dienst. PHP wird nur für gewählte serverseitige Funktionen benötigt; statische Suche und Build-Ausgaben bleiben auf statischem Hosting nutzbar. Das Dashboard erhält keine neuen Versand-/Veröffentlichungsrechte. Konkrete Aktualisierung und sichere private Ablage: [MIGRATION.md](MIGRATION.md).
 
 ## 18. Praktische Anwendungsfälle
 
@@ -1020,7 +1028,7 @@ Weitere Hinweise unter [`MIGRATION.md`](MIGRATION.md).
 
 ### 20.4 Historie und Änderungen
 
-Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.2 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
+Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.3 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
 
 ---
 

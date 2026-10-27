@@ -46,3 +46,7 @@ htmlcov/
 # Private Freigabeprotokolle; fiktive *-demo.jsonl bleiben versioniert.
 **/approvals.jsonl
 **/approvals.jsonl.lock
+
+# Private Adapter-Ausführungsnachweise
+**/executions.jsonl
+**/executions.jsonl.lock

@@ -1,0 +1,40 @@
+{
+  "id": "web.newsletter",
+  "version": "0.1",
+  "owner_module": "website",
+  "kind": "webmodule",
+  "purpose": "Einzelne Newsletter-Anmeldungen mit Double-Opt-in und Abmeldung entgegennehmen.",
+  "entrypoint": "website/.nocms/module/newsletter/newsletter.php",
+  "configuration": "website/.nocms/module/common/config.example.json",
+  "prerequisites": [
+    "PHP 8.3+",
+    "Private Konfiguration/Speicher",
+    "Versionierter Einwilligungstext",
+    "Freigegebene Bestätigungsnachrichten"
+  ],
+  "inputs": [
+    "E-Mail und ausdrücklicher Anmeldewunsch",
+    "Einmaliger Bestätigungslink plus POST"
+  ],
+  "outputs": [
+    "Pending/confirmed/unsubscribed",
+    "Bestätigungs-Outbox",
+    "CSV nur bestätigter Anmeldungen"
+  ],
+  "checks": [
+    "Kein Opt-in durch GET/Linkscanner",
+    "Tokenablauf/CSRF/Rate-Limit",
+    "Unsubscribe und Zweckbindung"
+  ],
+  "statuses": [
+    "pending",
+    "confirmed",
+    "unsubscribed",
+    "queued",
+    "accepted",
+    "uncertain"
+  ],
+  "external_actions": [
+    "send"
+  ]
+}

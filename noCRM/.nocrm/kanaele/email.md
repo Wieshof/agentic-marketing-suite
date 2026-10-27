@@ -20,7 +20,7 @@ Gesprächs-Thread, Reply-To, Signatur, Anhänge, DMARC/SPF/DKIM, Werbezweck und 
 
 ## Grenzen
 
-Offiziell dokumentierte Gmail- und Microsoft-Graph-Mail-Schnittstellen; keine Kontoanbindung im Paket. 1:1-Personalisierung ersetzt weder kanaltypische Nutzungsregeln noch gesetzliche Anforderungen.
+Optionaler [IMAP-/SMTP-Adapter](../integrationen/email/README.md) vorhanden, aber kein eingerichtetes Konto. Gmail-/Microsoft-Graph-APIs sind mögliche weitere Adapter, keine implementierten Verbindungen. 1:1-Personalisierung ersetzt weder kanaltypische Nutzungsregeln noch gesetzliche Anforderungen.
 
 ## Referenz
 

@@ -254,3 +254,9 @@ Berichte nach einem Arbeitsvorgang kurz und verständlich:
 6. **Veröffentlichung:** Wurde nur lokal geändert, ein Release vorbereitet oder erfolgreich publiziert?
 
 **Leitsatz:** Ändere die Website direkt. Halte ihr Projektwissen aktuell. Prüfe alle betroffenen Stellen. Bewahre Originale und veröffentlichte Stände auf. Erfinde weder Fakten noch Prüferfolge.
+
+## Optionale technische Fähigkeiten (ab v0.2.3)
+
+Bei tatsächlichem Bedarf `.nocms/integrationen/sftp/README.md` und `.nocms/module/common/README.md` konsultieren. `.nocms/tools/webmodules.py` installiert gezielt Kontaktformular, Analytics Lite, lokale Suche oder Newsletter und erzeugt Sitemap/Apache-Weiterleitungen. Standard bleibt eine direkt veröffentlichbare statische Website; PHP nur bei gewähltem Modul und tatsächlich geeignetem Host. Keine unbenötigten Laufzeitdateien, keine privaten Konfigurationen oder Daten in `site/` übernehmen. Ein veröffentlichter Webauftritt läuft ohne Suite oder Harness.
+
+SFTP erfordert einen freigegebenen Datei-/Hash-Plan mit passendem unveränderlichem Release-ZIP, konkretem Ziel und tatsächlichem Transfer-/Readback-Nachweis. HTTP-/Browser-/PHP-Abnahme bleibt separat; keine Veröffentlichung behaupten, weil ein lokales Tool vorhanden ist. Kontakt-/Newsletter-/Messmodule brauchen einen geprüften begrenzten Serviceauftrag mit Zweck, Grenzen, Ablauf und Datenschutzinformation. Templateinstallation aktiviert keine Dienste. Das optionale Suite-Register verweist auf die Originalimplementierungen; die Anleitungen sind keine Konten oder Einwilligungen.

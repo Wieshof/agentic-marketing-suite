@@ -103,3 +103,11 @@ Zusätzlich stehen `approval-request.schema.json` und `approval-event.schema.jso
 | `revoked` / `expired` | kein positiver Freigabekandidat; frühere Freigaben dürfen nicht isoliert weiterverwendet werden |
 
 Die Projektion ist read-only und kein Ausführungsgate. Der Harness prüft vor Verwendung erneut die gesamte Kette, tatsächliche Identität/Befugnis, Datei und gültige Reichweite. Früher erzeugte Kandidaten sind bei Widerruf oder Ablauf veraltet. Bestehende Module oder Adapter müssen nicht auf das neue Dateiformat migrieren; bei Verwendung darf der Audit Trail die bisherigen Freigaberegeln nur ergänzen, nicht abschwächen.
+
+## Optionale technische Capabilities (ab v0.2.3)
+
+[capabilities/REGISTRY.md](capabilities/REGISTRY.md) verweist auf acht optionale Implementierungen. `capability.schema.json` beschreibt Zweck, Voraussetzungen, Konfiguration, Ein-/Ausgaben und Prüf-/Statuskonventionen; `capability-execution.schema.json` beschreibt private beobachtete Ausführungsereignisse. Die bisherigen Freigabe-/Artefaktverträge bleiben unverändert.
+
+Bei SFTP und IMAP/SMTP ist das freizugebende Artefakt der lesbare Plan: dessen Hash bindet die nicht geheime Konto-/Zielkonfiguration und die exakten Inhalts-Hashes. Der SFTP-Plan bindet zusätzlich das vollständige unveränderliche Release-ZIP; dessen Inhalt wird gegen `site/` geprüft. Damit bleibt die Website-Archivpflicht erhalten. Mail-Pläne binden zusätzlich Envelope-Empfänger, Zweck, Evidenzreferenz und eingefrorene EML. Legacy-Adapter dürfen weiterhin direkt ZIP-/Entwurfsdateien nach dem bestehenden Mapping freigeben; neue Plan-Verfahren benötigen die explizite Hashkette.
+
+SFTP verwendet `publish`; Mailversand `send`; IMAP-Postfachentwürfe `modify_external`. Berechtigtes Read-only-IMAP-Lesen benötigt einen dokumentierten Lesekontext und explizite Kontogrenzen, keine erfundene Schreibfreigabe. `accepted` ist nur Annahme, SFTP-`confirmed` nur verifizierter Dateitransfer. Serverseitige Webmodule laufen innerhalb eines zuvor freigegebenen begrenzten Serviceauftrags; ihre privaten Transport-/Consent-Daten sind keine zentralen menschlichen Suite-Freigaben. Das Dashboard erhält keine neuen Ausführungsrechte.

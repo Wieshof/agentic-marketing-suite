@@ -1,0 +1,39 @@
+{
+  "origin": "https://example.invalid",
+  "privacy_url": "/datenschutz.html",
+  "data_dir": "/srv/private/webmodules",
+  "retention_days": 30,
+  "contact": {
+    "enabled": false,
+    "authorization": {
+      "approval_ref": "",
+      "expires_at": "1970-01-01T00:00:00+00:00"
+    },
+    "transport": "outbox",
+    "from": "website@example.invalid",
+    "to": "owner@example.invalid"
+  },
+  "newsletter": {
+    "enabled": false,
+    "authorization": {
+      "approval_ref": "",
+      "expires_at": "1970-01-01T00:00:00+00:00"
+    },
+    "transport": "outbox",
+    "from": "newsletter@example.invalid",
+    "consent_text": "VOR VERWENDUNG: konkreten Zweck, Inhalt, Häufigkeit und Abmeldung fachlich/rechtlich prüfen.",
+    "consent_version": "draft-1",
+    "endpoint_path": "/api/newsletter.php"
+  },
+  "analytics": {
+    "enabled": false,
+    "authorization": {
+      "approval_ref": "",
+      "expires_at": "1970-01-01T00:00:00+00:00"
+    },
+    "pages": [
+      "/"
+    ],
+    "retention_days": 30
+  }
+}

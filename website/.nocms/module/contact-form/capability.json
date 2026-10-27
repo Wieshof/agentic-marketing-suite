@@ -1,0 +1,36 @@
+{
+  "id": "web.contact-form",
+  "version": "0.1",
+  "owner_module": "website",
+  "kind": "webmodule",
+  "purpose": "Kontaktanfragen validieren und an privaten Eingang oder konfigurierten Mailtransport übergeben.",
+  "entrypoint": "website/.nocms/module/contact-form/contact.php",
+  "configuration": "website/.nocms/module/common/config.example.json",
+  "prerequisites": [
+    "PHP 8.3+",
+    "Private Konfiguration und Speicher außerhalb des Webroots",
+    "Freigegebener begrenzter Serviceauftrag"
+  ],
+  "inputs": [
+    "Formular mit CSRF-Token",
+    "Name/E-Mail/Nachricht"
+  ],
+  "outputs": [
+    "Privater Eingang oder SMTP-MTA-Annahme",
+    "Transportereignisse"
+  ],
+  "checks": [
+    "Servervalidierung",
+    "Origin/CSRF/Honeypot/Rate-Limit",
+    "Feste Empfänger und Header"
+  ],
+  "statuses": [
+    "queued",
+    "accepted",
+    "failed",
+    "uncertain"
+  ],
+  "external_actions": [
+    "send"
+  ]
+}
