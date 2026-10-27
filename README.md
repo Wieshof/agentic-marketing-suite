@@ -145,7 +145,7 @@ Der Website-Spezialist wählt geeignete Verfahren selbst. Mit derselben Grundide
 
 1. Das [GitHub-Repository](https://github.com/markus-ertel/agentic-marketing-suite) klonen oder das Suite-Archiv entpacken und die Ordnerstruktur erhalten, **einschließlich versteckter Ordner** wie `.suite/`, `.nocms/` und `.analytics/`.
 2. Den entpackten Ordner `agentic-marketing-suite/` als erlaubtes Arbeitsverzeichnis für den Harness bereitstellen.
-3. Für eine allgemeine oder bereichsübergreifende Arbeit die Root-Datei `AGENT.md` lesen lassen.
+3. Für eine allgemeine oder bereichsübergreifende Arbeit die Root-Datei `AGENT.md` lesen lassen. Dünne Einstiegsdateien für Claude Code (`CLAUDE.md`), Codex (`AGENTS.md`) und Cursor (`.cursor/rules/suite.mdc`) verweisen auf diesen Einstieg; ihre automatische Übernahme ist im verwendeten Harness zu prüfen; Claude Code bietet zusätzlich `/brief`, `/evaluate` und `/freigabe` aus `.claude/commands/`.
 4. Für einen einzelnen Fachauftrag direkt die jeweilige Modul-`AGENT.md` verwenden.
 5. Ein Ziel in natürlicher Sprache formulieren; die KI soll darauf **direkt fachlich reagieren**.
 6. Erst bei konkreter Dateiarbeit oder externer Aktion die dafür notwendigen Rechte und Werkzeuge bereitstellen.
