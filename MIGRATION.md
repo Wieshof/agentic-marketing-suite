@@ -93,3 +93,7 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 - Dashboard für die neue Bezeichnung neu starten. Den bestehenden Harness-Chat und die bewusste Dateireferenz nutzen; es gibt keine automatische Sitzung oder neue Help-API. Interne Dateien behalten ihre bestehenden Zugriffssperren.
 - Help vor Funktionsauskünften auf die tatsächliche Installation, passende Quellen und überprüften Testumfang verweisen. Historische Angaben aus dem Paket sind keine aktuelle Versionsgarantie. [Konkrete Integration](help/.help/SUITE.md).
 - Individuelle Anleitungen/Lernnotizen geschützt außerhalb der Bibliothek ablegen. Paket-/Integrationstests ausführen; die dialogischen Akzeptanzfälle und echte Verständlichkeit zusätzlich im Harness prüfen.
+
+## Unveröffentlicht: Google-Leseadapter
+
+Der optionale GA4-/Search-Console-Adapter benötigt ein berechtigtes Konto und extern bereitgestellte read-only OAuth-Credentials. Für GA4 die tatsächliche `--time-zone` angeben; GSC verwendet fest `America/Los_Angeles`. Der additive Tagesexport enthält keine eindeutigen `totalUsers`. CSV/Manifest bleiben privat und werden nicht überschrieben. Details und Grenzen: [FETCH_GOOGLE.md](analytics/.analytics/tools/FETCH_GOOGLE.md). Eine echte Kontoabnahme steht separat aus.
