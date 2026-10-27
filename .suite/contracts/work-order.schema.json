@@ -31,7 +31,10 @@
         "creative",
         "noCRM",
         "analytics",
-        "e-commerce"
+        "e-commerce",
+        "branding",
+        "business-dna",
+        "help"
       ]
     },
     "supporting_modules": {
@@ -47,7 +50,10 @@
           "creative",
           "noCRM",
           "analytics",
-          "e-commerce"
+          "e-commerce",
+          "branding",
+          "business-dna",
+          "help"
         ]
       },
       "uniqueItems": true

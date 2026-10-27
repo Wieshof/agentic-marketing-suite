@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Business-DNA Context Request v0.1",
+  "type": "object",
+  "required": [
+    "request_id",
+    "requester",
+    "purpose",
+    "topics",
+    "max_characters",
+    "visibility_max",
+    "as_of"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requester": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "max_characters": {
+      "type": "integer",
+      "minimum": 500
+    },
+    "visibility_max": {
+      "type": "string",
+      "enum": [
+        "public",
+        "shared",
+        "restricted"
+      ]
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "additionalProperties": false
+}

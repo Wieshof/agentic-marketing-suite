@@ -65,3 +65,15 @@ Fehlt das Analytics-Modul, der Bericht oder die Zugriffsberechtigung, mit den vo
 ## Optionale technische Mail-Fähigkeit
 
 Wenn `../noCRM/` vorhanden ist und der Zugriff erlaubt ist, kann dessen IMAP-/SMTP-Adapter für individuell geprüfte Medienkorrespondenz wiederverwendet werden. Fachliche PR-Führung bleibt hier, Kontakte/Einwilligungen und Kontorechte werden nicht automatisch geteilt. Ein Medienkontakt ist keine pauschale Werbeeinwilligung; konkrete Entwürfe, Ziele, Freigaben und beobachtete Versandstatus verwenden. Ohne Adapter/Konto unverändert selbstständig beraten und Entwürfe erstellen.
+
+## Optionale Branding-Zusammenarbeit
+
+Markenstory, Schreibweisen und Stimme zweckbezogen beziehen. Nachrichtenwert, Belegbarkeit und konkrete Veröffentlichung eigenständig prüfen; ein Brand Profile ist keine Presse- oder Rechtefreigabe. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Unternehmensangaben und Meilensteine mit Belegen beziehen; Nachrichtenwert und konkrete Veröffentlichung eigenständig prüfen. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

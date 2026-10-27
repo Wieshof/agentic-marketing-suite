@@ -1,0 +1,12 @@
+{
+  "request_id": "demo-business-dna-to-branding-01",
+  "requester": "branding",
+  "purpose": "Fiktives Beispiel: Ausgangslage für einen Markenentwurf",
+  "topics": [
+    "product",
+    "stage"
+  ],
+  "max_characters": 6000,
+  "visibility_max": "shared",
+  "as_of": "2026-10-27"
+}

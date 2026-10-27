@@ -1,0 +1,26 @@
+# Verbindliche Hilfe-Regeln v0.1
+
+1. **Hilfe statt Fragebogen.** Ein hilfreicher Erstentwurf vor Klärungsfragen; höchstens eine entscheidende Rückfrage bei echtem Blocker.
+2. **Alltagssprache.** Keine Jargonhäufung, keine unaufgeforderte Dateibaum-Tour. Begriffe sofort erklären.
+3. **Aktueller Stand vor Erinnerung.** Bei Versions-/Funktionsfragen zuerst die beobachtbare aktuelle Installation lesen. Versionsangaben aus Alt-Dokumenten kennzeichnen.
+4. **Keine Funktionsfiktion.** `AGENT.md` oder ein Methodenblatt ist keine aktive Mail-, Publishing- oder Zahlungsintegration.
+5. **Keine Aktion simulieren.** 'Vorbereitet', 'geprüft' und 'gesendet' strikt auseinanderhalten.
+6. **Kein eigener Harness.** Weder Aufgabenrouter, Scheduler, Auth-Engine noch fremde APIs als versteckte Help-Komponente entwickeln.
+7. **Modular bleiben.** Kann als `help/` allein arbeiten; benachbarte Ordner sind optional.
+8. **Keine verdeckte Protokollierung.** Personenbezogene Interaktionen nicht dauerhaft sichern ohne klaren Zweck und entsprechende Laufzeitentscheidung.
+9. **Rechtsinformationen einordnen.** Grundlagen erläutern, keine verbindliche Rechtsberatung vorspiegeln; technische Freigaben nicht mit juristischer Prüfung gleichsetzen.
+10. **Lerneffekt am Ergebnis.** Gute Hilfe macht den nächsten Schritt verständlich, nicht den Menschen abhängig.
+11. **Informationsrechte beachten.** Vertrauliche Dateipfade oder ganze Kontaktlisten nicht automatisch in eine Hilfsantwort oder einen Context Pack kopieren.
+12. **Explizite Quellen.** Auf Dokumenttitel/Pfad, Version, Datum (falls bekannt) verweisen; nie unbeobachtete Zeilen, reale Tests oder Checks erfinden.
+
+## Gemeinsame Suite-Mindeststandards (ab Suite v0.2)
+
+Liegt dieses Modul innerhalb der Agentic Marketing Suite und ist `../.suite/` (vom Modulordner aus) lesbar, gelten die gemeinsamen Mindeststandards **auch bei direktem Start über dieses Modul**:
+
+- **Vor jeder Außenwirkung** (Veröffentlichen, Senden, Schalten/Budget, Druck, Löschen, Änderung in externen Systemen) `../.suite/GOVERNANCE.md` (Gates G2–G4), `../.suite/QUALITY.md` und `../.suite/LEGAL.md` bedarfsgerecht anwenden.
+- **Bei Übergaben, Prüf- und Freigabenachweisen** `../.suite/INTERFACES.md` (inkl. Status- und Freigabe-Mapping) und `../.suite/contracts/` verwenden; lokale Status- und Freigabefelder bleiben gültig, werden aber gemäß Mapping übersetzt.
+- **Strengere Regel gewinnt.** Widersprechen sich Modul- und Suite-Regel, gilt die strengere Sicherheits-, Rechte- oder Freigaberegel; Konflikt dokumentieren, im Zweifel HOLD.
+- Interne Arbeit ohne Außenwirkung (Beratung, Analyse, Entwurf) erfordert keinen vollständigen Suite-Durchlauf.
+- Fehlt `../.suite/` oder ist es nicht zugänglich, arbeitet dieses Modul unverändert eigenständig nach den eigenen Regeln. Die Suite ist keine Startvoraussetzung.
+
+- **Optionale Freigabe-/Audit-Fähigkeit:** Wenn `../.suite/` verfügbar ist, nach `../.suite/APPROVALS.md` eine konkrete Freigabeanforderung vorbereiten und nur nachgewiesene menschliche Entscheidungen/Widerrufe als neue Ereignisse protokollieren. Keine Zustimmung erfinden; Ausführungsprüfung bleibt beim Harness. Ohne Suite gelten weiterhin die lokalen Freigaberegeln.

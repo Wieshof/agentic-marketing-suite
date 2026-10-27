@@ -68,3 +68,28 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 - **Newsletter/Analytics:** Konkreten Zweck, Textversion, DOI-/Abmeldeablauf bzw. feste Messrouten und Aufbewahrung prüfen. Bestehende personenbezogene Daten nicht ungefragt importieren. Tägliche Host-Wartung für abgelaufene/alte Daten einrichten; Webserver-Logs und organisatorische Löschrechte separat behandeln.
 - **Statische Module:** Suchindex/Sitemap nach öffentlichen HTML-Änderungen neu erzeugen. Kein automatisches Verständnis von Server-Zugriffsschutz. Apache-Regeln vor Deployment am tatsächlichen Hosting prüfen; vorhandene `.htaccess` wird nicht ersetzt.
 - **Prüfung:** Gemeinsame Repository-Prüfung, `node --test website/.nocms/tests/test_browser_modules.cjs`, tatsächliche PHP-HTTP-Tests und autorisierte Hoster-/Providerabnahme durchführen. Offline-Tests und Test-Outboxes ersetzen keine Produktionsabnahme. Private `executions.jsonl` werden wie Freigabeprotokolle von Git ausgeschlossen.
+
+## Update v0.2.3 → v0.2.4: Branding
+
+- `branding/` einschließlich verstecktem `.branding/` übernehmen, eigene Arbeitsdaten und bestehende freigegebene Markenversionen erhalten. Die beigelegten Beispiele sind fiktiv; keine eigenen Markenentscheidungen daraus ableiten.
+- Modulregister, gemeinsame Anweisungen und die additiven Enums `branding` in `work-order` und `artifact` übernehmen. Eigene Validatoren mit fest kodierten Modullisten entsprechend ergänzen; bestehende Datensätze bleiben gültig.
+- Nachbarmodule erhalten optionale Übergaben. Markenentscheidungen, Unternehmensfakten und gemessene Wahrnehmung getrennt halten; keine Business-DNA-Installation voraussetzen. Regeln und Mapping: [Branding in der Suite](branding/.branding/SUITE.md).
+- Dashboard für aktualisierte Modulnamen neu starten. Interne Dateien bleiben abhängig von `suite.show_internal_files` gesperrt; die Integration erweitert keine Zugriffsrechte.
+- Repository-Prüfung und Branding-Vertragstests ausführen. Fachliche Beratung und echte Markenreviews nach den lokalen Akzeptanzfällen gesondert prüfen; formale Tests belegen keine Markenqualität oder Rechtsfreiheit.
+
+## Update v0.2.3 → v0.2.4: Business-DNA
+
+- `business-dna/` einschließlich `.business-dna/` übernehmen. Eigene Wissensbestände und Entscheidungen erhalten; fiktive Beispiele nicht als neue geprüfte Unternehmensfakten verwenden.
+- `business-dna` additiv in Modulregister und Suite-Enums `work-order`/`artifact` übernehmen. Eigene Validatoren mit fest kodierten Modullisten aktualisieren. Vorhandene Daten bleiben gültig; kein automatischer Import.
+- Operative `wissen/`, `unternehmen/`, `angebote/`, `kontext/`, Eingänge und Archive standardmäßig aus Git ausschließen. Schon eingecheckte Daten werden durch `.gitignore` nicht aus der Historie entfernt; vorhandene Bestände bewusst prüfen.
+- Context Packs nach Zweck und tatsächlicher Empfängerberechtigung nutzen. Claim-/Quellenstatus und Produktreife getrennt halten; Branding nutzt Fakten als Ausgangslage. `as_of` ist keine historische Rekonstruktion. [Übergaben, CLI und Statusmapping](business-dna/.business-dna/SUITE.md).
+- Die bestehenden CLI-Einzelparameter bleiben gültig; alternativ `--request` mit einem lokalen Context-Request verwenden. Dashboard für die aktualisierten Bezeichnungen neu starten. Keine neue Wissens-, Freigabe- oder Zugriffskontrollinstanz.
+- Repository- und Dashboard-Prüfungen sowie Modul-Vertragstests ausführen. Fachliche Quellenprüfung und dialogische Harness-Akzeptanz bleiben bei konkreter Nutzung erforderlich.
+
+## Update v0.2.3 → v0.2.4: Help & Learning
+
+- `help/` einschließlich `.help/` übernehmen; bestehende Arbeitsdaten, Logs und Module erhalten. Die ursprünglichen Paketunterlagen bleiben separat unter `help/`; keine Root-Dateien durch Paketkopien ersetzen.
+- `help` additiv in Modulregister und Suite-Enums `work-order`/`artifact` ergänzen; lokale Help-Schemas bleiben optional. Alle Fachbereiche funktionieren ohne Help weiter.
+- Dashboard für die neue Bezeichnung neu starten. Den bestehenden Harness-Chat und die bewusste Dateireferenz nutzen; es gibt keine automatische Sitzung oder neue Help-API. Interne Dateien behalten ihre bestehenden Zugriffssperren.
+- Help vor Funktionsauskünften auf die tatsächliche Installation, passende Quellen und überprüften Testumfang verweisen. Historische Angaben aus dem Paket sind keine aktuelle Versionsgarantie. [Konkrete Integration](help/.help/SUITE.md).
+- Individuelle Anleitungen/Lernnotizen geschützt außerhalb der Bibliothek ablegen. Paket-/Integrationstests ausführen; die dialogischen Akzeptanzfälle und echte Verständlichkeit zusätzlich im Harness prüfen.

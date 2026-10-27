@@ -1,7 +1,7 @@
 # Architektur v0.1 – föderierte Fachspezialisten und gemeinsame Mindeststandards
 
 ## Ziel
-Offene, dateibasierte Arbeitsumgebung **eines Unternehmens**. Keine implizite Agentur- oder Kundenmandantenhierarchie. Neun autonome Fachbereiche plus eine **optionale** Suite-Ebene für Aufträge, die mehrere Fachbereiche verbinden. Die zentrale Ebene ersetzt weder `AGENT.md` noch die lokalen Methoden oder lokalen Prüfungen.
+Offene, dateibasierte Arbeitsumgebung **eines Unternehmens**. Keine implizite Agentur- oder Kundenmandantenhierarchie. Zwölf autonome Fachbereiche plus eine **optionale** Suite-Ebene für Aufträge, die mehrere Fachbereiche verbinden. Die zentrale Ebene ersetzt weder `AGENT.md` noch die lokalen Methoden oder lokalen Prüfungen.
 
 ## Ebenen
 1. **Menschlicher Auftrag / Intent:** Freies Briefing, existierende Unterlagen oder Fortsetzung; kein starres Interview.
@@ -24,3 +24,15 @@ Technische Sicherheitsgrenzen, geltendes Recht, genehmigte Zugriffsrechte und re
 
 ## Scope-Grenze
 Diese Version liefert **Dokumentation und lokale Datenvalidierung**, keine Prozessengine, keine Justizberatung, keine OAuth-Verbindungen und keine tatsächliche End-to-End-Veröffentlichung. Die Suite kann in einem beliebigen Harness gelesen und schrittweise operationalisiert werden.
+
+## Markenwissen und Zuständigkeiten
+
+`branding/` führt freigegebene Markenentscheidungen; Unternehmensfakten bleiben bei ihren belegbaren Quellen und optional deren Pflege in Business-DNA, Umsetzung bei Creative/Kanälen und gemessene Wahrnehmung bei Analytics. Zweckbezogene Brand Context Packs transportieren nur erforderliche, sichtbare und passende Versionen. Branding ist keine Pflichtvorstufe und kein zusätzlicher Freigabe- oder Runtime-Dienst. Siehe [Branding-Integration](../branding/.branding/SUITE.md).
+
+## Optionaler Wissenslieferant
+
+`business-dna/` strukturiert Unternehmenswissen als versionierte Claims mit Erkenntnisstatus, Quellen und Geltung. Kleine Context Packs sind Snapshots und keine Berechtigung zur Veröffentlichung oder Änderung fremder Module. Der Fachbereich ist weder Pflichtdatenbank noch Orchestrator. Faktenpflege, Markenentscheidung und Wirkungsmessung bleiben eigenständige Zuständigkeiten. [Konkrete Übergaben](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe ohne Ausführungsrolle
+
+`help/` erklärt die Suite und gelesene Ergebnisse, unterstützt beim Einstieg und bereitet kopierbare Fachaufträge vor. Es ersetzt weder Fachmodule noch Harness oder Freigabeprüfung. Ein Dateiinventar belegt keine Verbindung, Konfiguration oder getestete Außenaktion. Dokumentbezogene Hilfe nutzt nur explizit mitgegebene Referenzen und erforderliche berechtigte Passagen; das Dashboard verwendet seinen bestehenden Chattransport. [Help-Integration](../help/.help/SUITE.md).

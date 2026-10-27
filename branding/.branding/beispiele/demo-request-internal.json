@@ -1,0 +1,15 @@
+{
+  "request_id": "demo-request-02",
+  "requester": "creative",
+  "purpose": "Interner Creative Brief Test",
+  "audience": "shared",
+  "topics": [
+    "positioning",
+    "promise",
+    "core",
+    "visual_principles"
+  ],
+  "brand_ids": [
+    "topaca-draft"
+  ]
+}

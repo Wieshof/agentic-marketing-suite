@@ -1,0 +1,25 @@
+{
+  "brand_id": "topaca-draft",
+  "name": "TOPACA",
+  "version": 1,
+  "status": "draft",
+  "updated_at": "2026-10-27T11:30:00+01:00",
+  "owner_scope": "brand-proposal",
+  "visibility": "shared",
+  "brand_platform": {
+    "positioning": "Hypothese: europäische Marke für lokal betriebene KI-Computer.",
+    "promise": "Entwurf – nicht freigegeben; Produkt in Entwicklung.",
+    "core": "Digitale Souveränität als Leitidee (Hypothese).",
+    "voice": [
+      "verständlich",
+      "fachlich belastbar"
+    ]
+  },
+  "source_refs": [
+    "user-briefing-provided-in-example"
+  ],
+  "limitations": [
+    "Kein freigegebenes Markenprofil.",
+    "Kein nachgewiesener Produktnutzen oder Markenrecht."
+  ]
+}

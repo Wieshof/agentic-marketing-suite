@@ -1,0 +1,14 @@
+{
+  "request_id": "demo-request-01",
+  "requester": "website",
+  "purpose": "Illustrativer öffentlicher Markentext",
+  "audience": "public",
+  "topics": [
+    "positioning",
+    "promise",
+    "voice"
+  ],
+  "brand_ids": [
+    "demo-brand-001"
+  ]
+}

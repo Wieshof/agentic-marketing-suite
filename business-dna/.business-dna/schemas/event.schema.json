@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Business-DNA Event v0.1",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "occurred_at",
+    "subject_ref",
+    "actor"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "claim.created",
+        "claim.revised",
+        "claim.disputed",
+        "claim.superseded",
+        "context.exported",
+        "decision.recorded",
+        "source.rechecked",
+        "deletion.applied"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "before_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "after_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

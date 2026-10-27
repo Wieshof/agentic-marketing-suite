@@ -39,7 +39,7 @@ class HTTPTests(unittest.TestCase):
         return urlopen(Request(self.base+path, headers=headers or {}), timeout=5)
 
     def test_tree_and_change_delete(self):
-        self.assertEqual(len(json.load(self.get('/api/modules'))),9)
+        self.assertEqual({m['path'] for m in json.load(self.get('/api/modules'))}, set(MODULES) | {'.suite'})
         path = self.root/'marketing'/'temporary.md'
         path.write_text('# Erste Version')
         first = json.load(self.get('/api/file?path=marketing/temporary.md'))
@@ -53,17 +53,18 @@ class HTTPTests(unittest.TestCase):
             self.get('/api/file?path=marketing/temporary.md')
         self.assertEqual(error.exception.code,404)
 
-    def test_ecommerce_document_and_context_discovery(self):
-        module = self.root / 'e-commerce'
-        module.mkdir(exist_ok=True)
-        document = module / 'AGENT.md'
-        document.write_text('# Online-Shop')
-        try:
-            self.assertIn('e-commerce', {m['path'] for m in json.load(self.get('/api/modules'))})
-            self.assertIn('Online-Shop', json.load(self.get('/api/file?path=e-commerce/AGENT.md'))['html'])
-        finally:
-            document.unlink()
-            module.rmdir()
+    def test_domain_documents_and_context_discovery(self):
+        for name, title in (('e-commerce', 'Online-Shop'), ('branding', 'Markenstrategie'),
+                            ('business-dna', 'Unternehmenswissen'), ('help', 'Hilfe und Lernen')):
+            with self.subTest(module=name):
+                module = self.root / name
+                document = module / 'AGENT.md'
+                document.write_text('# ' + title)
+                try:
+                    self.assertIn(name, {m['path'] for m in json.load(self.get('/api/modules'))})
+                    self.assertIn(title, json.load(self.get('/api/file?path=' + name + '/AGENT.md'))['html'])
+                finally:
+                    document.unlink()
 
     def test_media_range_and_html_isolation(self):
         (self.root/'movie.mp4').write_bytes(b'0123456789')

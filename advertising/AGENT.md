@@ -43,3 +43,15 @@ Markenwissen und Arbeitsergebnisse als offene Markdown/CSV/JSON/Medienformate; P
 ## Optionale Produktfeed-Quelle
 
 `../e-commerce/` ist, falls vorhanden und berechtigt zugänglich, die optionale Quelle für Katalog und Produktfeed. Schreib-Owner bleibt `e-commerce/`. Advertising prüft die für Shopping benötigte Feed-Version und meldet Fehler als Finding mit Produkt-/SKU-ID, Feld, beobachtetem Wert, Quelle/Version und Korrekturvorschlag an den Owner zurück; Katalog und Feed nicht selbst überschreiben. Ohne E-Commerce-Modul mit vom Auftraggeber bereitgestelltem Katalog/Feed weiterarbeiten und fehlende Eingaben benennen; keine Pflichtinstallation. Ein Finding autorisiert keine Feed-Änderung oder Aktivierung.
+
+## Optionale Branding-Zusammenarbeit
+
+Markenversprechen, Schreibweisen und kreative Leitplanken verwenden. Produktbelege, Anzeigenprüfung, Media und Budgets bleiben eigenständig zu prüfen; Branding erteilt keine Schaltungsbefugnis. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Leistungsbelege, Verfügbarkeit und Einschränkungen vor konkreten Werbeaussagen beziehen. Eine Produktvision ist kein aktueller Leistungsnachweis. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

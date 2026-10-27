@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Brand Profile v0.1",
+  "type": "object",
+  "required": [
+    "brand_id",
+    "name",
+    "version",
+    "status",
+    "updated_at",
+    "owner_scope",
+    "visibility",
+    "brand_platform",
+    "source_refs",
+    "limitations"
+  ],
+  "properties": {
+    "brand_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "organization_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent_brand_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "in_review",
+        "approved",
+        "rejected",
+        "superseded",
+        "retired"
+      ]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "public",
+        "shared",
+        "restricted"
+      ]
+    },
+    "brand_platform": {
+      "type": "object",
+      "properties": {
+        "positioning": {
+          "type": "string"
+        },
+        "promise": {
+          "type": "string"
+        },
+        "core": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "voice": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "visual_principles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "target_groups": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approved_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date"
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "approved"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "approved_by",
+          "approved_at",
+          "decision_ref"
+        ]
+      }
+    }
+  ]
+}

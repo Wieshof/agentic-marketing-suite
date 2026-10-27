@@ -260,3 +260,15 @@ Berichte nach einem Arbeitsvorgang kurz und verständlich:
 Bei tatsächlichem Bedarf `.nocms/integrationen/sftp/README.md` und `.nocms/module/common/README.md` konsultieren. `.nocms/tools/webmodules.py` installiert gezielt Kontaktformular, Analytics Lite, lokale Suche oder Newsletter und erzeugt Sitemap/Apache-Weiterleitungen. Standard bleibt eine direkt veröffentlichbare statische Website; PHP nur bei gewähltem Modul und tatsächlich geeignetem Host. Keine unbenötigten Laufzeitdateien, keine privaten Konfigurationen oder Daten in `site/` übernehmen. Ein veröffentlichter Webauftritt läuft ohne Suite oder Harness.
 
 SFTP erfordert einen freigegebenen Datei-/Hash-Plan mit passendem unveränderlichem Release-ZIP, konkretem Ziel und tatsächlichem Transfer-/Readback-Nachweis. HTTP-/Browser-/PHP-Abnahme bleibt separat; keine Veröffentlichung behaupten, weil ein lokales Tool vorhanden ist. Kontakt-/Newsletter-/Messmodule brauchen einen geprüften begrenzten Serviceauftrag mit Zweck, Grenzen, Ablauf und Datenschutzinformation. Templateinstallation aktiviert keine Dienste. Das optionale Suite-Register verweist auf die Originalimplementierungen; die Anleitungen sind keine Konten oder Einwilligungen.
+
+## Optionale Branding-Zusammenarbeit
+
+Freigegebene Schreibweisen, Stimme und Gestaltungsleitplanken in Webtext und Design übernehmen. Website verantwortet technische Umsetzung, Zugänglichkeit und Deployment; Markenfreigabe ist keine Release-Freigabe. Bei vorhandenem `../branding/` nur passende Brand Context Packs mit Zweck, erlaubter Sichtbarkeit, Marke, Version und aktuellem Freigabestatus verwenden; veraltete oder abgelöste Vorgaben nicht still weiterführen. Findings an Branding zurückgeben, statt dessen Originale zu überschreiben. Ohne Branding mit vorhandenen Richtlinien und gekennzeichneten Annahmen eigenständig weiterarbeiten. Übergaben: [Branding in der Suite](../branding/.branding/SUITE.md).
+
+## Optionale Business-DNA-Zusammenarbeit
+
+Firmenangaben, Produkte und Quellen gezielt beziehen; rechtliche Seitentexte, Aktualität und Deployment eigenständig prüfen. Bei vorhandenem `../business-dna/` einen begrenzten Context Pack mit Empfänger, Zweck, Themen, Stichtag, Zeichenbudget und erlaubter Sichtbarkeit anfordern. Claim-ID, Erkenntnisstatus, Version, Quellen und Geltung erhalten; `declared`/`planned` nicht aufwerten. Widersprüche als Vorschlag zurückgeben und fremde Originale nicht überschreiben. Ohne das Modul mit vorhandenen Unterlagen und markierten Unsicherheiten weiterarbeiten. [Anfragen und Suite-Integration](../business-dna/.business-dna/SUITE.md).
+
+## Optionale Hilfe und Lernen
+
+Bei vorhandenem `../help/` können Verständnisfragen zu Begriffen, Ergebnissen oder dem Einstieg durch Help erklärt werden. Nur die benötigte, berechtigte Dokumentreferenz und Frage übergeben; keine ganzen Kontakt-, Unternehmens- oder Markenbestände kopieren. Help kann einen passenden Auftrag formulieren, übernimmt aber weder diese Fachaufgabe noch menschliche Freigaben oder Ausführungsrechte. Ohne Help direkt und eigenständig weiterarbeiten. [Kontext und Suite-Integration](../help/.help/SUITE.md).

@@ -1,8 +1,8 @@
-"""Offline structure checks for the nine modules inside the suite; reads files only."""
+"""Offline structure checks for the twelve modules inside the suite; reads files only."""
 import re,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-MODULES={'marketing':'.marketing','pr':'.pr','social-media':'.social-media','website':'.nocms','advertising':'.advertising','creative':'.creative','noCRM':'.nocrm','analytics':'.analytics','e-commerce':'.e-commerce'}
+MODULES={'marketing':'.marketing','pr':'.pr','social-media':'.social-media','website':'.nocms','advertising':'.advertising','creative':'.creative','noCRM':'.nocrm','analytics':'.analytics','e-commerce':'.e-commerce','branding':'.branding','business-dna':'.business-dna','help':'.help'}
 RULES={'noCRM':'REGELN.md'}
 PLACEHOLDER=set('<>*…{')
 class TestModuleStructure(unittest.TestCase):

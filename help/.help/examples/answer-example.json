@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "answer": "Ein Entwurf ist ein Vorschlag. Eine Freigabe bedeutet, dass eine berechtigte Person eine bestimmte Version für einen bestimmten Zweck gebilligt hat.",
+  "basis_status": "documented",
+  "source_refs": [
+    ".suite/GOVERNANCE.md"
+  ],
+  "suggested_module": null,
+  "suggested_prompt": null,
+  "execution_claimed": false,
+  "limitations": [
+    "Beispielantwort, keine in dieser Umgebung beobachtete Freigabe."
+  ]
+}

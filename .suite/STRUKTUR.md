@@ -18,6 +18,10 @@ agentic-marketing-suite/
 ├── creative/                 # bestehend; v0.2: Suite-Abschnitt in RULES
 ├── noCRM/                    # bestehend; v0.2: Suite-Abschnitt in RULES
 ├── analytics/                # bestehend; v0.2: Suite-Abschnitt in RULES
+├── e-commerce/               # Shop-Beratung, Produktdaten und Feeds
+├── branding/                 # Markenentscheidungen; .branding/ als Fachbibliothek
+├── business-dna/             # Unternehmenswissen; .business-dna/ als Fachbibliothek
+├── help/                     # Hilfe/Lernen; .help/ mit Methoden und menschlichen Guides
 └── vorhaben/                 # optional, erst bei echtem Mehrmodulauftrag
     └── <vorgangs-id>/        # Kontext, referenzierte Ergebnisse, Prüf-/Freigabeakte
 ```
@@ -33,3 +37,7 @@ agentic-marketing-suite/
 - Freigabeanforderungen und private `approvals.jsonl` gehören in den jeweiligen Arbeits-/Vorgangsordner außerhalb der Anweisungsbibliothek. Nur fiktive Demonstrationsdaten liegen unter `.suite/beispiele/approval-demo/`. Zustandsansichten werden aus den unverändert erhaltenen Ereignissen abgeleitet; keine parallele, editierbare Freigabeliste als zusätzliche Wahrheit. Details: [APPROVALS.md](APPROVALS.md).
 
 - `.suite/capabilities/` führt das optionale Register und gemeinsame lokale Adapterhilfen. Fachliche Originale liegen unter `noCRM/.nocrm/integrationen/email/`, `website/.nocms/integrationen/sftp/` und `website/.nocms/module/`. Nur ausgewählte Laufzeitdateien/Build-Ausgaben gelangen nach `site/`; private Konfiguration, Credentials, Outboxes und Mess-/Consent-Daten bleiben außerhalb des Webroots und der Anweisungsbibliothek.
+
+- Business-DNA-Methoden und fiktive Beispiele bleiben unter `business-dna/.business-dna/`; operative `wissen/`, `unternehmen/`, `angebote/`, `kontext/`, Eingänge und Archive bleiben standardmäßig aus Git ausgeschlossen. Ein bewusst freigegebenes Factsheet separat und datensparsam exportieren. `.gitignore` ist keine Zugriffskontrolle; der Harness verantwortet Sichtbarkeit und Dateirechte.
+
+- `help/.help/` enthält Methoden, Guides und fiktive Kontextbeispiele; keine Kopie der übrigen Fachbestände und kein automatisches Chatarchiv. Persönliche Lernnotizen oder Anleitungen nur bei Auftrag außerhalb der Bibliothek ablegen. Die Paket-/Architekturunterlagen unter `help/` bleiben als Herkunftsdokumentation erhalten.

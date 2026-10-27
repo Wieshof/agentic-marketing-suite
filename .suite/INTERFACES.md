@@ -111,3 +111,15 @@ Die Projektion ist read-only und kein Ausführungsgate. Der Harness prüft vor V
 Bei SFTP und IMAP/SMTP ist das freizugebende Artefakt der lesbare Plan: dessen Hash bindet die nicht geheime Konto-/Zielkonfiguration und die exakten Inhalts-Hashes. Der SFTP-Plan bindet zusätzlich das vollständige unveränderliche Release-ZIP; dessen Inhalt wird gegen `site/` geprüft. Damit bleibt die Website-Archivpflicht erhalten. Mail-Pläne binden zusätzlich Envelope-Empfänger, Zweck, Evidenzreferenz und eingefrorene EML. Legacy-Adapter dürfen weiterhin direkt ZIP-/Entwurfsdateien nach dem bestehenden Mapping freigeben; neue Plan-Verfahren benötigen die explizite Hashkette.
 
 SFTP verwendet `publish`; Mailversand `send`; IMAP-Postfachentwürfe `modify_external`. Berechtigtes Read-only-IMAP-Lesen benötigt einen dokumentierten Lesekontext und explizite Kontogrenzen, keine erfundene Schreibfreigabe. `accepted` ist nur Annahme, SFTP-`confirmed` nur verifizierter Dateitransfer. Serverseitige Webmodule laufen innerhalb eines zuvor freigegebenen begrenzten Serviceauftrags; ihre privaten Transport-/Consent-Daten sind keine zentralen menschlichen Suite-Freigaben. Das Dashboard erhält keine neuen Ausführungsrechte.
+
+## Branding: Marke, Context Packs und Reviews
+
+`branding` ist additiv in `work-order.lead_module`, `supporting_modules` und `artifact.owner_module` registriert. Die sechs lokalen Branding-Schemas bleiben eigenständig. Für Status-, Review- und Freigabeübersetzung gilt [Branding in der Suite](../branding/.branding/SUITE.md). Ein lokales `approved` ist ohne menschlichen Nachweis, gültige Version/Hash und Rechteprüfung kein Suite-`approved`; die konservative Branding-Übersetzung setzt `major`/`critical` auch bei lokalem `warning` auf `blocked`, statt eine menschliche Risikoannahme zu erfinden. Keine automatische Veröffentlichung oder Gleichsetzung von Marke, Fakt und gemessener Wahrnehmung.
+
+## Business-DNA: Faktenstatus und zweckbezogene Context Packs
+
+`business-dna` ist additiv in den Modul-Enums von `work-order` und `artifact` registriert. Die sechs lokalen Schemas bleiben eigenständig. Erkenntnisstatus (`verified`, `declared`, `planned` usw.) bezeichnet die Aussage, nicht den Suite-Artefakt-, Freigabe- oder Ausführungsstatus. Requests und Packs bleiben von Branding-Context-Packs getrennt; Claims dürfen darin nur statusgetreu referenziert werden. [Anfrageprotokoll, CLI, Snapshot- und Freigabemapping](../business-dna/.business-dna/SUITE.md).
+
+## Help & Learning: Erklärung und Dokumentkontext
+
+`help` ist additiv in den Modul-Enums von `work-order` und `artifact` registriert. Die zwei lokalen Help-Schemas bleiben eigenständig: `help-context` beschreibt Frage/Dokumentreferenz, `help-answer` optionale Antwortmetadaten mit Reifegrad, Quellen und Grenzen. Eine Help-Antwort behauptet keine Ausführung (`execution_claimed: false`); eine vorgeschlagene Modul-Anfrage ist kein ausgeführter Arbeitsauftrag. Reifegrade wie `implemented` oder `tested` sind keine Suite-Freigabe-/Publikationsstatus. [Kontextübergabe und Mapping](../help/.help/SUITE.md).

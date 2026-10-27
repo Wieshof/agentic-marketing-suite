@@ -50,3 +50,13 @@ htmlcov/
 # Private Adapter-Ausführungsnachweise
 **/executions.jsonl
 **/executions.jsonl.lock
+
+# Private Business-DNA-Arbeitsbestände; interne Methoden/Beispiele bleiben versionierbar.
+/business-dna/wissen/
+/business-dna/unternehmen/
+/business-dna/angebote/
+/business-dna/kontext/
+
+# Persönliche Help-Ergebnisse; Bibliotheks-Guides bleiben versionierbar.
+/help/anleitungen/
+/help/lernnotizen/

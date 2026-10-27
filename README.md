@@ -6,10 +6,10 @@
 
 | Dokument | Stand |
 |---|---|
-| Dokumentation | README v0.3.2 · 27. Oktober 2026 |
-| Beschriebene Softwarebasis | Integrierte Suite v0.2.3 mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
-| Fachbereiche | 9 eigenständig nutzbare Module |
-| Fachmethoden im Repository | 477 Markdown-Methodendateien |
+| Dokumentation | README v0.3.5 · 27. Oktober 2026 |
+| Beschriebene Softwarebasis | Suite v0.2.4 mit Branding, Business-DNA und Help & Learning mit gemeinsamer Governance-Ebene v0.2 (Änderungen: [`.suite/HISTORY.md`](.suite/HISTORY.md)) |
+| Fachbereiche | 12 eigenständig nutzbare Module |
+| Fachmethoden im Repository | 603 Markdown-Methodendateien |
 | Zielgruppe | Unternehmen, Selbstständige, Fachleute und Agenturen; **keine** Agentur- oder Kundenverwaltung als Voraussetzung |
 | Charakter | Architektur, Methodenbibliothek, Arbeitskonventionen, lokale Hilfswerkzeuge; **keine** fertig angebundene All-in-one-SaaS-Anwendung |
 
@@ -26,7 +26,7 @@
 3. [Für wen ist die Suite gedacht?](#3-für-wen-ist-die-suite-gedacht)
 4. [Schnellstart](#4-schnellstart)
 5. [Architektur und Verzeichnisstruktur](#5-architektur-und-verzeichnisstruktur)
-6. [Die neun Fachspezialisten](#6-die-neun-fachspezialisten)
+6. [Die zwölf Fachspezialisten](#6-die-zwölf-fachspezialisten)
 7. [Arbeitsprinzipien der KI](#7-arbeitsprinzipien-der-ki)
 8. [Fachmethoden und Methodenwahl](#8-fachmethoden-und-methodenwahl)
 9. [Der bereichsübergreifende Gesamtablauf](#9-der-bereichsübergreifende-gesamtablauf)
@@ -55,7 +55,7 @@ Die **Agentic Marketing Suite** organisiert Werbung, Marketing und Marktkommunik
 
 Die Suite verbindet drei Ebenen:
 
-1. **Fachkompetenz:** Neun eigenständige Module für Marketing, Öffentlichkeitsarbeit, Social Media, Website/noCMS, Advertising, Creative, noCRM, Analytics und E-Commerce.
+1. **Fachkompetenz:** Zwölf eigenständige Module für Marketing, Öffentlichkeitsarbeit, Social Media, Website/noCMS, Advertising, Creative, noCRM, Analytics, E-Commerce, Branding, Business-DNA und Help & Learning.
 2. **Gemeinsame Prinzipien:** Qualität, rechtliche Mindeststandards, Sicherheitsgrenzen, Ergebnisübergaben, Freigaben, Zustandsverwaltung und Nachvollziehbarkeit.
 3. **Ausführungsumgebung:** Ein KI-Harness, KI-Modell oder Cognitive Computer, der Dateien lesen, Methoden anwenden und optional über explizit erlaubte Capabilities mit externen Systemen arbeiten kann.
 
@@ -109,7 +109,7 @@ Sie setzt **keine Kundenordner** voraus. Wer später mehrere Mandanten betreuen 
 
 ### 3.1 Zwei typische Betriebsweisen
 
-**Eigenes Unternehmen:** Die Organisation nutzt die Suite für die eigene Marke und eigene Aktivitäten. Alle neun Bereiche können auf berechtigt zugängliche Unternehmensinformationen zurückgreifen.
+**Eigenes Unternehmen:** Die Organisation nutzt die Suite für die eigene Marke und eigene Aktivitäten. Alle zwölf Bereiche können auf berechtigt zugängliche Unternehmensinformationen zurückgreifen.
 
 **Beratungs- oder Agenturbetrieb:** Die Organisation betreut mehrere Marken. Hier sind zusätzliche Trennung von Kundendaten, Konten, Zustimmungen, Rollen und Berechtigungen nötig. Die Fachmodule selbst benötigen dafür keine neue Methodenarchitektur.
 
@@ -258,6 +258,15 @@ agentic-marketing-suite/
 ├── analytics/                 # Daten, Wirkung, Lernen
 │   ├── AGENT.md
 │   └── .analytics/
+├── help/                      # Hilfe, Einstieg und Lernen; 18 menschliche Guides
+│   ├── AGENT.md
+│   └── .help/
+├── business-dna/              # Unternehmenswissen, Quellen und Context Packs
+│   ├── AGENT.md
+│   └── .business-dna/
+├── branding/                  # Markenstrategie, Identität, Guidelines, Context Packs
+│   ├── AGENT.md
+│   └── .branding/
 ├── e-commerce/                # Shop-Beratung, Produktdaten, Feeds, Funnels
 │   ├── AGENT.md
 │   └── .e-commerce/
@@ -310,7 +319,7 @@ Ein Spezialist darf auf berechtigt zugängliche Strategie-, Marken- und Ergebnis
 
 ---
 
-## 6. Die neun Fachspezialisten
+## 6. Die zwölf Fachspezialisten
 
 | Modul | Fachlicher Auftrag | Methoden im untersuchten Paket | Interner Methodenindex |
 |---|---|---:|---|
@@ -323,7 +332,10 @@ Ein Spezialist darf auf berechtigt zugängliche Strategie-, Marken- und Ergebnis
 | **noCRM** | Individuelle 1:1-Kommunikation, Beziehungskontext, Antworten, Service, Nachbetreuung | 59 | [`noCRM/.nocrm/METHODEN.md`](noCRM/.nocrm/METHODEN.md) |
 | **Analytics** | Datenqualität, Wirkungsbeurteilung, Experimente, Interpretation und Verbesserung | 73 | [`analytics/.analytics/METHODEN.md`](analytics/.analytics/METHODEN.md) |
 | **E-Commerce** | Shop-System-Wahl, Produktdaten und Feeds, Checkout, Order Bumps, Upsells, Preisaktionen, Funnel-Tests | 8 | [`e-commerce/.e-commerce/METHODEN.md`](e-commerce/.e-commerce/METHODEN.md) |
-| **Gesamt** | | **477** | |
+| **Branding** | Markenstrategie, Identität, Markenarchitektur, Tonalität, Guidelines und Brand Governance | 51 | [`branding/.branding/METHODEN.md`](branding/.branding/METHODEN.md) |
+| **Business-DNA** | Organisationswissen, Claims, Quellenprüfung, Erkenntnisstatus und zweckbezogene Context Packs | 36 | [`business-dna/.business-dna/METHODEN.md`](business-dna/.business-dna/METHODEN.md) |
+| **Help & Learning** | Hilfe, Einstieg, Fachbereichswahl, Dokumentverständnis und realistische Funktionsauskunft | 39 | [`help/.help/METHODEN.md`](help/.help/METHODEN.md) |
+| **Gesamt** | | **603** | |
 
 Die Zahlen beschreiben den **Dateibestand**, nicht die Zahl bereits empirisch nachgewiesener, autonom beherrschter Fähigkeiten.
 
@@ -426,9 +438,39 @@ E-Commerce berät zu Shop-System-Wahl (Shopify, WooCommerce, Shopware, Eigenbau)
 
 ---
 
+### 6.10 Branding – Markenstrategie, Identität und Markenführung
+
+**Einstieg:** [`branding/AGENT.md`](branding/AGENT.md)
+
+Branding entwickelt Positionierung, Brand Platform, Markenarchitektur, Naming, Tonalität und Guidelines. Es prüft konkrete Umsetzungen anderer Fachbereiche gegen gültige Markenentscheidungen. Creative verantwortet Gestaltung und Produktion, Marketing die Marktbearbeitung, Analytics die gemessene Wahrnehmung. Unternehmensfakten stammen aus belegbaren Quellen; Business-DNA ist optional.
+
+**Typische Aufträge:** „Entwickle eine erste Markenpositionierung“, „Erstelle einen Creative Brief“, „Prüfe diesen Webtext gegen unsere Markenstimme“, „Welche Markeninformationen benötigt die PR?“
+
+Zweckbezogene Brand Context Packs filtern nach Themen, Marke, Sichtbarkeit und Freigabestatus. Entwürfe werden nicht als verbindliche Guidelines ausgegeben. Markenrechte und tatsächliche menschliche Freigaben sind separat nachzuweisen. Das Modul bleibt ohne andere Fachbereiche, Dashboard oder zentralen Dienst verwendbar. [Integration, Werkzeuge und Statusmapping](branding/.branding/SUITE.md) · [Architekturspezifikation](branding/Branding-Conceptual-Architecture-Organizational-Knowledge-Specification-v0.1.md).
+
+### 6.11 Business-DNA – Unternehmenswissen und belegbarer Kontext
+
+**Einstieg:** [`business-dna/AGENT.md`](business-dna/AGENT.md)
+
+Business-DNA strukturiert Organisationswissen als versionierte Aussagen mit Erkenntnisstatus, Quellen, Zeit und Geltung. Es berät bei Wissenslücken, widersprüchlichen Angaben und Produktreife. Branding führt die gewünschte Marke, Business-DNA die belegbare Ausgangslage, Analytics die empirische Wahrnehmung. Alle Fachbereiche bleiben ohne diese Wissensquelle selbstständig nutzbar.
+
+**Typische Aufträge:** „Strukturiere dieses Firmenprofil“, „Welche Produkteigenschaften sind tatsächlich belegt?“, „Gib Branding nur die passende Ausgangslage“, „Prüfe widersprüchliche Unternehmensangaben“.
+
+Context Packs wählen nach Zweck, Themen, Datum, Claim-/Quellensichtbarkeit und Budget. `planned` bleibt geplant; `verified` ist keine Veröffentlichungsfreigabe. Operative Wissensbestände bleiben standardmäßig aus Git ausgeschlossen. Kein eigener Dienst, keine Pflichtdatenbank und keine automatische Datensammlung. [Integration und CLI](business-dna/.business-dna/SUITE.md) · [Architekturspezifikation](business-dna/Business-DNA-Conceptual-Architecture-Organizational-Knowledge-Specification-v0.1.md).
+
+### 6.12 Help & Learning – Hilfe, Einstieg und Lernen
+
+**Einstieg:** [`help/AGENT.md`](help/AGENT.md)
+
+Help erklärt Möglichkeiten und Grenzen, hilft bei der Fachbereichswahl und erläutert tatsächlich gelesene Ergebnisse in Alltagssprache. Es liefert bei Bedarf einen kopierbaren Beispielauftrag. Die Produktion bleibt beim zuständigen Fachspezialisten; Help führt keine verdeckten Nebenaktionen aus.
+
+**Typische Fragen:** „Wie beginne ich mit meinem Kleinbetrieb?“, „Was bedeutet dieser Absatz?“, „Welcher Fachbereich hilft bei meiner Marke?“, „Ist diese Funktion schon nutzbar?“
+
+39 Methoden und [18 Guides](help/.help/ANLEITUNGEN.md) unterstützen die Beratung. Ein lokales Inventar prüft vorhandene Module, beweist aber keine getestete Laufzeit. Im Dashboard ist Help auswählbar; Dokumentfragen verwenden den bestehenden Chat mit bewusster Dateireferenz. Kein eigener Harness, Router oder Freigabedienst. [Integration und Prüfgrenzen](help/.help/SUITE.md) · [Architekturspezifikation](help/Help-and-Learning-Conceptual-Architecture-User-Guidance-Contextual-Assistance-Specification-v0.1.md).
+
 ## 7. Arbeitsprinzipien der KI
 
-Die neun `AGENT.md`-Dateien verfolgen dieselben Grundsätze:
+Die zwölf `AGENT.md`-Dateien verfolgen dieselben Grundsätze:
 
 1. **Natürlich starten:** Bei bloßer Initialisierung eine kurze offene Frage („Wobei kann ich helfen?“ in fachlicher Form). Keine Funktionsliste und kein Prozessmenü.
 2. **Konkrete Anliegen sofort bearbeiten:** Kein vorgeschaltetes Formular, wenn bereits genug Informationen vorliegen.
@@ -1028,7 +1070,7 @@ Weitere Hinweise unter [`MIGRATION.md`](MIGRATION.md).
 
 ### 20.4 Historie und Änderungen
 
-Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.3 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
+Die aktuellen Modulstände unterscheiden sich. Diese README ist **eine Dokumentationsüberarbeitung**, kein Anspruch, sämtliche Fachmodule technisch auf denselben Entwicklungsstand gehoben zu haben. Suite v0.2.4 bündelt die Änderungen in [CHANGELOG.md](CHANGELOG.md); Hinweise für bestehende Installationen stehen in [MIGRATION.md](MIGRATION.md). Die Fachmodule und JSON-Verträge behalten ihre jeweiligen Versionskennungen.
 
 ---
 
@@ -1073,6 +1115,12 @@ STRUCTURAL_PREFLIGHT_OK (no compliance certification)
 | [`noCRM/.nocrm/tools/preflight.py`](noCRM/.nocrm/tools/preflight.py) | Kommunikationsaktion vorprüfen, **nicht** versenden |
 | [`noCRM/.nocrm/tools/contact_store.py`](noCRM/.nocrm/tools/contact_store.py) | Lokalen offenen Kontaktbestand bearbeiten |
 | [`analytics/.analytics/tools/evaluate_csv.py`](analytics/.analytics/tools/evaluate_csv.py) | CSV-Daten deskriptiv auswerten |
+| [`help/.help/tools/scan_workspace.py`](help/.help/tools/scan_workspace.py) | Modul-/Methoden-Dateiinventar; Laufzeitstatus bleibt unbekannt |
+| [`help/.help/tools/validate_help.py`](help/.help/tools/validate_help.py) | Help-Bibliotheksstruktur und Beispiele formal prüfen; kein Harness-Test |
+| [`business-dna/.business-dna/tools/lint_records.py`](business-dna/.business-dna/tools/lint_records.py) | Claims/Quellen formal prüfen; keine Wahrheit oder Rechte bestätigen |
+| [`business-dna/.business-dna/tools/build_context.py`](business-dna/.business-dna/tools/build_context.py) | Zweckbezogene Faktenkontexte lokal exportieren; JSON-Anfrage oder Einzelparameter |
+| [`branding/.branding/tools/lint_records.py`](branding/.branding/tools/lint_records.py) | Lokale formale Branding-Datensätze prüfen; keine Authentifizierung oder Rechtsfreigabe |
+| [`branding/.branding/tools/build_brand_context.py`](branding/.branding/tools/build_brand_context.py) | Zweckbezogene Context Packs aus freigegebenen Profilen lokal erzeugen; kein Versand |
 | [`e-commerce/.e-commerce/tools/generate_gmc_feed.py`](e-commerce/.e-commerce/tools/generate_gmc_feed.py) | Produktkatalog prüfen und Merchant-Center-Feed (XML/TSV) lokal erzeugen, **kein** Upload |
 | [`e-commerce/.e-commerce/tools/validate_compliance.py`](e-commerce/.e-commerce/tools/validate_compliance.py) | Funnel-Schutzschalter und Streichpreise vorprüfen, **keine** Rechtsprüfung |
 
@@ -1178,7 +1226,7 @@ Beispielsweise könnte später ein eigenständiger Bereich für Events oder Mark
 5. Abschnitt „Gemeinsame Suite-Mindeststandards“ in der Modul-`RULES.md`.
 6. Dashboard: Eine `AGENT.md` im Modulordner ermöglicht die automatische Erkennung; bei Bedarf Anzeigename und Dateipfad-Verknüpfungen ergänzen und Dashboardtests ausführen.
 
-Der Strukturtest prüft, dass Schema-Enums, Modulregister und Prüfskript dieselben Module kennen. Der vorhandene Vertrag kennt derzeit **genau neun Modulbezeichnungen**.
+Der Strukturtest prüft, dass Schema-Enums, Modulregister und Prüfskript dieselben Module kennen. Der vorhandene Vertrag kennt derzeit **genau zwölf Modulbezeichnungen**.
 
 ### 23.3 Gemeinsame Regeln ändern
 
@@ -1264,7 +1312,7 @@ Die derzeitige Suite ist ein **umfangreicher fachlicher und organisatorischer Pr
 
 ### 25.3 Wichtige Feststellungen zum Entwicklungsstand
 
-- Die neun Fachmodule liegen im Repository vor; `e-commerce/` ist seit Suite v0.2 ergänzt.
+- Die zwölf Fachmodule liegen im Repository vor; `e-commerce/` ist seit Suite v0.2 ergänzt; Branding, Business-DNA und Help sind als zehnter bis zwölfter optionaler Fachbereich integriert (seit Suite v0.2.4).
 - Die gemeinsame Governance-Schicht ist als **additive Erweiterung** integriert (v0.2).
 - Seit v0.2 verweist jede Modul-`RULES.md` (noCRM: `REGELN.md`) auf die Suite-Mindeststandards, sodass sie bei Außenwirkung auch bei direktem Modulstart gelten. v0.2.1 stimmt zusätzlich Startverhalten, Zustandswiederaufnahme und optionale Modulquellen in den Fach-`AGENT.md`-Dateien ab; ohne `.suite/` bleiben die Module eigenständig nutzbar.
 - Die Suite enthält **offene Verträge und einzelne lokale Prüfwerkzeuge**, aber keine automatisch betriebsbereiten Live-Integrationen.
