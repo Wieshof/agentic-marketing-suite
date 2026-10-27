@@ -10,22 +10,49 @@ from urllib.parse import quote, unquote, urlsplit
 
 MODULES = ('marketing', 'pr', 'social-media', 'website', 'advertising', 'creative', 'noCRM', 'analytics')
 SKIP = {'.git', '__pycache__', 'node_modules', '.venv', 'venv', '.DS_Store'}
+# These names remain private even when internal method directories are enabled.
+PRIVATE_NAMES = {'.git', '.hg', '.svn', '.aws', '.ssh', '.gnupg', '.codex', '.config',
+                 '.netrc', '.npmrc', '.pypirc', 'credentials', 'credentials.json',
+                 'id_rsa', 'id_dsa', 'id_ecdsa', 'id_ed25519'}
+PRIVATE_SUFFIXES = {'.pem', '.key', '.p12', '.pfx', '.keystore', '.jks'}
 TEXT = {'.txt', '.md', '.markdown', '.json', '.jsonl', '.csv', '.tsv', '.log', '.py', '.js', '.ts', '.tsx', '.jsx', '.css', '.html', '.htm', '.xml', '.svg', '.yaml', '.yml', '.toml', '.sh', '.sql', '.ini', '.cfg', '.rst'}
 
 
 class Files:
-    def __init__(self, root, max_mb=25):
+    def __init__(self, root, max_mb=25, show_internal_files=False):
         self.root = Path(root).resolve(strict=True)
         if not self.root.is_dir():
             raise ValueError('suite.root muss ein Verzeichnis sein.')
         self.limit = int(max_mb * 1024 * 1024)
+        if not isinstance(show_internal_files, bool):
+            raise ValueError('show_internal_files muss true oder false sein.')
+        self.show_internal_files = show_internal_files
+
+    def _check_parts(self, parts):
+        for index, name in enumerate(parts):
+            folded = name.casefold()
+            if (folded in PRIVATE_NAMES or folded.startswith(('.env', 'secrets.'))
+                    or folded == 'secrets' or Path(folded).suffix in PRIVATE_SUFFIXES):
+                raise PermissionError('Privater Pfad wird nicht ausgeliefert.')
+            # The shared suite entry remains accessible. Other dot paths require server opt-in.
+            if (name.startswith('.') and name not in ('.', '..')
+                    and not (index == 0 and name == '.suite') and not self.show_internal_files):
+                raise PermissionError('Interne Dateien sind in der Konfiguration gesperrt.')
 
     def resolve(self, relative=''):
-        path = (self.root / relative).resolve()
+        lexical = self.root / relative
         try:
-            path.relative_to(self.root)
+            lexical_parts = lexical.relative_to(self.root).parts
         except ValueError:
             raise PermissionError('Pfad liegt außerhalb der Suite.')
+        self._check_parts(lexical_parts)
+        path = lexical.resolve()
+        try:
+            resolved_parts = path.relative_to(self.root).parts
+        except ValueError:
+            raise PermissionError('Pfad liegt außerhalb der Suite.')
+        # Check both the requested name and symlink target; neither can bypass the policy.
+        self._check_parts(resolved_parts)
         return path
 
     def modules(self):
@@ -39,9 +66,17 @@ class Files:
                 continue
             if (entry / 'AGENT.md').is_file():
                 names.append(entry.name)
-        return [{'name': name, 'path': name} for name in (*names, '.suite') if (self.root / name).is_dir()]
+        result = []
+        for name in (*names, '.suite'):
+            try:
+                if self.resolve(name).is_dir():
+                    result.append({'name': name, 'path': name})
+            except (OSError, PermissionError):
+                continue
+        return result
 
     def tree(self, relative='', hidden=False, query=''):
+        hidden = hidden and self.show_internal_files
         parent = self.resolve(relative)
         if not parent.is_dir():
             raise FileNotFoundError('Verzeichnis nicht mehr vorhanden.')
