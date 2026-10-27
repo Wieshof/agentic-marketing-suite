@@ -64,6 +64,7 @@ def main():
         for directory in (
             '.suite/tests', 'analytics/.analytics/tests',
             'creative/.creative/tests', 'noCRM/.nocrm/tests',
+            'social-media/.social-media/tests',
             'e-commerce/.e-commerce/tests',
         )
     ]

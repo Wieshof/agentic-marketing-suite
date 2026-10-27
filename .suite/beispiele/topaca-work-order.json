@@ -3,6 +3,7 @@
   "objective": "Entwicklung einer begrenzten Bekanntheitskampagne mit überprüfbarem Markenkern",
   "lead_module": "marketing",
   "supporting_modules": [
+    "advertising",
     "pr",
     "creative",
     "website",

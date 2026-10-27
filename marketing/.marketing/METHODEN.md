@@ -99,6 +99,8 @@
 
 ## Regeln für Evidenz und Methodenpflege
 
+[QUELLEN.md](QUELLEN.md) ordnet externe Modelle ihren Fachquellen zu und kennzeichnet eigene praktische Synthesen mit Stand/Abrufdatum. Bei neuen Methoden die Quellenzuordnung mitpflegen.
+
 1. Die Methoden sind **Handlungsanleitungen**, keine fertigen Ergebnisschablonen. Sie werden nur aufgabenbezogen eingesetzt.
 2. Markt-, Rechts- und Zeitbehauptungen recherchieren, soweit Quellen zugänglich sind; ohne Zugriff unbestätigt nennen. Keine erfundenen Studien, Referenzen oder Marktzahlen.
 3. Produktversprechen und Wirksamkeitsbehauptungen nur mit tragfähigen Nachweisen; Vision, Hypothese und Realität unterscheiden.
