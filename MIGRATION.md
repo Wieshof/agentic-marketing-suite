@@ -93,3 +93,7 @@ Die Human Approval & Audit Trail Capability v0.1 ist eine additive Erweiterung. 
 - Dashboard für die neue Bezeichnung neu starten. Den bestehenden Harness-Chat und die bewusste Dateireferenz nutzen; es gibt keine automatische Sitzung oder neue Help-API. Interne Dateien behalten ihre bestehenden Zugriffssperren.
 - Help vor Funktionsauskünften auf die tatsächliche Installation, passende Quellen und überprüften Testumfang verweisen. Historische Angaben aus dem Paket sind keine aktuelle Versionsgarantie. [Konkrete Integration](help/.help/SUITE.md).
 - Individuelle Anleitungen/Lernnotizen geschützt außerhalb der Bibliothek ablegen. Paket-/Integrationstests ausführen; die dialogischen Akzeptanzfälle und echte Verständlichkeit zusätzlich im Harness prüfen.
+
+## Unveröffentlicht: Harness-Einstieg
+
+`CLAUDE.md`, `AGENTS.md` und `.cursor/rules/suite.mdc` verweisen auf die bestehenden Regeln. Entwicklung und Marketingaufträge bleiben getrennt. Die Claude-Code-Befehle unter `.claude/commands/` bereiten Arbeit vor, erteilen keine menschliche Freigabe und führen keine Außenaktionen aus. Nach Installation im tatsächlichen Harness prüfen: Einstieg ohne Auftrag, direkter Fachauftrag, Entwicklungsauftrag und Zugriff auf die ausgewählte Kontextquelle. Ein bestandener Repository-Test belegt die automatische Übernahme dieser Dateien nicht.
